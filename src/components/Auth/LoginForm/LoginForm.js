@@ -1,6 +1,6 @@
 import React from "react";
 import { Form, Input, Button, Checkbox } from "antd";
-import { UserOutlined, LockOutlined } from "@ant-design/icons";
+import { MailOutlined, LockOutlined } from "@ant-design/icons";
 import "./LoginForm.scss";
 
 export default function LoginForm() {
@@ -27,7 +27,7 @@ export default function LoginForm() {
         ]}
       >
         <Input
-          prefix={<UserOutlined className="site-form-item-icon" />}
+          prefix={<MailOutlined className="site-form-item-icon" />}
           placeholder="Nombre de usuario"
         />
       </Form.Item>
