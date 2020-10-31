@@ -1,19 +1,25 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
 import { Layout, Menu } from "antd";
+import { Link, withRouter } from "react-router-dom";
 
-export default function LayoutBasic(props) {
+function LayoutBasic(props) {
   const { routes } = props;
   const { Header, Content, Footer } = Layout;
 
   return (
     <Layout>
       <Header style={{ position: "fixed", zIndex: 1, width: "100%" }}>
-        <div className="logo" />
-        <Menu theme="dark" mode="horizontal" defaultSelectedKeys={["2"]}>
-          <Menu.Item key="1">nav 1</Menu.Item>
-          <Menu.Item key="2">nav 2</Menu.Item>
-          <Menu.Item key="3">nav 3</Menu.Item>
+        <Menu theme="dark" mode="horizontal" defaultSelectedKeys={["/"]}>
+          <Menu.Item className="logo" key="/">
+            <Link to={"/"}>logo</Link>
+          </Menu.Item>
+          <Menu.Item key="/home">
+            <Link to={"/"}>Home</Link>
+          </Menu.Item>
+          <Menu.Item key="/contacto">
+            <Link to={"/contacto"}>Contacto</Link>
+          </Menu.Item>
         </Menu>
       </Header>
       <Content
@@ -48,3 +54,5 @@ function LoadRoutes({ routes }) {
     </Switch>
   );
 }
+
+export default withRouter(LayoutBasic);

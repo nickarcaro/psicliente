@@ -1,4 +1,4 @@
-import Auth from "../pages/Auth";
+import Auth from "../pages/Auth/Auth";
 import Contact from "../pages/Contact";
 import Error404 from "../pages/Error404";
 import LayoutBasic from "../layouts/LayoutBasic";
