@@ -1,9 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Prueba de <Auth/> debe mostrarse <Auth/> Correctamente 1`] = `
-<div>
-  <h2>
-    login
-  </h2>
+<div
+  className="auth"
+>
+  <div
+    className="container-form"
+  >
+    <LoginForm />
+  </div>
 </div>
 `;

@@ -1,7 +1,7 @@
 import React from "react";
-import { Route, Switch } from "react-router-dom";
-import { Layout, Menu } from "antd";
 import { Link, withRouter } from "react-router-dom";
+import { Layout, Menu } from "antd";
+import LoadRoutes from "./LoadRoutes";
 
 function LayoutBasic(props) {
   const { routes } = props;
@@ -10,12 +10,9 @@ function LayoutBasic(props) {
   return (
     <Layout>
       <Header style={{ position: "fixed", zIndex: 1, width: "100%" }}>
-        <Menu theme="dark" mode="horizontal" defaultSelectedKeys={["/"]}>
-          <Menu.Item className="logo" key="/">
-            <Link to={"/"}>logo</Link>
-          </Menu.Item>
+        <Menu theme="dark" mode="horizontal" defaultSelectedKeys={["/home"]}>
           <Menu.Item key="/home">
-            <Link to={"/"}>Home</Link>
+            <Link to={"/home"}>Home</Link>
           </Menu.Item>
           <Menu.Item key="/contacto">
             <Link to={"/contacto"}>Contacto</Link>
@@ -37,21 +34,6 @@ function LayoutBasic(props) {
         Ant Design ©2018 Created by Ant UED
       </Footer>
     </Layout>
-  );
-}
-
-function LoadRoutes({ routes }) {
-  return (
-    <Switch>
-      {routes.map((route, index) => (
-        <Route
-          key={index}
-          path={route.path}
-          exact={route.exact}
-          component={route.component}
-        />
-      ))}
-    </Switch>
   );
 }
 

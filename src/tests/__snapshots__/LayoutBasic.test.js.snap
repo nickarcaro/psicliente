@@ -72,3 +72,9 @@ exports[`pruebas del <layoutbasic/>  debe mostrar <LayoutBasic/> correctamente 1
   </Footer>
 </Layout>
 `;
+
+exports[`pruebas del <layoutbasic/> debe mostrar <LayoutBasic/> correctamente 1`] = `
+<ContextConsumer>
+  <Component />
+</ContextConsumer>
+`;
