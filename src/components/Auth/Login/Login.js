@@ -1,7 +1,6 @@
 import React, { useState, useContext, useEffect } from "react";
 import AlertaContext from "../../../hooks/context/alertas/alertaContext";
 import AuthContext from "../../../hooks/context/auth/authContext";
-
 import { Alert } from "antd";
 import { Form, Input, Button } from "antd";
 import { MailOutlined, LockOutlined } from "@ant-design/icons";
@@ -57,37 +56,43 @@ const Login = (props) => {
   };
 
   return (
-    <div className="form-usuario">
-      {alerta ? <div> {alerta.msg} </div> : null}
+    <div className="auth">
+      {alerta ? (
+        <Alert
+          message={`Error: ${alerta.categoria}`}
+          description={alerta.msg}
+          type="error"
+          showIcon
+          closable
+        />
+      ) : null}
 
-      <div className="contenedor-form sombra-dark">
+      <div className="container-form">
         <h1>Iniciar Sesión</h1>
 
-        <form onSubmit={onSubmit}>
-          <div className="campo-form">
-            <label htmlFor="email">Email</label>
-            <input
+        <form className="login-form" onSubmit={onSubmit}>
+          <Form.Item>
+            <Input
+              prefix={<MailOutlined className="site-form-item-icon" />}
               type="email"
               id="email"
               name="email"
-              placeholder="Tu Email"
+              placeholder="Correo electronico"
               value={email}
               onChange={onChange}
             />
-          </div>
-
-          <div className="campo-form">
-            <label htmlFor="password">Password</label>
-            <input
+          </Form.Item>
+          <Form.Item>
+            <Input
+              prefix={<LockOutlined className="site-form-item-icon" />}
               type="password"
               id="password"
               name="password"
-              placeholder="Tu Password"
+              placeholder="Contraseña"
               value={password}
               onChange={onChange}
             />
-          </div>
-
+          </Form.Item>
           <div className="campo-form">
             <input
               type="submit"

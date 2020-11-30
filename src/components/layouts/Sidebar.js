@@ -22,7 +22,9 @@ const Sidebar = () => {
         }}
         collapsible
       >
-        <div className="logo" />
+        <Link to="/home">
+          <div className="logo" />
+        </Link>
         <Menu theme="dark" mode="inline" defaultSelectedKeys={["/home/perfil"]}>
           <Menu.Item key="/home/perfil" icon={<IdcardOutlined />}>
             <Link to="/home/perfil"> Mi Perfil </Link>

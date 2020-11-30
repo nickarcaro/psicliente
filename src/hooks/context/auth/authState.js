@@ -24,6 +24,7 @@ const AuthState = (props) => {
   };
 
   const [state, dispatch] = useReducer(AuthReducer, initialState);
+  //funciones
 
   const registrarUsuario = async (datos) => {
     try {
@@ -60,7 +61,7 @@ const AuthState = (props) => {
 
     try {
       const respuesta = await clienteAxios.get("/login");
-      // console.log(respuesta);
+      console.log(respuesta);
       dispatch({
         type: OBTENER_USUARIO,
         payload: respuesta.data.usuario,
@@ -75,7 +76,6 @@ const AuthState = (props) => {
 
   // Cuando el usuario inicia sesión
   const iniciarSesion = async (datos) => {
-    console.log("datos: ", datos);
     try {
       const respuesta = await clienteAxios.post("/login", datos);
 
