@@ -1,38 +1,26 @@
-import React, { useState } from "react";
+import React from "react";
 import { Form, Input, Button, Checkbox, notification } from "antd";
 import { MailOutlined, LockOutlined } from "@ant-design/icons";
 import { signInApi } from "../../../api/user";
-import { ACCESS_TOKEN, REFRESH_TOKEN } from "../../../utils/constants";
+import { TOKEN } from "../../../utils/constants";
+
 import "./LoginForm.scss";
 export default function LoginForm() {
-  const [inputs, setInputs] = useState({
-    email: "",
-    password: "",
-  });
+  const login = async (values) => {
+    console.log(values);
 
-  const changeForm = (e) => {
-    setInputs({
-      ...inputs,
-      [e.target.name]: e.target.value,
-    });
-  };
+    const result = await signInApi(values);
 
-  const login = async (e) => {
-    e.preventDefault();
-    const result = await signInApi(inputs);
-
-    if (result.message) {
+    if (result.msg) {
       notification["error"]({
-        message: result.message,
+        message: result.msg,
       });
     } else {
-      const { accessToken, refreshToken } = result;
-      localStorage.setItem(ACCESS_TOKEN, accessToken);
-      localStorage.setItem(REFRESH_TOKEN, refreshToken);
-
+      const { token, mensaje } = result;
       notification["success"]({
-        message: "Login correcto.",
+        message: mensaje,
       });
+      localStorage.setItem(TOKEN, token);
 
       window.location.href = "/home";
     }
@@ -41,21 +29,24 @@ export default function LoginForm() {
   };
 
   return (
-    <Form
-      name="normal_login"
-      className="login-form"
-      onChange={changeForm}
-      onSubmit={login}
-    >
+    <Form name="normal_login" className="login-form" onFinish={login}>
       <h1> Iniciar Sesión</h1>
-      <Form.Item name="email">
+      <Form.Item
+        name="email"
+        rules={[
+          { required: true, message: "Favor ingresar correo electrónico!" },
+        ]}
+      >
         <Input
           prefix={<MailOutlined className="site-form-item-icon" />}
           placeholder="Correo electrónico"
           type="email"
         />
       </Form.Item>
-      <Form.Item name="password">
+      <Form.Item
+        name="password"
+        rules={[{ required: true, message: "Favor ingresar contraseña!" }]}
+      >
         <Input
           prefix={<LockOutlined className="site-form-item-icon" />}
           type="password"
