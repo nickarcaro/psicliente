@@ -8,7 +8,7 @@ import Profile from "../pages/Admin/Profile";
 import Users from "../pages/Admin/Users";
 import Patients from "../pages/Admin/Patients";
 import Consultants from "../pages/Admin/Consultants";
-
+import Home from "../pages/Admin/Home";
 //layouts
 import LayoutBasic from "../layouts/LayoutBasic";
 import LayoutAdmin from "../layouts/LayoutAdmin";
@@ -21,7 +21,7 @@ const routes = [
     routes: [
       {
         path: "/home",
-        component: Profile,
+        component: Home,
         exact: true,
       },
       {

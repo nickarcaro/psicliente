@@ -2,7 +2,7 @@ import React from "react";
 import { Link, withRouter } from "react-router-dom";
 import { Layout, Menu } from "antd";
 import LoadRoutes from "./LoadRoutes";
-
+import "./LayoutBasic.scss";
 function LayoutBasic(props) {
   const { routes } = props;
   const { Header, Content, Footer } = Layout;
