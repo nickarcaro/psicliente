@@ -9,13 +9,11 @@ export default function Consultants() {
 
   useEffect(() => {
     getConsultants(token, true).then((response) => {
-      console.log(response.rows);
       setConsultants(response.rows);
     });
 
     setReloadConsultants(false);
   }, [token, reloadConsultants]);
-  console.log(consultants);
 
   return (
     <div>

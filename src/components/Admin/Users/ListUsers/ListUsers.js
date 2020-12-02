@@ -19,7 +19,6 @@ export default function ListUsers(props) {
 
 function Users(props) {
   const { users } = props;
-  console.log(users);
 
   return (
     <List

@@ -16,7 +16,6 @@ export default function Users() {
 
     setReloadUsers(false);
   }, [token, reloadUsers]);
-  console.log(users);
 
   return (
     <div>
