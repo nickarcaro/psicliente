@@ -15,25 +15,15 @@ export default function  GraphLinea(){
   }, [reloadDataForChart]);
   console.log(dataForChart);
 
-  constructor(props){
-    super(props);
-    this.state ={
-      data:{
-        labels:["lunes","Martes","Miercoles","Jueves","Viernes","Sabado","Domingo"],
-        datasets:[{
-          label:"Paciente por dia",
-          backgroundColor:"rgba(255, 0, 255, 0.75)",
-          data:[23,40,1,23,7,90,55]
-        }
-        ]
-      }
-    }
-  }
-
-  getChartData = canvas =>{
-    const data = this.state.data;
-    console.log(FetchingGraphData(data))
-    return data;
+  const chart = () =>{
+    setChartData({
+      labels: ["lunes","Martes","Miercoles","Jueves","Viernes","Sabado","Domingo"],
+      datasets:[{
+        label: "Paciente por dia",
+        backgroundColor:"rgba(255, 0, 255, 0.75)",
+        data:
+      }]
+    })
   }
   render(){
     return(
