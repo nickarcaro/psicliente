@@ -1,6 +1,6 @@
 import React from "react";
 import { Layout, Menu } from "antd";
-import { Route, Switch, Link, Redirect, withRouter } from "react-router-dom";
+import { Route, Link, Redirect, withRouter } from "react-router-dom";
 import {
   SolutionOutlined,
   TeamOutlined,

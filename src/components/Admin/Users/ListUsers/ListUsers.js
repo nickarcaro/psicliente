@@ -4,7 +4,7 @@ import { List } from "antd";
 import "./ListUsers.scss";
 
 export default function ListUsers(props) {
-  const { users, setReloadUsers } = props;
+  const { users } = props;
 
   return (
     <div className="list-users">
@@ -18,7 +18,7 @@ export default function ListUsers(props) {
 }
 
 function Users(props) {
-  const { users, setReloadUsers } = props;
+  const { users } = props;
   console.log(users);
 
   return (
@@ -32,7 +32,7 @@ function Users(props) {
 }
 
 function User(props) {
-  const { user, setReloadUsers } = props;
+  const { user } = props;
 
   return (
     <List.Item>

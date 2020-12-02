@@ -1,5 +1,5 @@
 import React from "react";
-import { Form, Input, Button, Checkbox, notification } from "antd";
+import { Form, Input, Button, notification } from "antd";
 import { MailOutlined, LockOutlined } from "@ant-design/icons";
 import { signInApi } from "../../../api/user";
 import { TOKEN } from "../../../utils/constants";

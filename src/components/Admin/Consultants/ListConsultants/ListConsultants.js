@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { List, Button, Modal as ModalAntd } from "antd";
+import { List, Button } from "antd";
 import Modal from "../../../Modal";
 import EditConsultantForm from "../EditConsultantForm";
 import AddConsultantForm from "../AddConsultantForm";
@@ -27,7 +27,7 @@ export default function ListConsultants(props) {
     <div className="list-users">
       <div className="list-users__header">
         <Button type="primary" onClick={addConsultantModal}>
-          Nuevo usuario
+          Nuevo Consultante
         </Button>
       </div>
 
