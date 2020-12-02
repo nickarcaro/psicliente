@@ -1,0 +1,33 @@
+@import "antd/dist/antd.css";
+@import "./variables";
+
+.login-form-forgot {
+  float: right;
+}
+.ant-col-rtl .login-form-forgot {
+  float: left;
+}
+.login-form-button {
+  width: 100%;
+}
+.ant-btn-primary {
+  background-color: $primary;
+  border-color: $primary;
+}
+
+.ant-checkbox-checked .ant-checkbox-inner {
+  background-color: $primary;
+  border-color: $primary;
+}
+.ant-btn-primary:active {
+  background: $primary;
+  border-color: $primary;
+}
+
+/* .ant-layout-header {
+  background: $menu-color;
+}
+*/
+.ant-menu.ant-menu-dark {
+  background-color: $menu-color;
+}

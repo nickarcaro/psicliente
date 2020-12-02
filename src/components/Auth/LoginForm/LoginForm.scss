@@ -1,0 +1,33 @@
+@import "../../../scss/index.scss";
+
+.login-form {
+  max-width: 300px;
+
+  h1 {
+    font-size: 17px !important;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  input {
+    background-color: #f9f9f9 !important;
+  }
+}
+.login-form-forgot {
+  float: right;
+}
+.ant-col-rtl .login-form-forgot {
+  float: left;
+}
+.login-form-button {
+  width: 100%;
+}
+.ant-btn-primary {
+  background-color: #df034c;
+  border-color: #df034c;
+}
+
+.ant-checkbox-checked .ant-checkbox-inner {
+  background-color: #df034c;
+  border-color: #df034c;
+}
