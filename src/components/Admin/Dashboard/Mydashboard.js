@@ -11,19 +11,20 @@ import { getAccessTokenApi } from "../../../api/auth";
 import { getConsultants } from "../../../api/consultantes";
 import MyProfile from "../../../components/Admin/Profile";
 
-export default function Mydashboard(props) {
+const useStyles = makeStyles((theme) => ({
+  root: {
+    flexGrow: 1,
+  },
+  paper: {
+    padding: theme.spacing(2),
+
+  },
+}));
+
+export default function Mydashboard() {
+
   const classes = useStyles();
 
-
-  const useStyles = makeStyles((theme) => ({
-    root: {
-      flexGrow: 1,
-    },
-    paper: {
-      padding: theme.spacing(2),
-
-    },
-  }));
   const [consultants, setConsultants] = useState([]);
   const [reloadConsultants, setReloadConsultants] = useState(false);
   const token = getAccessTokenApi();
@@ -35,8 +36,8 @@ export default function Mydashboard(props) {
 
     setReloadConsultants(false);
   }, [token, reloadConsultants]);
-  return
-  (
+
+  return(
     <div className={classes.root}>
       <h2>mi perfil</h2>
       <section id="graphs" classname="Graphs container">
@@ -68,7 +69,10 @@ export default function Mydashboard(props) {
         </Grid>
         <Grid item xs={6}>
           <Paper className={classes.paper}>
-            <GraphDoughnut/>
+            <GraphDoughnut
+            consultants={consultants}
+            setReloadConsultants={setReloadConsultants}
+            ></GraphDoughnut>
           </Paper>
         </Grid>
       </Grid>

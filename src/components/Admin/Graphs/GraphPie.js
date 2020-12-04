@@ -30,9 +30,9 @@ let data = {
   labels: ["infantil","juvenil","adulto","adulto mayor"],
   datasets: [
     {
-      label: "Porcentaje de trastornos mentales",
+      label: "Rangos etarios",
       data: [infantil.length,juvenil.length,adulto.length,adultomayor.length],
-      backgroundColor: ["fb5607", "4a4e69", "f94144", "e500a4"],
+      backgroundColor: ["#fb5607", "#4a4e69", "#f94144", "#e500a4"],
     },
   ],
 };

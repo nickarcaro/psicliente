@@ -38,36 +38,11 @@ export default function GraphbarGenero(props) {
     labels: "Total de consultantes por genero",
     datasets: [
       {
-        label: "Masculino activo",
-        data: masculinoAct,
-        backgroundColor: "9d0208",
-      },
-      {
-        label: "Masculino al agua",
-        data: masculinoAlagua,
-        backgroundColor: "1b3a4bs",
-      },
-      {
-        label: "Mujer activa",
-        data: mujerAct,
-        backgroundColor: "9d0208",
-      },
-      {
-        label: "Mujer al agua",
-        data: mujerAlagua,
-        backgroundColor: "1b3a4bs",
-      },
-      {
-        label: "No binario activ-",
-        data: noBinarioAct,
-        backgroundColor: "9d0208",
-      },
-      {
-        label: "No binario activ-",
-        data: noBinarioAlagua,
-        backgroundColor: "1b3a4bs",
-      },
-    ],
+        label:[ "Masculino activo", "Masculino al agua", "Mujer activa", "Mujer al agua", "No binario activ-", "No binario activ-"],
+        data:[ masculinoAct, masculinoAlagua, mujerAct, mujerAlagua, mujerAlagua, noBinarioAct,noBinarioAlagua,],
+        backgroundColor: ["#9d0208", "#1b3a4bs", "#9d0208", "#1b3a4bs","#9d0208", "#1b3a4bs"]
+      }
+    ]
   };
 
   return <Bar data={data} />;
