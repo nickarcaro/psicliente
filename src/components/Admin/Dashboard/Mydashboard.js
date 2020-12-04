@@ -12,6 +12,8 @@ import { getConsultants } from "../../../api/consultantes";
 import MyProfile from "../../../components/Admin/Profile";
 
 export default function Mydashboard(props) {
+  const classes = useStyles();
+
 
   const useStyles = makeStyles((theme) => ({
     root: {

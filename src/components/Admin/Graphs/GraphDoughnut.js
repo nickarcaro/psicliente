@@ -36,4 +36,3 @@ export default function GraphDoughnut(props) {
   }}
    data={data} />;
 }
-}

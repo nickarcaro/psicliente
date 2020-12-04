@@ -1,7 +1,7 @@
-adimport React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { List, Button } from "antd";
 import { Bar } from "react-chartjs-2";
-import Mydashboard from "../Dashboard/Mydashboard"
+import Mydashboard from "../Dashboard/Mydashboard";
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';

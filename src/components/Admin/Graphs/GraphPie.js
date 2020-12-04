@@ -8,7 +8,7 @@ const { consultants, setReloadConsultants } = props;
 let infantil = [];
 let juvenil = [];
 let adulto = [];
-let adulto mayor = [];
+let adultomayor = [];
 
 for (let dataObj of consultants) {
   if ((dataObj.edad >0) &&(dataObj.estado <13)) {
@@ -31,7 +31,7 @@ let data = {
   datasets: [
     {
       label: "Porcentaje de trastornos mentales",
-      data: [length(infantil),length(juvenil),length(adulto),length(adultomayor)]
+      data: [infantil.length,juvenil.length,adulto.length,adultomayor.length],
       backgroundColor: ["fb5607", "4a4e69", "f94144", "e500a4"],
     },
   ],
