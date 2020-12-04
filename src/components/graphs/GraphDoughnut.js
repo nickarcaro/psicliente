@@ -1,39 +1,43 @@
-adimport React, { useState, useEffect } from "react";
-import { Bar } from "react-chartjs-2";
+import React, {Component} from "react";
+import {Doughnut} from 'react-chartjs-2';
+import FetchingGraphData from '../../api/graphData';
 
-export default function GraphDoughnut(props) {
-  const { consultants, setReloadConsultants } = props;
-  //console.log(consultants);
-  let graphData = [];
-  let graphlabel = [];
-  for (let dataObj of consultants) {
-    console.log(dataObj);
-    graphData.push(dataObj.tipo_institucion);
-    graphlabel.push(dataObj.tipo_institucion);
-  }
-  let data = {
-    labels: graphlabel,
-    data:{
-      labels:"Tipos de organizacion",
-      datasets:[{
-        label:"Pacientes por institucion",
-        data:graphData,
-        //backgroundColor:["red","rgb(17, 15, 138)","rgb(255, 153, 51)"]
-      }
-      ]
-    }
-  };
-
-  return <Doughnut
-  options={{
-    scales: {
-      yAxes: [{
-        ticks: {
-          beginAtZero: true
+export default class GraphPie extends Component{
+  constructor(props){
+    super(props);
+    this.state ={
+      data:{
+        labels:["Mujer","Hombre","No binario"],
+        datasets:[{
+          label:"Pacientes por genero",
+          data:[1000000,3300000,6500000],
+          backgroundColor:["red","rgb(17, 15, 138)","rgb(255, 153, 51)"]
         }
-      }]
+        ]
+      }
     }
-  }}
-   data={data} />;
-}
-}
+  }
+  getChartData = canvas =>{
+    const data = this.state.data;
+    return data;
+  }
+  render(){
+    return(
+      <div style={{position:"relative"}}>
+        <h3> Grafico de Dona</h3>
+        <Doughnut
+          options={{
+            scales: {
+              yAxes: [{
+                ticks: {
+                  beginAtZero: true
+                }
+              }]
+            }
+          }}
+          data={this.getChartData}
+        />
+      </div>
+    )
+  }
+  }

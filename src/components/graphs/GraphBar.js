@@ -1,36 +1,43 @@
-import React, { useState, useEffect } from "react";
-import { Bar } from "react-chartjs-2";
+import React, {Component} from "react";
+import {Bar} from 'react-chartjs-2';
+import FetchingGraphData from '../../api/graphData';
 
-export default function GraphLinea(props) {
-  const { consultants, setReloadConsultants } = props;
-  //console.log(consultants);
-  let yAxis = [];
-  let xAxis = [];
-  for (let dataObj of consultants) {
-    console.log(dataObj);
-    yAxis.push(dataObj.edad);
-    xAxis.push(dataObj.motivo);
-  }
-  let data = {
-    labels: xAxis,
-    datasets: [
-      {
-        label: "Porcentaje de trastornos mentales",
-        data: yAxis,
-        backgroundColor: ["green", "red", "rgb(255, 153, 51)", "blue"],
-      },
-    ],
-  };
-
-  return <Bar
-  options={{
-    scales: {
-      yAxes: [{
-        ticks: {
-          beginAtZero: true
-        }
-      }]
+export default class GraphBar extends Component{
+constructor(props){
+  super(props);
+  this.state ={
+    data:{
+      labels:["Psicopatia","Ansiedad","Depresion","Estres"],
+      datasets:[{
+        label:"Porcentaje de trastornos mentales",
+        data:[5000,4500,6500,7500,],
+        backgroundColor:["green","red","rgb(255, 153, 51)","blue"]
+      }
+      ]
     }
-  }}
-  data={data} />;
+  }
+}
+getChartData = canvas =>{
+  const data = this.state.data;
+  return data;
+}
+render(){
+  return(
+    <div style={{position:"relative"}}>
+      <h3> Grafico de Barra</h3>
+      <Bar
+        options={{
+          scales: {
+            yAxes: [{
+              ticks: {
+                beginAtZero: true
+              }
+            }]
+          }
+        }}
+        data={this.getChartData}
+      />
+    </div>
+  )
+}
 }

@@ -1,55 +1,55 @@
 import React from "react";
-import { Form, Input, Button, Checkbox } from "antd";
+import { Form, Input, Button, notification } from "antd";
 import { MailOutlined, LockOutlined } from "@ant-design/icons";
-import "./LoginForm.scss";
+import { signInApi } from "../../../api/user";
+import { TOKEN } from "../../../utils/constants";
 
+import "./LoginForm.scss";
 export default function LoginForm() {
-  const onFinish = (values) => {
-    console.log("Received values of form: ", values);
+  const login = async (values) => {
+    console.log(values);
+
+    const result = await signInApi(values);
+
+    if (result.msg) {
+      notification["error"]({
+        message: result.msg,
+      });
+    } else {
+      const { token, mensaje } = result;
+      notification["success"]({
+        message: mensaje,
+      });
+      localStorage.setItem(TOKEN, token);
+
+      window.location.href = "/home";
+    }
   };
+
   return (
-    <Form
-      name="normal_login"
-      className="login-form"
-      initialValues={{
-        remember: true,
-      }}
-      onFinish={onFinish}
-    >
+    <Form name="normal_login" className="login-form" onFinish={login}>
       <h1> Iniciar Sesión</h1>
       <Form.Item
-        name="username"
+        name="email"
         rules={[
-          {
-            required: true,
-            message: "Favor ingresar usuario",
-          },
+          { required: true, message: "Favor ingresar correo electrónico!" },
         ]}
       >
         <Input
           prefix={<MailOutlined className="site-form-item-icon" />}
-          placeholder="Nombre de usuario"
+          placeholder="Correo electrónico"
+          type="email"
         />
       </Form.Item>
       <Form.Item
         name="password"
-        rules={[
-          {
-            required: true,
-            message: "Please input your Password!",
-          },
-        ]}
+        rules={[{ required: true, message: "Favor ingresar contraseña!" }]}
       >
         <Input
           prefix={<LockOutlined className="site-form-item-icon" />}
           type="password"
           placeholder="Contraseña"
         />
-      </Form.Item>
-      <Form.Item>
-        <Form.Item name="remember" valuePropName="checked" noStyle>
-          <Checkbox>Recordarme</Checkbox>
-        </Form.Item>
       </Form.Item>
 
       <Form.Item>

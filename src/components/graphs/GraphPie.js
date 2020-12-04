@@ -1,51 +1,43 @@
-import React, { useState, useEffect } from "react";
-import { List, Button } from "antd";
-import { Pie } from "react-chartjs-2";
+import React, {Component} from "react";
+import {Pie} from 'react-chartjs-2';
+import FetchingGraphData from '../../api/graphData';
 
-export default function GraphPie(props) {
-const { consultants, setReloadConsultants } = props;
-//console.log(consultants);
-let infantil = [];
-let juvenil = [];
-let adulto = [];
-let adulto mayor = [];
-
-for (let dataObj of consultants) {
-  if ((dataObj.edad >0) &&(dataObj.estado <13)) {
-    infantil.push(dataObj.edad);
-  }
-  if ((dataObj.edad <18) &&(dataObj.estado >13)) {
-    juvenil.push(dataObj.edad);
-  }
-  if ((dataObj.edad <60) &&(dataObj.estado >18)) {
-    adulto.push(dataObj.edad);
-  }
-  if (dataObj.estado >60) {
-    adultomayor.push(dataObj.edad);
-  }
-  console.log(dataObj);
-}
-
-let data = {
-  labels: ["infantil","juvenil","adulto","adulto mayor"],
-  datasets: [
-    {
-      label: "Porcentaje de trastornos mentales",
-      data: [length(infantil),length(juvenil),length(adulto),length(adultomayor)]
-      backgroundColor: ["fb5607", "4a4e69", "f94144", "e500a4"],
-    },
-  ],
-};
-
-return <Pie
-  options={{
-    scales: {
-      yAxes: [{
-        ticks: {
-          beginAtZero: true
+export default class GraphPie extends Component{
+  constructor(props){
+    super(props);
+    this.state ={
+      data:{
+        labels:["Mujer","Hombre","No binario"],
+        datasets:[{
+          label:"Pacientes por genero",
+          data:[1000000,3300000,6500000],
+          backgroundColor:["red","rgb(17, 15, 138)","rgb(255, 153, 51)"]
         }
-      }]
+        ]
+      }
     }
-  }}
-  data={data} />;
-}
+  }
+  getChartData = canvas =>{
+    const data = this.state.data;
+    return data;
+  }
+  render(){
+    return(
+      <div style={{position:"relative"}}>
+        <h3> Grafico de Pie</h3>
+        <Pie
+          options={{
+            scales: {
+              yAxes: [{
+                ticks: {
+                  beginAtZero: true
+                }
+              }]
+            }
+          }}
+          data={this.getChartData}
+        />
+      </div>
+    )
+  }
+  }
