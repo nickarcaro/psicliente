@@ -10,6 +10,29 @@
   background-repeat: no-repeat;
   background-attachment: fixed;
 }
-.site-layout .site-layout-background {
-  background: #fff;
+
+.layout-admin {
+  transition: margin-left 0.2s;
+  padding: 0px 24px 24px;
+  &__header {
+    top: 0;
+    left: 0;
+    width: 100%;
+    right: 0;
+    padding: 0;
+    height: 65px;
+  }
+
+  &__content {
+    min-height: calc(100vh - 65px);
+    padding: 24;
+    text-align: "center";
+    background: #fff;
+    margin: 16px;
+  }
+
+  &__footer {
+    padding: 20px;
+    text-align: center;
+  }
 }

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Layout, Menu } from "antd";
 import { Route, Link, Redirect, withRouter } from "react-router-dom";
 import {
@@ -15,6 +15,7 @@ import Auth from "../pages/Auth";
 import { logout } from "../api/auth";
 import UdpLogo from "../assets/jpeg/logo.jpeg";
 function LayoutAdmin(props) {
+  const [collapsed, setCollapsed] = useState(false);
   const { Header, Content, Footer, Sider } = Layout;
   const { routes } = props;
   const { user, isLoading } = useAuth();
@@ -34,8 +35,14 @@ function LayoutAdmin(props) {
   }
 
   if (user && !isLoading) {
+    const onCollapse = (collapsed) => {
+      setCollapsed(collapsed);
+    };
     return (
-      <Layout>
+      <Layout
+        className="layout-admin"
+        style={{ marginLeft: collapsed ? "80px" : "200px" }}
+      >
         <Sider
           style={{
             overflow: "auto",
@@ -44,6 +51,8 @@ function LayoutAdmin(props) {
             left: 0,
           }}
           collapsible
+          collapsed={collapsed}
+          onCollapse={onCollapse}
         >
           <Link to="/">
             <img className="logo" src={UdpLogo} alt="clinica psicologica udp" />
@@ -66,18 +75,15 @@ function LayoutAdmin(props) {
             </Menu.Item>
           </Menu>
         </Sider>
-        <Layout className="site-layout" style={{ marginLeft: 200 }}>
-          <Header className="site-layout-background" style={{ padding: 0 }} />
-          <Content style={{ margin: "24px 16px 0", overflow: "initial" }}>
-            <div
-              className="site-layout-background"
-              style={{ padding: 24, textAlign: "center" }}
-            >
+        <Layout className="site-layout">
+          <Header r className="layout-admin__header" />
+          <Content>
+            <div className="layout-admin__content">
               <LoadRoutes routes={routes} />
             </div>
           </Content>
-          <Footer style={{ textAlign: "center" }}>
-            Ant Design ©2018 Created by Ant UED
+          <Footer className="layout-admin__footer">
+            clinica Psicológica UDP ©2020 Created by TICS II
           </Footer>
         </Layout>
       </Layout>

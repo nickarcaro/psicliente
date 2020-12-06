@@ -3,14 +3,16 @@ import { Link, withRouter } from "react-router-dom";
 import { Layout, Menu } from "antd";
 import LoadRoutes from "./LoadRoutes";
 import "./LayoutBasic.scss";
+import UdpLogo from "../assets/jpeg/logo.jpeg";
 function LayoutBasic(props) {
   const { routes } = props;
   const { Header, Content, Footer } = Layout;
 
   return (
-    <Layout>
+    <Layout className="layout">
       <Header style={{ position: "fixed", zIndex: 1, width: "100%" }}>
-        <Menu theme="dark" mode="horizontal" defaultSelectedKeys={["/home"]}>
+        <img className="logo" src={UdpLogo} alt="clinica psicologica udp" />
+        <Menu theme="dark" mode="horizontal">
           <Menu.Item key="/home">
             <Link to={"/home"}>Home</Link>
           </Menu.Item>
@@ -23,15 +25,13 @@ function LayoutBasic(props) {
         className="site-layout"
         style={{ padding: "0 50px", marginTop: 64 }}
       >
-        <div
-          className="site-layout-background"
-          style={{ padding: 24, minHeight: 380 }}
-        >
+        <div className="site-layout-background">
+          <h1>Plataforma de gestión de consultantes</h1>
           <LoadRoutes routes={routes} />
         </div>
       </Content>
       <Footer style={{ textAlign: "center" }}>
-        Ant Design ©2018 Created by Ant UED
+        Clínica Psicológica UDP ©2020 Created by TICS II
       </Footer>
     </Layout>
   );

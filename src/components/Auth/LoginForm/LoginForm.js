@@ -16,13 +16,15 @@ export default function LoginForm() {
         message: result.msg,
       });
     } else {
-      const { token, mensaje } = result;
-      notification["success"]({
-        message: mensaje,
-      });
+      const { token } = result;
       localStorage.setItem(TOKEN, token);
+      notification["success"]({
+        message: result.message,
+      });
 
-      window.location.href = "/home";
+      window.setTimeout(function () {
+        window.location.href = "/home";
+      }, 3000);
     }
   };
 
@@ -45,7 +47,7 @@ export default function LoginForm() {
         name="password"
         rules={[{ required: true, message: "Favor ingresar contraseña!" }]}
       >
-        <Input
+        <Input.Password
           prefix={<LockOutlined className="site-form-item-icon" />}
           type="password"
           placeholder="Contraseña"
