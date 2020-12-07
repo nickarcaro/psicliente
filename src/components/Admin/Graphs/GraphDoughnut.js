@@ -3,10 +3,10 @@ import { Doughnut } from "react-chartjs-2";
 
 export default function GraphDoughnut(props) {
   const { consultants, setReloadConsultants } = props;
-  //console.log(consultants);
+  console.log(consultants);
   let graphData = [];
   let graphlabel = [];
-  for (let dataObj of consultants) {
+  for (var dataObj in consultants) {
     console.log(dataObj);
     graphData.push(dataObj.tipo_institucion);
     graphlabel.push(dataObj.tipo_institucion);

@@ -4,13 +4,13 @@ import { Pie } from "react-chartjs-2";
 
 export default function GraphPie(props) {
 const { consultants, setReloadConsultants } = props;
-//console.log(consultants);
+console.log(consultants);
 let infantil = [];
 let juvenil = [];
 let adulto = [];
 let adultomayor = [];
 
-for (let dataObj of consultants) {
+for (var dataObj in consultants) {
   if ((dataObj.edad >0) &&(dataObj.estado <13)) {
     infantil.push(dataObj.edad);
   }

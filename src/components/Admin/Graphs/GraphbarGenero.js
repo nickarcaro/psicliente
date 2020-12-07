@@ -4,32 +4,32 @@ import { Bar } from "react-chartjs-2";
 
 export default function GraphbarGenero(props) {
   const { consultants, setReloadConsultants } = props;
-  //console.log(consultants);
+  console.log(consultants);
   let masculinoAct = [];
   let mujerAct = [];
   let noBinarioAct = [];
   let masculinoAlagua = [];
   let mujerAlagua = [];
   let noBinarioAlagua = [];
-  for (let dataObj of consultants) {
+  for (var dataObj in consultants) {
     console.log(dataObj);
-    if ((dataObj.genero == "masculino") &&(dataObj.estado == "activo")) {
+    if ((dataObj.genero === "masculino") &&(dataObj.estado === "activo")) {
       masculinoAct.push(dataObj.genero);
     }
-    if ((dataObj.genero == "masculino") &&(dataObj.estado == "al agua")) {
+    if ((dataObj.genero === "masculino") &&(dataObj.estado === "al agua")) {
       masculinoAlagua.push(dataObj.genero);
     }
-    if ((dataObj.genero == "mujer") &&(dataObj.estado == "activo")) {
+    if ((dataObj.genero === "mujer") &&(dataObj.estado === "activo")) {
       mujerAct.push(dataObj.genero);
     }
-    if ((dataObj.genero == "mujer") &&(dataObj.estado == "al agua")) {
+    if ((dataObj.genero === "mujer") &&(dataObj.estado === "al agua")) {
       mujerAlagua.push(dataObj.genero);
     }
-    if ((dataObj.genero == "No binario") &&(dataObj.estado == "activo")) {
+    if ((dataObj.genero === "No binario") &&(dataObj.estado === "activo")) {
       noBinarioAct.push(dataObj.genero);
     }
 
-    if ((dataObj.genero == "No binario") &&(dataObj.estado == "al agua")) {
+    if ((dataObj.genero === "No binario") &&(dataObj.estado === "al agua")) {
       noBinarioAlagua.push(dataObj.genero);
     }
   }

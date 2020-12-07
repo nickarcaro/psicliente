@@ -4,10 +4,10 @@ import { Bar } from "react-chartjs-2";
 
 export default function GraphLineasEdades(props) {
   const { consultants, setReloadConsultants } = props;
-  //console.log(consultants);
+  console.log(consultants);
   let edades = [];
   let motivos = [];
-  for (let dataObj of consultants) {
+  for (var dataObj in consultants) {
     console.log(dataObj);
     edades.push(dataObj.edad);
     motivos.push(dataObj.motivo);

@@ -1,32 +1,33 @@
 import React, { useState, useEffect } from "react";
 import { List, Button } from "antd";
 import { Bar } from "react-chartjs-2";
+import { getAccessTokenApi } from "../../../api/auth";
+import { getConsultants } from "../../../api/consultantes";
+import MyProfile from "../../../components/Admin/Profile";
 import Mydashboard from "../Dashboard/Mydashboard";
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 
 export default function Profile(props) {
-  const { consultants, setReloadConsultants } = props;
-  /* //console.log(consultants);
-  let edades = [];
-  let motivos = [];
-  for (let dataObj of consultants) {
-    console.log(dataObj);
-    edades.push(dataObj.edad);
-    motivos.push(dataObj.motivo);
-  }
+  const [consultants, setConsultants] = useState([]);
+  const [reloadConsultants, setReloadConsultants] = useState(false);
+  const token = getAccessTokenApi();
 
-  let data = {
-    labels: motivos,
-    datasets: [
-      {
-        label: "Porcentaje de trastornos mentales",
-        data: edades,
-        backgroundColor: ["green", "red", "rgb(255, 153, 51)", "blue"],
-      },
-    ],
-  };*/
+  useEffect(() => {
+    getConsultants(token, true).then((response) => {
+      setConsultants(response.rows);
+    });
 
-  return <Mydashboard />;
+    setReloadConsultants(false);
+  }, [token, reloadConsultants]);
+
+  return (
+    <div>
+      <Mydashboard
+      consultants={consultants}
+      setReloadConsultants={setReloadConsultants}>
+      </Mydashboard>
+    </div>
+  );
 }
