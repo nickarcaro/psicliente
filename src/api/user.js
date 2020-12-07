@@ -76,3 +76,28 @@ export function getUsers(token) {
       return err.message;
     });
 }
+
+// obtener usuarios
+
+export function updateUser(token, id) {
+  const url = `${basePath}/usuario/${id}`;
+
+  const params = {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: token,
+    },
+  };
+
+  return fetch(url, params)
+    .then((response) => {
+      return response.json();
+    })
+    .then((result) => {
+      return result;
+    })
+    .catch((err) => {
+      return err.message;
+    });
+}

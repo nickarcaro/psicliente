@@ -10,7 +10,6 @@ export default function Users() {
 
   useEffect(() => {
     getUsers(token, true).then((response) => {
-      //console.log(response.rows);
       setUsers(response.rows);
     });
 
