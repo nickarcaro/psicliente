@@ -7,6 +7,7 @@ import GraphPie from "../Graphs/GraphPie";
 import GraphDoughnut from "../Graphs/GraphDoughnut";
 import GraphbarGenero from "../Graphs/GraphbarGenero";
 import GraphLineasEdades from "../Graphs/GraphLineasEdades";
+import GraphConsultantesPorEdadNoContactados from "../Graphs/GraphConsultantesPorEdadNoContactados";
 import { getAccessTokenApi } from "../../../api/auth";
 import { getConsultants } from "../../../api/consultantes";
 import MyProfile from "../../../components/Admin/Profile";
@@ -53,10 +54,10 @@ export default function Mydashboard(props) {
         </Grid>
         <Grid item xs={6}>
           <Paper className={classes.paper}>
-            <GraphLineasEdades
+            <GraphConsultantesPorEdadNoContactados
             consultants={consultants}
             setReloadConsultants={setReloadConsultants}
-            ></GraphLineasEdades>
+            ></GraphConsultantesPorEdadNoContactados>
           </Paper>
         </Grid>
         <Grid item xs={6}>
@@ -75,6 +76,14 @@ export default function Mydashboard(props) {
             ></GraphDoughnut>
           </Paper>
         </Grid>
+      </Grid>
+      <Grid item xs={12}>
+        <Paper className={classes.paper}>
+          <GraphLineasEdades
+          consultants={consultants}
+          setReloadConsultants={setReloadConsultants}
+          ></GraphLineasEdades>
+        </Paper>
       </Grid>
       </section>
     </div>

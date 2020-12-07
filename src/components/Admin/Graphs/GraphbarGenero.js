@@ -35,15 +35,25 @@ export default function GraphbarGenero(props) {
   }
 
   let data = {
-    labels: "Total de consultantes por genero",
+    labels: [ "Masculino activo", "Masculino al agua", "Mujer activa", "Mujer al agua", "No binario activ-", "No binario activ-"],
     datasets: [
       {
-        label:[ "Masculino activo", "Masculino al agua", "Mujer activa", "Mujer al agua", "No binario activ-", "No binario activ-"],
-        data:[ masculinoAct, masculinoAlagua, mujerAct, mujerAlagua, mujerAlagua, noBinarioAct,noBinarioAlagua,],
+        label:"Total de consultantes por genero",
+        data:[ masculinoAct, masculinoAlagua, mujerAct, mujerAlagua, mujerAlagua, noBinarioAct,noBinarioAlagua],
         backgroundColor: ["#9d0208", "#1b3a4bs", "#9d0208", "#1b3a4bs","#9d0208", "#1b3a4bs"]
       }
     ]
   };
 
-  return <Bar data={data} />;
+  return <Bar
+    options={{
+      scales: {
+        yAxes: [{
+          ticks: {
+            beginAtZero: true
+          }
+        }]
+      }
+    }}
+   data={data} />;
 }
