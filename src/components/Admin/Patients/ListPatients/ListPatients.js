@@ -7,6 +7,7 @@ import { deletePatient } from "../../../../api/pacientes";
 import { getAccessTokenApi } from "../../../../api/auth";
 import { EditOutlined, DeleteOutlined } from "@ant-design/icons";
 
+import "./ListPatients.scss";
 const { confirm } = ModalAntd;
 
 export default function ListPatients(props) {
@@ -152,7 +153,7 @@ function Patient(props) {
     >
       <List.Item.Meta
         title={`
-                  ${patient.nombre ? patient.nombre : "..."} 
+                  ${patient.nombre ? patient.nombre : "..."}
                   ${patient.pronombre ? patient.pronombre : "..."}
               `}
         description={patient.RUT}

@@ -31,7 +31,7 @@ let data = {
   datasets: [
     {
       label: "Rangos etarios",
-      data: [infantil.length,juvenil.length,adulto.length,adultomayor.length],
+      data: [infantil,juvenil,adulto,adultomayor],
       backgroundColor: ["#fb5607", "#4a4e69", "#f94144", "#e500a4"],
     },
   ],
