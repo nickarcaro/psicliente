@@ -1,31 +1,68 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Prueba de <App/> debe mostrarse <App/> Correctamente 1`] = `
-<BrowserRouter>
-  <Switch>
-    <RouteWithSubRoutes
-      component={[Function]}
-      exact={false}
-      key="0"
-      path="/"
-      routes={
-        Array [
-          Object {
-            "component": [Function],
-            "exact": true,
-            "path": "/",
-          },
-          Object {
-            "component": [Function],
-            "exact": true,
-            "path": "/contacto",
-          },
-          Object {
-            "component": [Function],
-          },
-        ]
-      }
-    />
-  </Switch>
-</BrowserRouter>
+<AuthProvider>
+  <BrowserRouter>
+    <Switch>
+      <RouteWithSubRoutes
+        component={[Function]}
+        exact={false}
+        key="0"
+        path="/home"
+        routes={
+          Array [
+            Object {
+              "component": [Function],
+              "exact": true,
+              "path": "/home",
+            },
+            Object {
+              "component": [Function],
+              "exact": true,
+              "path": "/home/perfil",
+            },
+            Object {
+              "component": [Function],
+              "exact": true,
+              "path": "/home/pacientes",
+            },
+            Object {
+              "component": [Function],
+              "exact": true,
+              "path": "/home/consultantes",
+            },
+            Object {
+              "component": [Function],
+              "exact": true,
+              "path": "/home/usuarios",
+            },
+          ]
+        }
+      />
+      <RouteWithSubRoutes
+        component={[Function]}
+        exact={false}
+        key="1"
+        path="/"
+        routes={
+          Array [
+            Object {
+              "component": [Function],
+              "exact": true,
+              "path": "/",
+            },
+            Object {
+              "component": [Function],
+              "exact": true,
+              "path": "/contacto",
+            },
+            Object {
+              "component": [Function],
+            },
+          ]
+        }
+      />
+    </Switch>
+  </BrowserRouter>
+</AuthProvider>
 `;

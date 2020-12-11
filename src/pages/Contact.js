@@ -1,6 +1,6 @@
 import React from "react";
-import { Form, Input, Tooltip, Button } from "antd";
-import { QuestionCircleOutlined } from "@ant-design/icons";
+import { Form, Input, Button, Row, Col } from "antd";
+import "./Contact.scss";
 
 export default function Contact() {
   const [form] = Form.useForm();
@@ -10,86 +10,71 @@ export default function Contact() {
   };
 
   return (
-    <Form form={form} name="register" onFinish={onFinish} scrollToFirstError>
-      <Form.Item
-        name="email"
-        placeholder="Correo Electrónico"
-        rules={[
-          {
-            type: "email",
-            message: "La enntrada no es válida",
-          },
-          {
-            required: true,
-            message: "Favor ingresar correo",
-          },
-        ]}
-      >
-        <Input />
-      </Form.Item>
+    <Row>
+      <Col span={18} push={14}>
+        <Form
+          form={form}
+          name="contact"
+          onFinish={onFinish}
+          scrollToFirstError
+          className="login-form"
+        >
+          <Form.Item
+            name="email"
+            rules={[
+              {
+                type: "email",
+                message: "La entrada no es válida",
+              },
+              {
+                required: true,
+                message: "Favor ingresar correo",
+              },
+            ]}
+          >
+            <Input placeholder="Correo Electrónico" />
+          </Form.Item>
+          <Form.Item
+            name="nombre_social"
+            rules={[
+              {
+                required: true,
+                message: "Favor ingresar Nombre",
+              },
+            ]}
+          >
+            <Input placeholder="nombre social" />
+          </Form.Item>
+          <Form.Item
+            name="asunto"
+            rules={[
+              {
+                required: true,
+                message: "Favor ingresar Asunto",
+              },
+            ]}
+          >
+            <Input.TextArea placeholder="asunto" />
+          </Form.Item>
 
-      <Form.Item
-        name="password"
-        plholerace="Password"
-        rules={[
-          {
-            required: true,
-            message: "Please input your password!",
-          },
-        ]}
-        hasFeedback
-      >
-        <Input.Password />
-      </Form.Item>
-
-      <Form.Item
-        name="confirm"
-        dependencies={["password"]}
-        hasFeedback
-        rules={[
-          {
-            required: true,
-            message: "Please confirm your password!",
-          },
-          ({ getFieldValue }) => ({
-            validator(rule, value) {
-              if (!value || getFieldValue("password") === value) {
-                return Promise.resolve();
-              }
-              return Promise.reject(
-                "The two passwords that you entered do not match!"
-              );
-            },
-          }),
-        ]}
-      >
-        <Input.Password label="Confirmar Password" />
-      </Form.Item>
-
-      <Form.Item
-        name="nombre_social"
-        label={
-          <span>
-            <Tooltip title="como quieres que te llamemos?">
-              <QuestionCircleOutlined />
-            </Tooltip>
-          </span>
-        }
-        rules={[
-          {
-            required: true,
-            message: "Favor ingresar Nombre",
-          },
-        ]}
-      >
-        <Input placeholder="nombre social" />
-      </Form.Item>
-
-      <Form.Item>
-        <Button type="primary" htmlType="submit">
-          Enviar
-        </Button>
-      </Form.Item>
-    </Form>
+          <Form.Item>
+            <Button
+              type="primary"
+              htmlType="submit"
+              className="login-form-button"
+            >
+              Enviar
+            </Button>
+          </Form.Item>
+        </Form>
+      </Col>
+      <Col span={6} pull={18}>
+        <ul>
+          <li>Oficina: </li>
+          <li>DIrección: </li>
+          <li>Teléfono: </li>
+        </ul>
+      </Col>
+    </Row>
   );
 }
