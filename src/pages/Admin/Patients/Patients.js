@@ -10,6 +10,7 @@ export default function Patients() {
 
   useEffect(() => {
     getPatients(token).then((response) => {
+      console.log(response);
       setPatients(response);
     });
 
