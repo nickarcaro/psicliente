@@ -9,8 +9,9 @@ export default function Users() {
   const token = getAccessTokenApi();
 
   useEffect(() => {
-    getUsers(token, true).then((response) => {
-      setUsers(response.rows);
+    getUsers(token).then((response) => {
+      setUsers(response);
+      console.log(response);
     });
 
     setReloadUsers(false);

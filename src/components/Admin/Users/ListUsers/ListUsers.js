@@ -48,13 +48,7 @@ function Users(props) {
 
   const editUser = (user) => {
     setIsVisibleModal(true);
-    setModalTitle(
-      `Editar ${
-        user.TipoUsuario_id_TipoUsuario
-          ? user.TipoUsuario_id_TipoUsuario
-          : "..."
-      }`
-    );
+    setModalTitle(`Editar Rol: ${user.rol.nombre ? user.rol.nombre : "..."}`);
     setModalContent(
       <EditUserForm
         user={user}
@@ -87,10 +81,10 @@ function User(props) {
     >
       <List.Item.Meta
         title={`
-                ${user.nombre ? user.nombre : "..."} 
-                ${user.nombre_social ? user.nombre_social : "..."}
+               Nombre: ${user.nombre ? user.nombre : "..."} ,
+               Nombre Social: ${user.nombre_social ? user.nombre_social : "..."}
               `}
-        description={user.email}
+        description={`Correo: ${user.email}`}
       />
     </List.Item>
   );

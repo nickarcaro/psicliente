@@ -19,6 +19,7 @@ export default function SignUp() {
     nombre: false,
     nombre_social: false,
     repeatPassword: false,
+    apellido: false,
   });
   const inputValidation = (values) => {
     const { email, password } = values;
@@ -32,14 +33,22 @@ export default function SignUp() {
   };
 
   const login = async (values) => {
-    const { nombre, nombre_social, email, password, repeatPassword } = values;
+    const {
+      nombre,
+      nombre_social,
+      email,
+      password,
+      apellido,
+      repeatPassword,
+    } = values;
     if (
       !email ||
       !password ||
       !repeatPassword ||
       !nombre_social ||
       !nombre ||
-      !nombre_social
+      !nombre_social ||
+      !apellido
     ) {
       notification["error"]({
         message: "Todos los campos son obligatorios",
@@ -55,14 +64,14 @@ export default function SignUp() {
           nombre_social,
           email,
           password,
-          TipoUsuario_id_TipoUsuario: 1,
+          apellido,
         };
 
         const result = await signUpApi(user);
 
         if (result.msg) {
           notification["error"]({
-            message: result.msg,
+            message: result,
           });
         } else {
           notification["success"]({
@@ -99,6 +108,16 @@ export default function SignUp() {
         <Input
           prefix={<UserOutlined className="site-form-item-icon" />}
           placeholder="Nombre"
+          type="text"
+        />
+      </Form.Item>
+      <Form.Item
+        name="apellido"
+        rules={[{ required: true, message: "Favor ingresar apellido!" }]}
+      >
+        <Input
+          prefix={<UserOutlined className="site-form-item-icon" />}
+          placeholder="Apellido"
           type="text"
         />
       </Form.Item>

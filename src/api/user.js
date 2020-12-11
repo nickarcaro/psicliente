@@ -42,13 +42,11 @@ export function signUpApi(data) {
       return response.json();
     })
     .then((result) => {
-      if (result.user) {
-        return { message: "Usuario creado correctamente" };
-      }
-      return { message: result.message };
+      console.log(result);
+      return result;
     })
     .catch((err) => {
-      return { message: err.message };
+      return err.message;
     });
 }
 
@@ -79,7 +77,7 @@ export function getUsers(token) {
 
 // obtener usuarios
 
-export function updateUser(token, id) {
+export function updateUser(token, user, id) {
   const url = `${basePath}/usuario/${id}`;
 
   const params = {
@@ -88,6 +86,7 @@ export function updateUser(token, id) {
       "Content-Type": "application/json",
       Authorization: token,
     },
+    body: JSON.stringify(user),
   };
 
   return fetch(url, params)

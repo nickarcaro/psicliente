@@ -67,7 +67,7 @@ function Patients(props) {
   const editPatient = (patient) => {
     setIsVisibleModal(true);
     setModalTitle(
-      `Editar ${patient.RUT ? patient.RUT : "..."} ${
+      `Editar ${patient.rut ? patient.rut : "..."} ${
         patient.nombre ? patient.nombre : "..."
       }
       ${patient.nombre_social ? patient.nombre_social : "..."}
@@ -75,13 +75,6 @@ function Patients(props) {
       ${patient.genero ? patient.genero : "..."}
       ${patient.apellido ? patient.apellido : "..."}
       ${patient.fecha_ingreso ? patient.fecha_ingreso : "..."}
-      ${patient.intentos_contacto ? patient.intentos_contacto : "..."}
-      ${patient.Estado_id_Estado ? patient.Estado_id_Estado : "..."}
-      ${
-        patient.PrevisionSalud_id_PrevisionSalud
-          ? patient.PrevisionSalud_id_PrevisionSalud
-          : "..."
-      }
       ${patient.fecha_nacimiento ? patient.fecha_nacimiento : "..."}
       ${patient.sexo ? patient.sexo : "..."}`
     );
@@ -123,10 +116,10 @@ function Patient(props) {
       okType: "danger",
       cancelText: "Cancelar",
       onOk() {
-        deletePatient(accesToken, patient.rut)
+        deletePatient(accesToken, patient.id)
           .then((response) => {
             notification["success"]({
-              message: response,
+              message: response.msg,
             });
             setReloadPatients(true);
           })

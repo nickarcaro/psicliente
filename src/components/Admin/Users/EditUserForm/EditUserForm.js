@@ -1,20 +1,25 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Form, Select, Button, Row, Col, notification } from "antd";
 import { updateUser } from "../../../../api/user";
 import { getAccessTokenApi } from "../../../../api/auth";
 
 export default function EditUserForm(props) {
   const { user, setIsVisibleModal } = props;
+  const [userData, setUserData] = useState({});
+  useEffect(() => {
+    setUserData({
+      role: user.rol.nombre,
+    });
+  }, [user]);
 
   console.log(user);
 
-  const userUpdate = async (values) => {
+  const userUpdate = async (e) => {
     const token = getAccessTokenApi();
-    let userUpdate = values;
 
-    await updateUser(token, userUpdate, user.id_Usuario).then((result) => {
+    await updateUser(token, userData, user.id).then((result) => {
       notification["success"]({
-        message: result.message,
+        message: result.msg,
       });
       setIsVisibleModal(false);
     });
@@ -22,13 +27,17 @@ export default function EditUserForm(props) {
 
   return (
     <div className="edit-user-form">
-      <EditForm userUpdate={userUpdate} />
+      <EditForm
+        userData={userData}
+        setUserData={setUserData}
+        userUpdate={userUpdate}
+      />
     </div>
   );
 }
 
 function EditForm(props) {
-  const { userUpdate } = props;
+  const { userUpdate, userData, setUserData } = props;
   const { Option } = Select;
 
   return (
@@ -36,9 +45,13 @@ function EditForm(props) {
       <Row gutter={24}>
         <Col span={12}>
           <Form.Item>
-            <Select placeholder="Seleccióna una rol">
-              <Option value={1}>Administrador</Option>
-              <Option value={2}>coordinador</Option>
+            <Select
+              placeholder="Seleccióna una rol"
+              value={userData.role}
+              onChange={(e) => setUserData({ ...userData, role: e })}
+            >
+              <Option value="Administrador">Administrador</Option>
+              <Option value="Coordinador">Coordinador</Option>
             </Select>
           </Form.Item>
         </Col>

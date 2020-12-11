@@ -9,8 +9,8 @@ export default function Patients() {
   const token = getAccessTokenApi();
 
   useEffect(() => {
-    getPatients(token, true).then((response) => {
-      setPatients(response.rows);
+    getPatients(token).then((response) => {
+      setPatients(response);
     });
 
     setReloadPatients(false);

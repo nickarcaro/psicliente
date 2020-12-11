@@ -53,7 +53,7 @@ export function getPatientsRut(token, rut) {
 // ingresar paciente
 
 export function addPatient(token, patient) {
-  const url = `${basePath}/paciente/nuevo`;
+  const url = `${basePath}/paciente`;
 
   const params = {
     method: "POST",
@@ -78,8 +78,8 @@ export function addPatient(token, patient) {
 
 //borrar paciente
 
-export function deletePatient(token, rut) {
-  const url = `${basePath}/paciente/${rut}`;
+export function deletePatient(token, id) {
+  const url = `${basePath}/paciente/${id}`;
 
   const params = {
     method: "DELETE",
