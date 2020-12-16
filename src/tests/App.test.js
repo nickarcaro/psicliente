@@ -1,7 +1,8 @@
 import "@testing-library/jest-dom";
-import App from "../App";
+import App, { RouteWithSubRoutes } from "../App";
 import { shallow } from "enzyme";
 import React from "react";
+import routes from "./data/routes";
 
 /* metodologia de las pruebas: 
 
@@ -14,5 +15,18 @@ describe("Prueba de <App/>", () => {
   test("debe mostrarse <App/> Correctamente", () => {
     const wrapper = shallow(<App />);
     expect(wrapper).toMatchSnapshot();
+  });
+
+  test("debe retornar <RouteWithSubRoutes /> correctamente ", () => {
+    const wrapper = shallow(<RouteWithSubRoutes />);
+
+    expect(wrapper).toMatchSnapshot();
+  });
+
+  test("probar que routewithsubroutes opere", () => {
+    let state = RouteWithSubRoutes(routes);
+
+    expect(state).toEqual(expect.arrayContaining([]));
+    //debe retornar un arreglo vacio puesto que no se contextualiza la rutas
   });
 });

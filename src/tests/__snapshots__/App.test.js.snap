@@ -66,3 +66,9 @@ exports[`Prueba de <App/> debe mostrarse <App/> Correctamente 1`] = `
   </BrowserRouter>
 </AuthProvider>
 `;
+
+exports[`Prueba de <App/> debe retornar <RouteWithSubRoutes /> correctamente  1`] = `
+<Route
+  render={[Function]}
+/>
+`;

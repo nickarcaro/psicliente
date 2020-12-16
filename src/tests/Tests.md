@@ -1,6 +1,7 @@
 funciones a probar en el entorno de pruebas:
 
-- App
+- App list
   -/pages:
   -Contact
-  -error 404
+  -error 404 listo
+  -app.js listo
