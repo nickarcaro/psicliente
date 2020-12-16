@@ -41,7 +41,7 @@ export default function Mydashboard(props) {
   return(
     <div className={classes.root}>
       <h2>mi perfil</h2>
-      <section id="graphs" classname="Graphs container">
+      <section id="graphs">
       <h3> Indicadores de la clinica psicologica udp</h3>
       <Grid container spacing={3}>
         <Grid item xs={6}>

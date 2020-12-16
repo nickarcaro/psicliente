@@ -12,9 +12,9 @@ export default function GraphDoughnut(props) {
     graphlabel.push(dataObj.tipo_institucion);
   }
   let data = {
-    labels: graphlabel,
+    labels: "Tipos de organizacion",
     data:{
-      labels:"Tipos de organizacion",
+      labels:graphlabel,
       datasets:[{
         label:"Pacientes por institucion",
         data:graphData,
