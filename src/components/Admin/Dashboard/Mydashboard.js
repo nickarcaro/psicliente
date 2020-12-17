@@ -23,20 +23,9 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Mydashboard(props) {
-
   const classes = useStyles();
+  const { consultants } = props;
 
-  const [consultants, setConsultants] = useState([]);
-  const [reloadConsultants, setReloadConsultants] = useState(false);
-  const token = getAccessTokenApi();
-
-  useEffect(() => {
-    getConsultants(token, true).then((response) => {
-      setConsultants(response.rows);
-    });
-
-    setReloadConsultants(false);
-  }, [token, reloadConsultants]);
 
   return(
     <div className={classes.root}>
@@ -46,9 +35,9 @@ export default function Mydashboard(props) {
       <Grid container spacing={3}>
         <Grid item xs={6}>
           <Paper className={classes.paper}>
+            <h3>Total de consultantes por genero</h3>
             <GraphbarGenero
             consultants={consultants}
-            setReloadConsultants={setReloadConsultants}
         ></GraphbarGenero>
           </Paper>
         </Grid>
@@ -56,7 +45,6 @@ export default function Mydashboard(props) {
           <Paper className={classes.paper}>
             <GraphConsultantesPorEdadNoContactados
             consultants={consultants}
-            setReloadConsultants={setReloadConsultants}
             ></GraphConsultantesPorEdadNoContactados>
           </Paper>
         </Grid>
@@ -64,15 +52,14 @@ export default function Mydashboard(props) {
           <Paper className={classes.paper}>
             <GraphPie
             consultants={consultants}
-            setReloadConsultants={setReloadConsultants}
             ></GraphPie>
           </Paper>
         </Grid>
         <Grid item xs={6}>
           <Paper className={classes.paper}>
+            <h3>Tipos de organizacion</h3>
             <GraphDoughnut
             consultants={consultants}
-            setReloadConsultants={setReloadConsultants}
             ></GraphDoughnut>
           </Paper>
         </Grid>
@@ -81,7 +68,6 @@ export default function Mydashboard(props) {
         <Paper className={classes.paper}>
           <GraphLineasEdades
           consultants={consultants}
-          setReloadConsultants={setReloadConsultants}
           ></GraphLineasEdades>
         </Paper>
       </Grid>

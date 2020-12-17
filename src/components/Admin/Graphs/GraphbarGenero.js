@@ -14,34 +14,52 @@ export default function GraphbarGenero(props) {
   let noBinarioAct = [];
   let noBinarioAlagua = [];
   let noBinariopaciente = [];
-  for (var dataObj in consultants) {
+  for (let dataObj of consultants) {
     console.log(dataObj);
-    if ((dataObj.genero === "Masculino") &&(dataObj.estado === "consultante")) {
+    if (dataObj.genero === "Masculino" && dataObj.estado === "consultante") {
       masculinoAct.push(dataObj.genero);
+      console.log(masculinoAct);
+      console.log(dataObj.estado);
     }
-    if ((dataObj.genero === "Masculino") &&(dataObj.estado === "incontestado")) {
+    if (dataObj.genero === "Masculino" && dataObj.estado === "incontestado") {
       masculinoAlagua.push(dataObj.genero);
+      console.log(dataObj.genero);
+      console.log(dataObj.estado);
     }
-    if ((dataObj.genero === "Masculino") &&(dataObj.estado === "paciente")) {
+    if (dataObj.genero === "Masculino" && dataObj.estado === "paciente") {
       masculinopaciente.push(dataObj.genero);
+      console.log(dataObj.genero);
+      console.log(dataObj.estado);
     }
-    if ((dataObj.genero === "Femenino") &&(dataObj.estado === "consultante")) {
+    if (dataObj.genero === "Femenino" && dataObj.estado === "consultante") {
       mujerAct.push(dataObj.genero);
+      console.log(dataObj.genero);
+      console.log(dataObj.estado);
     }
-    if ((dataObj.genero === "Femenino") &&(dataObj.estado === "incontestado")) {
+    if (dataObj.genero === "Femenino" && dataObj.estado === "incontestado") {
       mujerAlagua.push(dataObj.genero);
+      console.log(dataObj.genero);
+      console.log(dataObj.estado);
     }
-    if ((dataObj.genero === "Femenino") &&(dataObj.estado === "paciente")) {
+    if (dataObj.genero === "Femenino" && dataObj.estado === "paciente") {
       mujerpaciente.push(dataObj.genero);
+      console.log(dataObj.genero);
+      console.log(dataObj.estado);
     }
-    if ((dataObj.genero === "No Binario") &&(dataObj.estado === "consultante")) {
+    if (dataObj.genero === "No Binario" && dataObj.estado === "consultante") {
       noBinarioAct.push(dataObj.genero);
+      console.log(dataObj.genero);
+      console.log(dataObj.estado);
     }
-    if ((dataObj.genero === "No Binario") &&(dataObj.estado === "paciente")) {
+    if (dataObj.genero === "No Binario" && dataObj.estado === "paciente") {
       noBinarioAct.push(dataObj.genero);
+      console.log(dataObj.genero);
+      console.log(dataObj.estado);
     }
-    if ((dataObj.genero === "No Binario") &&(dataObj.estado === "incontestado")) {
+    if (dataObj.genero === "No Binario" && dataObj.estado === "incontestado") {
       noBinariopaciente.push(dataObj.genero);
+      console.log(dataObj.genero);
+      console.log(dataObj.estado);
     }
   }
 
@@ -49,8 +67,8 @@ export default function GraphbarGenero(props) {
     labels: [ "Masculino activo", "Masculino paciente", "Masculino al agua", "Mujer activa", "Mujer paciente", "Mujer al agua", "No binario activ-", "No binario paciente", "No binario activ-"],
     datasets: [
       {
-        label:"Total de consultantes por genero",
-        data:[ masculinoAct, masculinoAlagua, mujerAct, mujerAlagua, mujerAlagua, noBinarioAct,noBinarioAlagua, masculinopaciente, mujerpaciente, noBinariopaciente],
+        label: ["Consultante", "Paciente", "incontestado"],
+        data:[ masculinoAct.length, masculinoAlagua.length, mujerAct.length, mujerAlagua.length, mujerAlagua.length, noBinarioAct.length,noBinarioAlagua.length, masculinopaciente.length, mujerpaciente.length, noBinariopaciente.length],
         backgroundColor: ["#9d0208", "#1b3a4bs", "#9d0208", "#1b3a4bs","#9d0208", "#1b3a4bs","#9d0208", "#1b3a4bs","#9d0208"]
       }
     ]

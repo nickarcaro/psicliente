@@ -5,16 +5,15 @@ export default function GraphDoughnut(props) {
   const { consultants, setReloadConsultants } = props;
   console.log(consultants);
   let graphData = [];
-  let graphlabel = [];
   for (var dataObj in consultants) {
     console.log(dataObj);
     graphData.push(dataObj.tipo_institucion);
-    graphlabel.push(dataObj.tipo_institucion);
+    console.log(graphData.tipo_institucion);
   }
   let data = {
     labels: "Tipos de organizacion",
     data:{
-      labels:graphlabel,
+      labels:"Tipos de organizacion",
       datasets:[{
         label:"Pacientes por institucion",
         data:graphData,

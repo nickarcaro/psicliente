@@ -9,19 +9,24 @@ let infantil = [];
 let juvenil = [];
 let adulto = [];
 let adultomayor = [];
+console.log(infantil)
 
-for (var dataObj in consultants) {
-  if ((dataObj.edad >0) &&(dataObj.estado <13)) {
+for (let dataObj of consultants) {
+  if (dataObj.edad > 0 && dataObj.edad < 13) {
     infantil.push(dataObj.edad);
+    console.log(infantil)
   }
-  if ((dataObj.edad <18) &&(dataObj.estado >13)) {
+  else if (dataObj.edad < 18  && dataObj.edad > 13) {
     juvenil.push(dataObj.edad);
+    console.log(juvenil)
   }
-  if ((dataObj.edad <60) &&(dataObj.estado >18)) {
+  else if (dataObj.edad < 60 && dataObj.edad > 18) {
     adulto.push(dataObj.edad);
+    console.log(adulto)
   }
-  if (dataObj.estado >60) {
+  else if (dataObj.estado >60) {
     adultomayor.push(dataObj.edad);
+    console.log(adultomayor)
   }
   console.log(dataObj);
 }
@@ -31,7 +36,7 @@ let data = {
   datasets: [
     {
       label: "Rangos etarios",
-      data: [infantil,juvenil,adulto,adultomayor],
+      data: [infantil.length,juvenil.length,adulto.length,adultomayor.length],
       backgroundColor: ["#fb5607", "#4a4e69", "#f94144", "#e500a4"],
     },
   ],

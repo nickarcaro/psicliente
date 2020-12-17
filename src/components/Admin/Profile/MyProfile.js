@@ -10,23 +10,12 @@ import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 
 export default function Profile(props) {
-  const [consultants, setConsultants] = useState([]);
-  const [reloadConsultants, setReloadConsultants] = useState(false);
-  const token = getAccessTokenApi();
-
-  useEffect(() => {
-    getConsultants(token, true).then((response) => {
-      setConsultants(response.rows);
-    });
-
-    setReloadConsultants(false);
-  }, [token, reloadConsultants]);
+  const { consultants } = props;
 
   return (
     <div>
       <Mydashboard
-      consultants={consultants}
-      setReloadConsultants={setReloadConsultants}>
+        consultants={consultants}>
       </Mydashboard>
     </div>
   );
