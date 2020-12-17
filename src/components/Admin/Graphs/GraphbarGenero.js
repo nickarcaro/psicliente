@@ -64,18 +64,23 @@ export default function GraphbarGenero(props) {
   }
 
   let data = {
-    labels: [ "Masculino activo", "Masculino paciente", "Masculino al agua", "Femenino activa", "Femenino paciente", "Femenino al agua", "No binario activ-", "No binario paciente", "No binario activ-"],
+    labels: [ "Masculino activo", "Masculino paciente", "Masculino al agua", "Mujer activa", "Mujer paciente", "Mujer al agua", "No binario activ-", "No binario paciente", "No binario activ-"],
     datasets: [
       {
         label:"Paciente por genero y estado",
         data:[ masculinoAct.length, masculinopaciente.length, masculinoAlagua.length, femeninoAct.length, femeninopaciente.length, femeninoAlagua.length, femeninoAlagua.length, noBinarioAct.length,noBinarioAlagua.length,  noBinariopaciente.length],
-        backgroundColor: ["#9d0208", "#1b3a4bs", "#6930c3", "#9d0208", "#1b3a4bs", "#6930c3","#9d0208", "#1b3a4bs", "#6930c3"]
+        backgroundColor: "#f77f00",
+        borderColor:"#d62828"
       }
     ]
   };
 
   return <Bar
     options={{
+      title:{
+        display: true,
+        text:'Total de consultantes por genero'
+      },
       scales: {
         yAxes: [{
           ticks: {

@@ -35,14 +35,12 @@ export default function Mydashboard(props) {
       <Grid container spacing={3}>
         <Grid item xs={6}>
           <Paper className={classes.paper}>
-            <h3>Total de consultantes por genero</h3>
             <GraphbarGenero
             consultants={consultants}
         ></GraphbarGenero>
           </Paper>
         </Grid>
         <Grid item xs={6}>
-        <h3>Total de consultantes no contactados por edad</h3>
           <Paper className={classes.paper}>
             <GraphConsultantesPorEdadNoContactados
             consultants={consultants}
@@ -51,7 +49,6 @@ export default function Mydashboard(props) {
         </Grid>
         <Grid item xs={6}>
           <Paper className={classes.paper}>
-          <h3>Porcentaje de edades</h3>
             <GraphPie
             consultants={consultants}
             ></GraphPie>
@@ -59,7 +56,6 @@ export default function Mydashboard(props) {
         </Grid>
         <Grid item xs={6}>
           <Paper className={classes.paper}>
-            <h3>Tipos de organizacion</h3>
             <GraphDoughnut
             consultants={consultants}
             ></GraphDoughnut>

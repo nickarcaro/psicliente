@@ -46,16 +46,18 @@ export default function GraphbarGenero(props) {
   let data = {
     labels: [ "3-12 ", "12-18", "18-25", "25-35", "35-45", "45-60", "60-"],
     datasets: [
-      {
-        label:"Total de consultantes no contactados por edad",
-        data:[ de3a12.length, de12a18.length, de18a25.length, de25a35.length, de35a45.length, de45a60.length ,de60enAdelante.length],
-        backgroundColor: ["#9d0208","#fb5607", "#4a4e69", "#f94144", "#e500a4", "#06d6a0"]
-      }
+      {label:"Numero de pacientes por edad No contactados",
+      data:[de3a12.length,de12a18.length,de18a25.length ,de25a35.length ,de35a45.length ,de45a60.length ,de60enAdelante.length],
+      backgroundColor: "#9d0208"},
     ]
   };
 
   return <Bar
     options={{
+      title:{
+        display: true,
+        text:'Total de consultantes no contactados por edad'
+      },
       scales: {
         yAxes: [{
           ticks: {

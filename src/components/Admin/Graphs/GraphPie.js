@@ -44,6 +44,10 @@ let data = {
 
 return <Pie
   options={{
+    title:{
+      display: true,
+      text:'Porcentaje de pacientes por edad'
+    },
     scales: {
       yAxes: [{
         ticks: {
