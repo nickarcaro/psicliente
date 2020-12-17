@@ -76,7 +76,7 @@ function LayoutAdmin(props) {
           </Menu>
         </Sider>
         <Layout className="site-layout">
-          <Header r className="layout-admin__header" />
+          <Header className="layout-admin__header" />
           <Content>
             <div className="layout-admin__content">
               <LoadRoutes routes={routes} />

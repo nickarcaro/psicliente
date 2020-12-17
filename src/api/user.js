@@ -101,3 +101,27 @@ export function updateUser(token, id) {
       return err.message;
     });
 }
+
+//obtener roles para formulario de registro
+
+export function getUsersRoles() {
+  const url = `${basePath}/tipousuario`;
+
+  const params = {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  };
+
+  return fetch(url, params)
+    .then((response) => {
+      return response.json();
+    })
+    .then((result) => {
+      return result;
+    })
+    .catch((err) => {
+      return err.message;
+    });
+}
