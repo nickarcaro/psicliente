@@ -12,28 +12,33 @@ export default function GraphbarGenero(props) {
   let de35a45 = [];
   let de45a60 = [];
   let de60enAdelante = [];
-  for (var dataObj in consultants) {
+  for (let dataObj of consultants) {
     console.log(dataObj);
-    if (((dataObj.edad > 3) &&(dataObj.edad <12))&& (dataObj.intentos_contacto === 0)) {
+    if (dataObj.edad > 3 && dataObj.edad <12 && dataObj.intentos_contacto === 0) {
       de3a12.push(dataObj.edad);
+      console.log(de3a12);
     }
-    if (((dataObj.edad > 12) &&(dataObj.edad < 18))&& (dataObj.intentos_contacto === 0)) {
+    if (dataObj.edad > 12 && dataObj.edad < 18 && dataObj.intentos_contacto === 0) {
       de12a18.push(dataObj.edad);
+      console.log(de12a18);
     }
-    if (((dataObj.edad > 18) &&(dataObj.edad < 25))&& (dataObj.intentos_contacto === 0)) {
+    if (dataObj.edad > 18 && dataObj.edad < 25 && dataObj.intentos_contacto === 0) {
       de18a25.push(dataObj.edad);
+      console.log(de18a25);
     }
-    if (((dataObj.edad > 25) &&(dataObj.edad < 35))&& (dataObj.intentos_contacto === 0)) {
+    if (dataObj.edad > 25 && dataObj.edad < 35 && dataObj.intentos_contacto === 0) {
       de25a35.push(dataObj.edad);
+      console.log(de25a35);
     }
-    if (((dataObj.edad > 35) &&(dataObj.edad < 45))&& (dataObj.intentos_contacto === 0)) {
+    if (dataObj.edad > 35 && dataObj.edad < 45 && dataObj.intentos_contacto === 0) {
       de35a45.push(dataObj.edad);
+      console.log(de35a45);
     }
 
-    if (((dataObj.edad > 45) &&(dataObj.edad <60))&& (dataObj.intentos_contacto === 0)) {
+    if (dataObj.edad > 45 && dataObj.edad <60 && dataObj.intentos_contacto === 0) {
       de45a60.push(dataObj.edad);
     }
-  if ((dataObj.edad > 60)&& (dataObj.intentos_contacto === 0) ) {
+  if (dataObj.edad > 60 && dataObj.intentos_contacto === 0 ) {
     de60enAdelante.push(dataObj.edad);
     }
 }
@@ -43,8 +48,8 @@ export default function GraphbarGenero(props) {
     datasets: [
       {
         label:"Total de consultantes no contactados por edad",
-        data:[ de3a12, de12a18, de18a25, de25a35, de35a45, de45a60 ,de60enAdelante],
-        backgroundColor: ["#9d0208"]
+        data:[ de3a12.length, de12a18.length, de18a25.length, de25a35.length, de35a45.length, de45a60.length ,de60enAdelante.length],
+        backgroundColor: ["#9d0208","#fb5607", "#4a4e69", "#f94144", "#e500a4", "#06d6a0"]
       }
     ]
   };

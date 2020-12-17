@@ -8,9 +8,9 @@ export default function GraphbarGenero(props) {
   let masculinoAct = [];
   let masculinoAlagua = [];
   let masculinopaciente = [];
-  let mujerAct = [];
-  let mujerAlagua = [];
-  let mujerpaciente = [];
+  let femeninoAct = [];
+  let femeninoAlagua = [];
+  let femeninopaciente = [];
   let noBinarioAct = [];
   let noBinarioAlagua = [];
   let noBinariopaciente = [];
@@ -32,17 +32,17 @@ export default function GraphbarGenero(props) {
       console.log(dataObj.estado);
     }
     if (dataObj.genero === "Femenino" && dataObj.estado === "consultante") {
-      mujerAct.push(dataObj.genero);
+      femeninoAct.push(dataObj.genero);
       console.log(dataObj.genero);
       console.log(dataObj.estado);
     }
     if (dataObj.genero === "Femenino" && dataObj.estado === "incontestado") {
-      mujerAlagua.push(dataObj.genero);
+      femeninoAlagua.push(dataObj.genero);
       console.log(dataObj.genero);
       console.log(dataObj.estado);
     }
     if (dataObj.genero === "Femenino" && dataObj.estado === "paciente") {
-      mujerpaciente.push(dataObj.genero);
+      femeninopaciente.push(dataObj.genero);
       console.log(dataObj.genero);
       console.log(dataObj.estado);
     }
@@ -64,12 +64,12 @@ export default function GraphbarGenero(props) {
   }
 
   let data = {
-    labels: [ "Masculino activo", "Masculino paciente", "Masculino al agua", "Mujer activa", "Mujer paciente", "Mujer al agua", "No binario activ-", "No binario paciente", "No binario activ-"],
+    labels: [ "Masculino activo", "Masculino paciente", "Masculino al agua", "Femenino activa", "Femenino paciente", "Femenino al agua", "No binario activ-", "No binario paciente", "No binario activ-"],
     datasets: [
       {
-        label: ["Consultante", "Paciente", "incontestado"],
-        data:[ masculinoAct.length, masculinoAlagua.length, mujerAct.length, mujerAlagua.length, mujerAlagua.length, noBinarioAct.length,noBinarioAlagua.length, masculinopaciente.length, mujerpaciente.length, noBinariopaciente.length],
-        backgroundColor: ["#9d0208", "#1b3a4bs", "#9d0208", "#1b3a4bs","#9d0208", "#1b3a4bs","#9d0208", "#1b3a4bs","#9d0208"]
+        label:"Paciente por genero y estado",
+        data:[ masculinoAct.length, masculinopaciente.length, masculinoAlagua.length, femeninoAct.length, femeninopaciente.length, femeninoAlagua.length, femeninoAlagua.length, noBinarioAct.length,noBinarioAlagua.length,  noBinariopaciente.length],
+        backgroundColor: ["#9d0208", "#1b3a4bs", "#6930c3", "#9d0208", "#1b3a4bs", "#6930c3","#9d0208", "#1b3a4bs", "#6930c3"]
       }
     ]
   };

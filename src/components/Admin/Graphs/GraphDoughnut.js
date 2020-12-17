@@ -9,7 +9,7 @@ export default function GraphDoughnut(props) {
   let ed_Esc = [];
   let ed_PreEsc = [];
   let org_Priv = [];
-  for (var dataObj in consultants) {
+  for (let dataObj of consultants) {
     if (dataObj.tipo_institucion === "organización publica") {
       org_Publica.push(dataObj.tipo_institucion);
       console.log(org_Publica)
@@ -32,16 +32,16 @@ export default function GraphDoughnut(props) {
     }
   }
   let data = {
-    labels: ["Organizacion publica","Universidad","Organizacion privada","Educacion pre-escolar","Educacion escolar","Educacion superior"],
+    labels: ["Organizacion publica","Educación Superior","Organizacion privada","Educacion pre-escolar","Educacion escolar"],
     datasets:[
       {
         label: "Rangos etarios",
         data: [org_Publica.length, ed_Sup.length, ed_Esc.length, ed_PreEsc.length, org_Priv.length],
-        backgroundColor: ["#fb5607", "#4a4e69", "#f94144", "#e500a4"],
+        backgroundColor: ["#fb5607", "#4a4e69", "#f94144", "#e500a4", "#06d6a0"],
       },
     ]
   };
-  console.log(data)
+
   return <Doughnut
   options={{
     scales: {

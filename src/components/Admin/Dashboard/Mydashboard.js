@@ -42,6 +42,7 @@ export default function Mydashboard(props) {
           </Paper>
         </Grid>
         <Grid item xs={6}>
+        <h3>Total de consultantes no contactados por edad</h3>
           <Paper className={classes.paper}>
             <GraphConsultantesPorEdadNoContactados
             consultants={consultants}
