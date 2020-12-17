@@ -54,10 +54,6 @@ export default function GraphbarGenero(props) {
 
   return <Bar
     options={{
-      title:{
-        display: true,
-        text:'Total de consultantes no contactados por edad'
-      },
       scales: {
         yAxes: [{
           ticks: {

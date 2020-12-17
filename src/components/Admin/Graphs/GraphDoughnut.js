@@ -44,10 +44,6 @@ export default function GraphDoughnut(props) {
 
   return <Doughnut
   options={{
-    title:{
-      display: true,
-      text:'Tipos de organizacion'
-    },
     scales: {
       yAxes: [{
         ticks: {

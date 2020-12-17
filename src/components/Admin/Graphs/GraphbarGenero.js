@@ -77,10 +77,6 @@ export default function GraphbarGenero(props) {
 
   return <Bar
     options={{
-      title:{
-        display: true,
-        text:'Total de consultantes por genero'
-      },
       scales: {
         yAxes: [{
           ticks: {
