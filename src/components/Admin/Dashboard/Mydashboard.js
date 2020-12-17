@@ -50,6 +50,7 @@ export default function Mydashboard(props) {
         </Grid>
         <Grid item xs={6}>
           <Paper className={classes.paper}>
+          <h3>Porcentaje de edades</h3>
             <GraphPie
             consultants={consultants}
             ></GraphPie>
