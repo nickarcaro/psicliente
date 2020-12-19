@@ -19,7 +19,7 @@ export default function Users() {
 
   return (
     <div>
-      <ListUsers users={users} />
+      <ListUsers users={users} setReloadUsers={setReloadUsers} />
     </div>
   );
 }

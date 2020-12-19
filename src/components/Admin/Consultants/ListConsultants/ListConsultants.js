@@ -1,10 +1,13 @@
-import React, { useState } from "react";
-import { List, Button } from "antd";
+import React, { useState, useEffect } from "react";
+import { List, Button, Modal as ModalAntd, notification } from "antd";
 import Modal from "../../../Modal";
 import EditConsultantForm from "../EditConsultantForm";
 import AddConsultantForm from "../AddConsultantForm";
-import { EditOutlined } from "@ant-design/icons";
+import { EditOutlined, DeleteOutlined } from "@ant-design/icons";
 import "./ListConsultants.scss";
+import { getAccessTokenApi } from "../../../../api/auth";
+import { deletePatient } from "../../../../api/pacientes";
+const { confirm } = ModalAntd;
 export default function ListConsultants(props) {
   const { consultants, setReloadConsultants } = props;
 
@@ -100,13 +103,42 @@ function Consultants(props) {
 }
 
 function Consultant(props) {
-  const { consultant, editConsultant } = props;
+  const { consultant, editConsultant, setReloadConsultants } = props;
+
+  const showDeleteConfirm = () => {
+    const accesToken = getAccessTokenApi();
+
+    confirm({
+      title: "Eliminando usuario",
+      content: `¿Estas seguro que quieres eliminar a ${consultant.RUT}?`,
+      okText: "Eliminar",
+      okType: "danger",
+      cancelText: "Cancelar",
+      onOk() {
+        deletePatient(accesToken, consultant.consultant_id)
+          .then((response) => {
+            notification["success"]({
+              message: response,
+            });
+            setReloadConsultants(true);
+          })
+          .catch((err) => {
+            notification["error"]({
+              message: err,
+            });
+          });
+      },
+    });
+  };
 
   return (
     <List.Item
       actions={[
         <Button type="primary" onClick={() => editConsultant(consultant)}>
           <EditOutlined />
+        </Button>,
+        <Button type="danger" onClick={showDeleteConfirm}>
+          <DeleteOutlined />
         </Button>,
       ]}
     >
