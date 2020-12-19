@@ -117,7 +117,7 @@ function Patient(props) {
     const accesToken = getAccessTokenApi();
 
     confirm({
-      title: "Eliminando usuario",
+      title: "Eliminando Paciente",
       content: `¿Estas seguro que quieres eliminar a ${patient.nombre}?`,
       okText: "Eliminar",
       okType: "danger",
@@ -153,7 +153,7 @@ function Patient(props) {
     >
       <List.Item.Meta
         title={`
-                  ${patient.nombre ? patient.nombre : "..."}
+                  ${patient.nombre ? patient.nombre : "..."} 
                   ${patient.pronombre ? patient.pronombre : "..."}
               `}
         description={patient.RUT}

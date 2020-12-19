@@ -76,3 +76,52 @@ export function getUsers(token) {
       return err.message;
     });
 }
+
+// obtener usuarios
+
+export function updateUser(token, id) {
+  const url = `${basePath}/usuario/${id}`;
+
+  const params = {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: token,
+    },
+  };
+
+  return fetch(url, params)
+    .then((response) => {
+      return response.json();
+    })
+    .then((result) => {
+      return result;
+    })
+    .catch((err) => {
+      return err.message;
+    });
+}
+
+//obtener roles para formulario de registro
+
+export function getUsersRoles() {
+  const url = `${basePath}/tipousuario`;
+
+  const params = {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  };
+
+  return fetch(url, params)
+    .then((response) => {
+      return response.json();
+    })
+    .then((result) => {
+      return result;
+    })
+    .catch((err) => {
+      return err.message;
+    });
+}

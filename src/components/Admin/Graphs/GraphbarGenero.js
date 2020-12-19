@@ -14,7 +14,7 @@ export default function GraphbarGenero(props) {
   let noBinarioAct = [];
   let noBinarioAlagua = [];
   let noBinariopaciente = [];
-  for (let dataObj of consultants) {
+  for (/*var dataObj = 0;dataObj <consultants.length; dataObj++ */var dataObj in consultants) {
     console.log(dataObj);
     if (dataObj.genero === "Masculino" && dataObj.estado === "consultante") {
       masculinoAct.push(dataObj.genero);
@@ -68,7 +68,7 @@ export default function GraphbarGenero(props) {
     datasets: [
       {
         label:"Paciente por genero y estado",
-        data:[ masculinoAct.length, masculinopaciente.length, masculinoAlagua.length, femeninoAct.length, femeninopaciente.length, femeninoAlagua.length, femeninoAlagua.length, noBinarioAct.length,noBinarioAlagua.length,  noBinariopaciente.length],
+        data:[ masculinoAct.length, masculinopaciente.length, masculinoAlagua.lengtha, femeninoAct.length, femeninopaciente.length, femeninoAlagua.length, femeninoAlagua.length, noBinarioAct.length,noBinarioAlagua.length,  noBinariopaciente.length],
         backgroundColor: "#f77f00",
         borderColor:"#d62828"
       }

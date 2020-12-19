@@ -4,7 +4,6 @@ import { Bar } from "react-chartjs-2";
 
 export default function GraphbarGenero(props) {
   const { consultants, setReloadConsultants } = props;
-  console.log(consultants);
   let de3a12 = [];
   let de12a18 = [];
   let de18a25 = [];
@@ -12,7 +11,8 @@ export default function GraphbarGenero(props) {
   let de35a45 = [];
   let de45a60 = [];
   let de60enAdelante = [];
-  for (let dataObj of consultants) {
+  console.log(consultants);
+   for (let dataObj in consultants){
     console.log(dataObj);
     if (dataObj.edad > 3 && dataObj.edad <12 && dataObj.intentos_contacto === 0) {
       de3a12.push(dataObj.edad);

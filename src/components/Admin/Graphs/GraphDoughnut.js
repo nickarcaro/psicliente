@@ -9,7 +9,7 @@ export default function GraphDoughnut(props) {
   let ed_Esc = [];
   let ed_PreEsc = [];
   let org_Priv = [];
-  for (let dataObj of consultants) {
+  for (var dataObj in consultants) {
     if (dataObj.tipo_institucion === "organización publica") {
       org_Publica.push(dataObj.tipo_institucion);
       console.log(org_Publica)

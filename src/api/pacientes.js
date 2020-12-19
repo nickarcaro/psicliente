@@ -28,7 +28,7 @@ export function getPatients(token) {
 // obtener paciente por rut
 
 export function getPatientsRut(token, rut) {
-  const url = `${basePath}/paciente/${rut}`;
+  const url = `${basePath}/pacientes/${rut}`;
 
   const params = {
     method: "GET",

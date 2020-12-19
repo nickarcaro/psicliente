@@ -9,9 +9,7 @@ let infantil = [];
 let juvenil = [];
 let adulto = [];
 let adultomayor = [];
-console.log(infantil)
-
-for (let dataObj of consultants) {
+ for (let dataObj in consultants){
   if (dataObj.edad > 0 && dataObj.edad < 13) {
     infantil.push(dataObj.edad);
     console.log(infantil)

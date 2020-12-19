@@ -68,6 +68,7 @@ export default function Mydashboard(props) {
       </Grid>
       <Grid item xs={12}>
         <Paper className={classes.paper}>
+          <h3>Tendencia de consultantes-paciente</h3>
           <GraphLineasEdades
           consultants={consultants}
           ></GraphLineasEdades>
