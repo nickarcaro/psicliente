@@ -1,7 +1,7 @@
 import React from "react";
 import { Bar, Doughnut, Pie } from "react-chartjs-2";
 
-export default function Graphbar(props) {
+export function Graphbar(props) {
   const { consultants, setReloadConsultants } = props;
   console.log(consultants);
   let masculinoAct = [];
@@ -105,75 +105,67 @@ export default function Graphbar(props) {
 }
 
 
-export function GraphLine(props) {
-  const { consultants } = props;
-
-  //console.log(consultants);
-  let masculinoAct = [];
-  let mujerAct = [];
-  let noBinarioAct = [];
-  let masculinoAlagua = [];
-  let mujerAlagua = [];
-  let noBinarioAlagua = [];
+export function GraphConsultantesPorEdadNoContactados(props) {
+  const { consultants, setReloadConsultants } = props;
+  console.log(consultants);
+  let de3a12 = [];
+  let de12a18 = [];
+  let de18a25 = [];
+  let de25a35 = [];
+  let de35a45 = [];
+  let de45a60 = [];
+  let de60enAdelante = [];
   for (let dataObj of consultants) {
     console.log(dataObj);
-    if (dataObj.genero === "masculino" && dataObj.estado === "activo") {
-      masculinoAct.push(dataObj.genero);
+    if (dataObj.edad > 3 && dataObj.edad <12 && dataObj.intentos_contacto === 0) {
+      de3a12.push(dataObj.edad);
+      console.log(de3a12);
     }
-    if (dataObj.genero === "masculino" && dataObj.estado === "al agua") {
-      masculinoAlagua.push(dataObj.genero);
+    if (dataObj.edad > 12 && dataObj.edad < 18 && dataObj.intentos_contacto === 0) {
+      de12a18.push(dataObj.edad);
+      console.log(de12a18);
     }
-    if (dataObj.genero === "mujer" && dataObj.estado === "activo") {
-      mujerAct.push(dataObj.genero);
+    if (dataObj.edad > 18 && dataObj.edad < 25 && dataObj.intentos_contacto === 0) {
+      de18a25.push(dataObj.edad);
+      console.log(de18a25);
     }
-    if (dataObj.genero === "mujer" && dataObj.estado === "al agua") {
-      mujerAlagua.push(dataObj.genero);
+    if (dataObj.edad > 25 && dataObj.edad < 35 && dataObj.intentos_contacto === 0) {
+      de25a35.push(dataObj.edad);
+      console.log(de25a35);
     }
-    if (dataObj.genero === "No binario" && dataObj.estado === "activo") {
-      noBinarioAct.push(dataObj.genero);
+    if (dataObj.edad > 35 && dataObj.edad < 45 && dataObj.intentos_contacto === 0) {
+      de35a45.push(dataObj.edad);
+      console.log(de35a45);
     }
 
-    if (dataObj.genero === "No binario" && dataObj.estado === "al agua") {
-      noBinarioAlagua.push(dataObj.genero);
+    if (dataObj.edad > 45 && dataObj.edad <60 && dataObj.intentos_contacto === 0) {
+      de45a60.push(dataObj.edad);
     }
-  }
+  if (dataObj.edad > 60 && dataObj.intentos_contacto === 0 ) {
+    de60enAdelante.push(dataObj.edad);
+    }
+}
+
   let data4 = {
-    labels: "Total de consultantes por genero",
+    labels: [ "3-12 ", "12-18", "18-25", "25-35", "35-45", "45-60", "60-"],
     datasets: [
-      {
-        label: [
-          "Masculino activo",
-          "Masculino al agua",
-          "Mujer activa",
-          "Mujer al agua",
-          "No binario activ-",
-          "No binario activ-",
-        ],
-        data: [
-          masculinoAct,
-          masculinoAlagua,
-          mujerAct,
-          mujerAlagua,
-          mujerAlagua,
-          noBinarioAct,
-          noBinarioAlagua,
-        ],
-        backgroundColor: [
-          "#9d0208",
-          "#1b3a4bs",
-          "#9d0208",
-          "#1b3a4bs",
-          "#9d0208",
-          "#1b3a4bs",
-        ],
-      },
-    ],
+      {label:"Numero de pacientes por edad No contactados",
+      data:[de3a12.length,de12a18.length,de18a25.length ,de25a35.length ,de35a45.length ,de45a60.length ,de60enAdelante.length],
+      backgroundColor: "#9d0208"},
+    ]
   };
-  return (
-    <div>
-      <Bar data={data4} />
-    </div>
-  );
+
+  return <Bar
+    options={{
+      scales: {
+        yAxes: [{
+          ticks: {
+            beginAtZero: true
+          }
+        }]
+      }
+    }}
+   data={data4} />;
 }
 
 export function GraphPie(props) {
