@@ -10,12 +10,7 @@ import "./ListPatients.scss";
 const { confirm } = ModalAntd;
 
 export default function ListPatients(props) {
-  const {
-    patients,
-    setReloadPatients,
-    inpatients,
-    setReloadInPatients,
-  } = props;
+  const { patients, setReloadPatients } = props;
   const [isVisibleModal, setIsVisibleModal] = useState(false);
   const [modalTitle, setModalTitle] = useState("");
   const [modalContent, setModalContent] = useState(null);
@@ -34,8 +29,6 @@ export default function ListPatients(props) {
         setModalTitle={setModalTitle}
         setModalContent={setModalContent}
         setReloadPatients={setReloadPatients}
-        inpatients={inpatients}
-        setReloadInPatients={setReloadInPatients}
       />
 
       <Modal
@@ -56,8 +49,6 @@ function Patients(props) {
     setModalTitle,
     setModalContent,
     setReloadPatients,
-    setReloadInPatients,
-    inpatients,
   } = props;
 
   const editPatient = (patient) => {
@@ -102,19 +93,6 @@ function Patients(props) {
             patient={patient}
             editPatient={editPatient}
             setReloadPatients={setReloadPatients}
-          />
-        )}
-      />
-      <h1> lista de Incontestados:</h1>
-      <List
-        className="users-active"
-        itemLayout="horizontal"
-        dataSource={inpatients}
-        renderItem={(patient) => (
-          <Patient
-            patient={patient}
-            editPatient={editPatient}
-            setReloadPatients={setReloadInPatients}
           />
         )}
       />

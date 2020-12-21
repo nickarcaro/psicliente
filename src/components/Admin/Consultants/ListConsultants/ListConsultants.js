@@ -10,7 +10,12 @@ import { deletePatient } from "../../../../api/pacientes";
 const { confirm } = ModalAntd;
 
 export default function ListConsultants(props) {
-  const { consultants, setReloadConsultants } = props;
+  const {
+    consultants,
+    setReloadConsultants,
+    inpatients,
+    setReloadInPatients,
+  } = props;
   const [isVisibleModal, setIsVisibleModal] = useState(false);
   const [modalTitle, setModalTitle] = useState("");
   const [modalContent, setModalContent] = useState(null);
@@ -40,6 +45,8 @@ export default function ListConsultants(props) {
         setModalTitle={setModalTitle}
         setModalContent={setModalContent}
         setReloadConsultants={setReloadConsultants}
+        inpatients={inpatients}
+        setReloadInPatients={setReloadInPatients}
       />
 
       <Modal
@@ -60,6 +67,8 @@ function Consultants(props) {
     setModalTitle,
     setModalContent,
     setReloadConsultants,
+    inpatients,
+    setReloadInPatients,
   } = props;
 
   const editConsultant = (consultant) => {
@@ -89,18 +98,34 @@ function Consultants(props) {
   };
 
   return (
-    <List
-      className="users-active"
-      itemLayout="horizontal"
-      dataSource={consultants}
-      renderItem={(consultant) => (
-        <Consultant
-          consultant={consultant}
-          editConsultant={editConsultant}
-          setReloadConsultants={setReloadConsultants}
-        />
-      )}
-    />
+    <div>
+      <h1> lista de Consultantes:</h1>
+      <List
+        className="users-active"
+        itemLayout="horizontal"
+        dataSource={consultants}
+        renderItem={(consultant) => (
+          <Consultant
+            consultant={consultant}
+            editConsultant={editConsultant}
+            setReloadConsultants={setReloadConsultants}
+          />
+        )}
+      />
+      <h1>lista de "Al Agua"</h1>
+      <List
+        className="users-active"
+        itemLayout="horizontal"
+        dataSource={inpatients}
+        renderItem={(consultant) => (
+          <Consultant
+            consultant={consultant}
+            editConsultant={editConsultant}
+            setReloadConsultants={setReloadInPatients}
+          />
+        )}
+      />
+    </div>
   );
 }
 
