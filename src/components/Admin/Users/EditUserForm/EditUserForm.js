@@ -13,14 +13,20 @@ export default function EditUserForm(props) {
       setRoles(response.rows);
     });
   }, []);
+  useEffect(() => {
+    setUserData({
+      TipoUsuario_id_TipoUsuario: user.TipoUsuario_id_TipoUsuario,
+    });
+  }, [user]);
 
   console.log(user);
 
-  const userUpdate = async (values) => {
+  const userUpdate = async (e) => {
+    e.preventDefault();
     const token = getAccessTokenApi();
-    const { TipoUsuario_id_TipoUsuario, id_Usuario } = values;
+    let userUpdate = userData;
 
-    await updateUser(token, TipoUsuario_id_TipoUsuario, id_Usuario)
+    await updateUser(token, userUpdate, user.id_Usuario)
       .then((result) => {
         notification["success"]({
           message: result.message,
@@ -42,31 +48,37 @@ export default function EditUserForm(props) {
         userUpdate={userUpdate}
         setUserData={setUserData}
         roles={roles}
-        user={user}
       />
     </div>
   );
 }
 
 function EditForm(props) {
-  const { user, userUpdate, roles } = props;
+  const { userData, setUserData, userUpdate, roles } = props;
   const { Option } = Select;
 
   const rol = [];
   for (let role of roles) {
-    rol.push(<Option key={role.id_TipoUsuario}>{role.nombre}</Option>);
+    rol.push(
+      <Option key={role.id_TipoUsuario} value={role.id_TipoUsuario}>
+        {role.nombre}
+      </Option>
+    );
   }
   return (
-    <Form className="form-edit" onFinish={userUpdate}>
+    <Form className="form-edit" onSubmitCapture={userUpdate}>
       <Row gutter={24}>
         <Col span={12}>
-          <Form.Item name="TipoUsuario_id_TipoUsuario">
-            <Select placeholder="Selecciona una rol">{rol}</Select>
-          </Form.Item>
-        </Col>
-        <Col span={12}>
-          <Form.Item name="TipoUsuario_id_TipoUsuario">
-            <Input value={user.id_Usuario} disabled></Input>
+          <Form.Item>
+            <Select
+              placeholder="Seleccióna una rol"
+              onChange={(e) =>
+                setUserData({ ...userData, TipoUsuario_id_TipoUsuario: e })
+              }
+              value={userData.TipoUsuario_id_TipoUsuario}
+            >
+              {rol}
+            </Select>
           </Form.Item>
         </Col>
       </Row>

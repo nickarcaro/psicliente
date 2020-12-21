@@ -8,9 +8,9 @@ import "./ListConsultants.scss";
 import { getAccessTokenApi } from "../../../../api/auth";
 import { deletePatient } from "../../../../api/pacientes";
 const { confirm } = ModalAntd;
+
 export default function ListConsultants(props) {
   const { consultants, setReloadConsultants } = props;
-
   const [isVisibleModal, setIsVisibleModal] = useState(false);
   const [modalTitle, setModalTitle] = useState("");
   const [modalContent, setModalContent] = useState(null);

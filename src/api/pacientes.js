@@ -100,3 +100,53 @@ export function deletePatient(token, rut) {
       return err;
     });
 }
+
+//obtener listado de estados
+
+export function getStates(token) {
+  const url = `${basePath}/estado`;
+
+  const params = {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: token,
+    },
+  };
+
+  return fetch(url, params)
+    .then((response) => {
+      return response.json();
+    })
+    .then((result) => {
+      return result;
+    })
+    .catch((err) => {
+      return err.message;
+    });
+}
+
+//obtener listado de previsiones de salud
+
+export function getPrevitions(token) {
+  const url = `${basePath}/prevision-salud`;
+
+  const params = {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: token,
+    },
+  };
+
+  return fetch(url, params)
+    .then((response) => {
+      return response.json();
+    })
+    .then((result) => {
+      return result;
+    })
+    .catch((err) => {
+      return err.message;
+    });
+}

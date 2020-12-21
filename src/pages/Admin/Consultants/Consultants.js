@@ -8,7 +8,7 @@ export default function Consultants() {
   const token = getAccessTokenApi();
 
   useEffect(() => {
-    getConsultants(token, true).then((response) => {
+    getConsultants(token).then((response) => {
       setConsultants(response.rows);
     });
 

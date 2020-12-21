@@ -79,15 +79,16 @@ export function getUsers(token) {
 
 // obtener usuarios
 
-export function updateUser(token, id) {
+export function updateUser(token, user, id) {
   const url = `${basePath}/usuario/${id}`;
 
   const params = {
-    method: "PUT",
+    method: "POST",
     headers: {
       "Content-Type": "application/json",
       Authorization: token,
     },
+    body: JSON.stringify(user),
   };
 
   return fetch(url, params)

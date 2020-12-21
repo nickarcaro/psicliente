@@ -1,39 +1,55 @@
 import React, { useState, useEffect } from "react";
+
+import moment from "moment";
+import locale from "antd/es/date-picker/locale/es_ES";
 import {
   Form,
   Input,
   Button,
   notification,
   Select,
-  Tooltip,
   Row,
   Col,
   DatePicker,
-  InputNumber,
 } from "antd";
+import { UserOutlined } from "@ant-design/icons";
 import {
-  MailOutlined,
-  LockOutlined,
-  UserOutlined,
-  QuestionCircleOutlined,
-} from "@ant-design/icons";
-import { addPatient } from "../../../../api/pacientes";
+  addPatient,
+  getStates,
+  getPrevitions,
+} from "../../../../api/pacientes";
 import { getAccessTokenApi } from "../../../../api/auth";
 
 export default function AddConsultantForm(props) {
   const { setIsVisibleModal, setReloadConsultants } = props;
   const [consultantData, setConsultantData] = useState({});
+  const [estados, setEstados] = useState([]);
+  const [previsiones, setPrevisiones] = useState([]);
 
-  const addConsultant = (event) => {
-    event.preventDefault();
+  useEffect(() => {
+    getStates(getAccessTokenApi()).then((response) => {
+      setEstados(response.rows);
+    });
+    getPrevitions(getAccessTokenApi()).then((response) => {
+      setPrevisiones(response.rows);
+    });
+  }, []);
+
+  const addConsultant = (e) => {
+    e.preventDefault();
+    console.log(consultantData);
 
     if (
-      !consultantData.name ||
-      !consultantData.lastname ||
-      !consultantData.role ||
-      !consultantData.email ||
-      !consultantData.password ||
-      !consultantData.repeatPassword
+      !consultantData.nombre ||
+      !consultantData.apellido ||
+      !consultantData.pronombre ||
+      !consultantData.nombre_social ||
+      !consultantData.RUT ||
+      !consultantData.fecha_nacimiento ||
+      !consultantData.fecha_ingreso ||
+      !consultantData.sexo ||
+      !consultantData.Estado_id_Estado ||
+      !consultantData.PrevisionSalud_id_PrevisionSalud
     ) {
       notification["error"]({
         message: "Todos los campos son obligatorios.",
@@ -52,7 +68,7 @@ export default function AddConsultantForm(props) {
         })
         .catch((err) => {
           notification["error"]({
-            message: err,
+            message: err.msg,
           });
         });
     }
@@ -63,16 +79,45 @@ export default function AddConsultantForm(props) {
         consultantData={consultantData}
         setConsultantData={setConsultantData}
         addConsultant={addConsultant}
+        previsiones={previsiones}
+        estados={estados}
       />
     </div>
   );
 }
 
 function ConsultantForm(props) {
-  const { consultantData, setConsultantData, addConsultant } = props;
+  const {
+    consultantData,
+    setConsultantData,
+    addConsultant,
+    previsiones,
+    estados,
+  } = props;
   const { Option } = Select;
+  const prevision = [];
+  const estado = [];
+
+  for (let previsions of previsiones) {
+    prevision.push(
+      <Option
+        key={previsions.id_PrevisionSalud}
+        value={previsions.id_PrevisionSalud}
+      >
+        {previsions.nombre}
+      </Option>
+    );
+  }
+  for (let states of estados) {
+    estado.push(
+      <Option key={states.id_Estado} value={states.id_Estado}>
+        {states.nombre}
+      </Option>
+    );
+  }
+
   return (
-    <Form className="form-add" onSubmit={addConsultant}>
+    <Form className="form-add" onSubmitCapture={addConsultant}>
       <Row gutter={24}>
         <Col span={12}>
           <Form.Item>
@@ -87,7 +132,7 @@ function ConsultantForm(props) {
           </Form.Item>
         </Col>
         <Col span={12}>
-          <Form.Item name="apellido">
+          <Form.Item>
             <Input
               prefix={<UserOutlined />}
               placeholder="Apellido"
@@ -102,7 +147,6 @@ function ConsultantForm(props) {
           </Form.Item>
         </Col>
       </Row>
-
       <Row gutter={24}>
         <Col span={12}>
           <Form.Item>
@@ -120,7 +164,7 @@ function ConsultantForm(props) {
           </Form.Item>
         </Col>
         <Col span={12}>
-          <Form.Item name="pronombre">
+          <Form.Item>
             <Input
               prefix={<UserOutlined />}
               placeholder="Pronombre"
@@ -137,7 +181,7 @@ function ConsultantForm(props) {
       </Row>
       <Row gutter={24}>
         <Col span={12}>
-          <Form.Item name="rut">
+          <Form.Item>
             <Input
               placeholder="rut"
               value={consultantData.RUT}
@@ -148,33 +192,100 @@ function ConsultantForm(props) {
           </Form.Item>
         </Col>
         <Col span={12}>
-          <Form.Item name="genero">
-            <Select placeholder="genero">
-              <Option value="masculino">Masculino</Option>
-              <Option value="femenino">Femenino</Option>
-              <Option value="no binario">No Binario</Option>
+          <Select
+            placeholder="Genero"
+            onChange={(e) =>
+              setConsultantData({ ...consultantData, genero: e })
+            }
+            value={consultantData.genero}
+          >
+            <Option value="Masculino">Masculino</Option>
+            <Option value="Femenino">Femenino</Option>
+            <Option value="No binario">No Binario</Option>
+          </Select>
+        </Col>
+      </Row>
+      <Row gutter={24}>
+        <Col span={12}>
+          <Form.Item>
+            <DatePicker
+              placeholder="fecha nacimiento"
+              locale={locale}
+              format="DD/MM/YYYY "
+              value={
+                consultantData.fecha_nacimiento &&
+                moment(consultantData.fecha_nacimiento)
+              }
+              onChange={(e, value) =>
+                setConsultantData({
+                  ...consultantData,
+                  fecha_nacimiento: moment(value, "DD/MM/YYYY ").toISOString(),
+                })
+              }
+            />
+          </Form.Item>
+        </Col>
+        <Col span={12}>
+          <Form.Item>
+            <DatePicker
+              locale={locale}
+              placeholder="fecha ingreso"
+              format="DD/MM/YYYY "
+              value={
+                consultantData.fecha_ingreso &&
+                moment(consultantData.fecha_ingreso)
+              }
+              onChange={(e, value) =>
+                setConsultantData({
+                  ...consultantData,
+                  fecha_ingreso: moment(value, "DD/MM/YYYY ").toISOString(),
+                })
+              }
+            />
+          </Form.Item>
+        </Col>
+      </Row>
+      <Row gutter={24}>
+        <Col span={12}>
+          <Select
+            placeholder="Sexo"
+            onChange={(e) => setConsultantData({ ...consultantData, sexo: e })}
+            value={consultantData.sexo}
+          >
+            <Option value="0">Masculino</Option>
+            <Option value="1">Femenino</Option>
+          </Select>
+        </Col>
+        <Col span={12}>
+          <Form.Item>
+            <Select
+              placeholder="Estado"
+              onChange={(e) =>
+                setConsultantData({ ...consultantData, Estado_id_Estado: e })
+              }
+              value={consultantData.Estado_id_Estado}
+            >
+              {estado}
             </Select>
           </Form.Item>
         </Col>
       </Row>
       <Row gutter={24}>
-        <Col span={14}>
-          <Form.Item name="fecha_ingreso">
-            <DatePicker placeholder="fecha ingreso" />
-          </Form.Item>
-        </Col>
-        <Col span={14}>
-          <Form.Item name="fecha_nacimiento">
-            <DatePicker placeholder="fecha nacimiento" />
-          </Form.Item>
-        </Col>
-        <Col span={14}>
-          <Form.Item name="sexo">
-            <InputNumber />
-          </Form.Item>
-        </Col>
+        <Form.Item>
+          <Select
+            placeholder="Prevision de salud"
+            onChange={(e) =>
+              setConsultantData({
+                ...consultantData,
+                PrevisionSalud_id_PrevisionSalud: e,
+              })
+            }
+            value={consultantData.PrevisionSalud_id_PrevisionSalud}
+          >
+            {prevision}
+          </Select>
+        </Form.Item>
       </Row>
-
       <Form.Item>
         <Button type="primary" htmlType="submit" className="btn-submit">
           Crear Paciente
