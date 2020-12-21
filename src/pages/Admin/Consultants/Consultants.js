@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { getAccessTokenApi } from "../../../api/auth";
-import { getConsultants } from "../../../api/consultantes";
+import { getPatientConsultant } from "../../../api/pacientes";
 import ListConsultants from "../../../components/Admin/Consultants/ListConsultants";
 export default function Consultants() {
   const [consultants, setConsultants] = useState([]);
@@ -8,7 +8,7 @@ export default function Consultants() {
   const token = getAccessTokenApi();
 
   useEffect(() => {
-    getConsultants(token).then((response) => {
+    getPatientConsultant(token).then((response) => {
       setConsultants(response.rows);
     });
 

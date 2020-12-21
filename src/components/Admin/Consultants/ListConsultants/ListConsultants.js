@@ -65,17 +65,19 @@ function Consultants(props) {
   const editConsultant = (consultant) => {
     setIsVisibleModal(true);
     setModalTitle(
-      `Editar  ${consultant.edad ? consultant.edad : "..."}${
-        consultant.sexo ? consultant.sexo : "..."
-      }${consultant.genero ? consultant.genero : "..."}${
-        consultant.intentos_contacto ? consultant.intentos_contacto : "..."
+      `Editar  ${consultant.nombre ? consultant.apellido : "..."}${
+        consultant.nombre_social ? consultant.pronombre : "..."
+      }${consultant.RUT ? consultant.RUT : "..."}${
+        consultant.genero ? consultant.genero : "..."
       }
-      ${consultant.intentos_contacto ? consultant.intentos_contacto : "..."}
-      ${consultant.convenio ? consultant.convenio : "..."}${
-        consultant.tipo_institucion ? consultant.tipo_institucion : "..."
-      }${consultant.prevision_salud ? consultant.prevision_salud : "..."}${
-        consultant.motivo ? consultant.motivo : "..."
-      }${consultant.estado ? consultant.estado : "..."}`
+      ${consultant.fecha_nacimiento ? consultant.fecha_nacimiento : "..."}
+      ${consultant.fecha_ingreso ? consultant.fecha_ingreso : "..."}${
+        consultant.sexo ? consultant.sexo : "..."
+      }${consultant.Estado_id_Estado ? consultant.Estado_id_Estado : "..."}${
+        consultant.PrevisionSalud_id_PrevisionSalud
+          ? consultant.PrevisionSalud_id_PrevisionSalud
+          : "..."
+      }`
     );
     setModalContent(
       <EditConsultantForm
@@ -115,16 +117,16 @@ function Consultant(props) {
       okType: "danger",
       cancelText: "Cancelar",
       onOk() {
-        deletePatient(accesToken, consultant.consultant_id)
+        deletePatient(accesToken, consultant.RUT)
           .then((response) => {
             notification["success"]({
-              message: response,
+              message: response.message,
             });
             setReloadConsultants(true);
           })
           .catch((err) => {
             notification["error"]({
-              message: err,
+              message: err.msg,
             });
           });
       },
@@ -144,10 +146,8 @@ function Consultant(props) {
     >
       <List.Item.Meta
         title={`
-                Rut: ${
-                  consultant.Paciente_RUT ? consultant.Paciente_RUT : "..."
-                },
-                Edad: ${consultant.edad ? consultant.edad : "..."}
+                Rut: ${consultant.RUT ? consultant.RUT : "..."},
+                Edad: ${consultant.nombre ? consultant.nombre : "..."}
             `}
         description={`Genero: ${consultant.genero}`}
       />

@@ -37,7 +37,6 @@ export default function AddConsultantForm(props) {
 
   const addConsultant = (e) => {
     e.preventDefault();
-    console.log(consultantData);
 
     if (
       !consultantData.nombre ||
