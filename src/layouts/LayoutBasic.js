@@ -14,7 +14,7 @@ function LayoutBasic(props) {
         <img className="logo" src={UdpLogo} alt="clinica psicologica udp" />
         <Menu theme="dark" mode="horizontal">
           <Menu.Item key="/home">
-            <Link to={"/home"}>Home</Link>
+            <Link to={"/home"}>home</Link>
           </Menu.Item>
           <Menu.Item key="/contacto">
             <Link to={"/contacto"}>Contacto</Link>

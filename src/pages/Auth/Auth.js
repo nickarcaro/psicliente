@@ -15,14 +15,7 @@ export default function Auth() {
   return (
     <div className="auth">
       <div className="container-form">
-        <Tabs type="card">
-          <TabPane tab={<span>Ingresa</span>} key="1">
-            <LoginForm />
-          </TabPane>
-          <TabPane tab={<span>registrate</span>} key="2">
-            <SignUp />
-          </TabPane>
-        </Tabs>
+        <LoginForm />
       </div>
     </div>
   );
