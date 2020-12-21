@@ -128,7 +128,7 @@ export function GraphConsultantesPorEdadNoContactados(props) {
     if (
       dataObj.edad > 3 &&
       dataObj.edad < 12 &&
-      dataObj.intentos_contacto === 0
+      dataObj.estado === "consultante"
     ) {
       de3a12.push(dataObj.edad);
       console.log(de3a12);
@@ -136,7 +136,7 @@ export function GraphConsultantesPorEdadNoContactados(props) {
     if (
       dataObj.edad > 12 &&
       dataObj.edad < 18 &&
-      dataObj.intentos_contacto === 0
+      dataObj.estado === "consultante"
     ) {
       de12a18.push(dataObj.edad);
       console.log(de12a18);
@@ -144,7 +144,7 @@ export function GraphConsultantesPorEdadNoContactados(props) {
     if (
       dataObj.edad > 18 &&
       dataObj.edad < 25 &&
-      dataObj.intentos_contacto === 0
+      dataObj.estado === "consultante"
     ) {
       de18a25.push(dataObj.edad);
       console.log(de18a25);
@@ -152,7 +152,7 @@ export function GraphConsultantesPorEdadNoContactados(props) {
     if (
       dataObj.edad > 25 &&
       dataObj.edad < 35 &&
-      dataObj.intentos_contacto === 0
+      dataObj.estado === "consultante"
     ) {
       de25a35.push(dataObj.edad);
       console.log(de25a35);
@@ -160,7 +160,7 @@ export function GraphConsultantesPorEdadNoContactados(props) {
     if (
       dataObj.edad > 35 &&
       dataObj.edad < 45 &&
-      dataObj.intentos_contacto === 0
+      dataObj.estado === "consultante"
     ) {
       de35a45.push(dataObj.edad);
       console.log(de35a45);
@@ -169,11 +169,11 @@ export function GraphConsultantesPorEdadNoContactados(props) {
     if (
       dataObj.edad > 45 &&
       dataObj.edad < 60 &&
-      dataObj.intentos_contacto === 0
+      dataObj.estado === "consultante"
     ) {
       de45a60.push(dataObj.edad);
     }
-    if (dataObj.edad > 60 && dataObj.intentos_contacto === 0) {
+    if (dataObj.edad > 60 && dataObj.estado === "consultante") {
       de60enAdelante.push(dataObj.edad);
     }
   }

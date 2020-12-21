@@ -153,10 +153,11 @@ function Patient(props) {
     >
       <List.Item.Meta
         title={`
-                  ${patient.nombre ? patient.nombre : "..."} 
                   ${patient.pronombre ? patient.pronombre : "..."}
+                  ${patient.nombre ? patient.nombre : "..."} 
               `}
         description={patient.RUT}
+        description={patient.genero}
       />
     </List.Item>
   );
