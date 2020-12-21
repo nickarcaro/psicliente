@@ -1,6 +1,12 @@
 import React from "react";
 import { Row, Col } from "antd";
-import { GraphBar, GraphDonut, GraphLine, GraphPie } from "./Graphs/Graphs";
+import {
+  GraphBar,
+  GraphConsultantesPorEdadNoContactados,
+  GraphDonut,
+  
+  GraphPie,
+} from "./Graphs/Graphs";
 
 import "./MyProfile.scss";
 
@@ -15,7 +21,7 @@ export default function Profile(props) {
         <Row gutter={[16, 40]}>
           <Col span={12}>
             <h3>Numero de consultantes por genero y estado</h3>
-            <Graphbar consultants={consultants} />
+            <GraphBar consultants={consultants} />
           </Col>
           <Col span={12}>
             <h3>Numero de consultantes por rango etario</h3>
