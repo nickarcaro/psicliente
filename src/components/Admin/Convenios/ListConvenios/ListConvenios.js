@@ -85,7 +85,7 @@ function Convenios(props) {
       <AddCoordinador
         convenio={convenio}
         setIsVisibleModal={setIsVisibleModal}
-        setReloadConvenios={setReloadConvenios}
+        setReloadCoordinador={setReloadCoordinador}
       />
     );
   };
@@ -110,9 +110,9 @@ function Convenios(props) {
         className="users-active"
         itemLayout="horizontal"
         dataSource={coordinador}
-        renderItem={(coordinador) => (
+        renderItem={(cordinador) => (
           <Coordinador
-            coordinador={coordinador}
+            cordinador={cordinador}
             setReloadCoordinador={setReloadCoordinador}
           />
         )}
@@ -143,12 +143,13 @@ function Convenio(props) {
 }
 
 function Coordinador(props) {
-  const { coordinador, setReloadCoordinador } = props;
+  const { cordinador, setReloadCoordinador } = props;
+
   return (
     <List.Item actions={[]}>
       <List.Item.Meta
         title={`
-                Nombre: ${coordinador.nombre ? coordinador.nombre : "..."},
+                Nombre: ${cordinador.nombre ? cordinador.nombre : "..."},
                 
             `}
         description={`kasjsdpsa`}

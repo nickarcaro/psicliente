@@ -78,7 +78,7 @@ export function getCoordinadores(token) {
 
 // añadir coordinador
 
-export function addCoordinador(token, coordinador) {
+export function addNewCoordinador(token, coordinador) {
   const url = `${basePath}/coordinador/nuevo`;
 
   const params = {
