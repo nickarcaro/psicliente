@@ -200,9 +200,12 @@ function Consultant(props) {
       <List.Item.Meta
         title={`
                 Rut: ${consultant.RUT ? consultant.RUT : "..."},
-                Edad: ${consultant.nombre ? consultant.nombre : "..."}
+                Nombre: ${consultant.nombre ? consultant.nombre : "..."},
+                Apellido: ${consultant.apellido ? consultant.apellido : "..."}
             `}
-        description={`Genero: ${consultant.genero}`}
+        description={`Genero: ${consultant.genero},
+                      Intentos de contacto: ${consultant.intentos_contacto}
+                    `}
       />
     </List.Item>
   );
