@@ -7,6 +7,7 @@ import {
   UserOutlined,
   IdcardOutlined,
   PoweroffOutlined,
+  ContactsOutlined,
 } from "@ant-design/icons";
 import useAuth from "../hooks/useAuth";
 import "./LayoutAdmin.scss";
@@ -69,6 +70,9 @@ function LayoutAdmin(props) {
             </Menu.Item>
             <Menu.Item key="/home/pacientes" icon={<TeamOutlined />}>
               <Link to="/home/pacientes"> Pacientes </Link>
+            </Menu.Item>
+            <Menu.Item key="/home/convenios" icon={<ContactsOutlined />}>
+              <Link to="/home/convenios"> Convenios </Link>
             </Menu.Item>
             <Menu.Item key="/" icon={<PoweroffOutlined />} onClick={logoutUser}>
               Cerrar Sesión

@@ -9,6 +9,7 @@ import Users from "../pages/Admin/Users";
 import Patients from "../pages/Admin/Patients";
 import Consultants from "../pages/Admin/Consultants";
 import Home from "../pages/Admin/Home";
+import Convenios from "../pages/Admin/Convenios";
 //layouts
 import LayoutBasic from "../layouts/LayoutBasic";
 import LayoutAdmin from "../layouts/LayoutAdmin";
@@ -42,6 +43,11 @@ const routes = [
       {
         path: "/home/usuarios",
         component: Users,
+        exact: true,
+      },
+      {
+        path: "/home/convenios",
+        component: Convenios,
         exact: true,
       },
     ],
