@@ -15,7 +15,7 @@ import { UserOutlined } from "@ant-design/icons";
 import { getAccessTokenApi } from "../../../../api/auth";
 
 export default function AddCoordinador(props) {
-  const { setIsVisibleModal, setReloadConsultants } = props;
+  const { setIsVisibleModal, convenio, setReloadConvenios } = props;
   const [coordinadorData, setCoordinadorData] = useState({});
 
   const addCoordinator = () => {};

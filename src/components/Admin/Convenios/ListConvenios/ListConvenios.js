@@ -29,6 +29,7 @@ export default function ListConvenios(props) {
       <AddConvenio
         setIsVisibleModal={setIsVisibleModal}
         setReloadConvenios={setReloadConvenios}
+        instituciones={instituciones}
       />
     );
   };
@@ -79,7 +80,7 @@ function Convenios(props) {
 
   const addCoordinador = (convenio) => {
     setIsVisibleModal(true);
-    setModalTitle("Crear nueva Instacia de Contacto");
+    setModalTitle("Añadir Coordinador");
     setModalContent(
       <AddCoordinador
         convenio={convenio}
@@ -132,7 +133,7 @@ function Convenio(props) {
     >
       <List.Item.Meta
         title={`
-                Nombre: ${convenio.nombre ? convenio.convenio : "..."},
+                Nombre: ${convenio.nombre ? convenio.nombre : "..."},
                 
             `}
         description={`kasjsdpsa`}
@@ -147,7 +148,7 @@ function Coordinador(props) {
     <List.Item actions={[]}>
       <List.Item.Meta
         title={`
-                Nombre: ${coordinador.nombre ? coordinador.convenio : "..."},
+                Nombre: ${coordinador.nombre ? coordinador.nombre : "..."},
                 
             `}
         description={`kasjsdpsa`}

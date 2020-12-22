@@ -54,7 +54,7 @@ export function addConvenio(token, convenio) {
 // obtener coordinadores
 
 export function getCoordinadores(token) {
-  const url = `${basePath}/convenio`;
+  const url = `${basePath}/coordinador`;
 
   const params = {
     method: "GET",
