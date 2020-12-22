@@ -38,28 +38,27 @@ export default function Profile(props) {
         </Row>
         <Row gutter={[16, 40]}>
           <Col span={12}>
-            <h3>Numero de consultantes por genero</h3>
-            <GraphBar consultants={consultants} />
-          </Col>
-          <Col span={12}>
-            <h3>Numero de consultantes por rango etario</h3>
-            <GraphConsultantesPorEdadNoContactados consultants={consultants} />
-          </Col>
-        </Row>
-        <Row gutter={[16, 40]}>
-          <Col span={12}>
-            <h3>Número de consultantes no contactados</h3>
-            <GraphPie consultants={consultants} />
+            <h3>Consultantes ingresados por tipos de organizacion</h3>
+            <GraphLineasEstadoPacientes patients={patients} />
           </Col>
           <Col span={12}>
             <h3>Consultantes ingresados por tipos de organizacion</h3>
             <GraphDonut consultants={consultants} />
           </Col>
         </Row>
-        <Row gutter={[16, 40]}>
-          <Col span={24}>
-            <h3>Consultantes ingresados por tipos de organizacion</h3>
-            <GraphLineasEstadoPacientes patients={patients} />
+        <Row gutter={[16, 40]} wrap ={true}>
+          <Col span={8}>
+            <h3>Número de consultantes no contactados</h3>
+            <GraphPie consultants={consultants} />
+          </Col>
+          <Col span={8}>
+            <h3>Numero de consultantes por rango etario</h3>
+            <GraphConsultantesPorEdadNoContactados consultants={consultants} />
+          </Col>
+
+          <Col span={8}>
+            <h3>Numero de consultantes por genero</h3>
+            <GraphBar consultants={consultants} />
           </Col>
         </Row>
       </section>
