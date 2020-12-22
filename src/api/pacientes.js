@@ -226,3 +226,29 @@ export function getIncontestPatients(token) {
       return err.message;
     });
 }
+
+//añadir contacto a paciente
+
+export function addContacto(token, contacto) {
+  const url = `${basePath}/contacto/nuevo`;
+
+  const params = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: token,
+    },
+    body: JSON.stringify(contacto),
+  };
+
+  return fetch(url, params)
+    .then((response) => {
+      return response.json();
+    })
+    .then((result) => {
+      return result;
+    })
+    .catch((err) => {
+      return err.message;
+    });
+}

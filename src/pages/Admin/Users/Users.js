@@ -7,7 +7,6 @@ export default function Users() {
   const [users, setUsers] = useState([]);
   const [reloadUsers, setReloadUsers] = useState(false);
   const token = getAccessTokenApi();
-  console.log(token);
 
   useEffect(() => {
     getUsers(token).then((response) => {

@@ -1,9 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { List, Button, Modal as ModalAntd, notification } from "antd";
 import Modal from "../../../Modal";
 import EditConsultantForm from "../EditConsultantForm";
 import AddConsultantForm from "../AddConsultantForm";
-import { EditOutlined, DeleteOutlined } from "@ant-design/icons";
+import AddContactForm from "../AddContactForm";
+import {
+  EditOutlined,
+  DeleteOutlined,
+  SolutionOutlined,
+} from "@ant-design/icons";
 import "./ListConsultants.scss";
 import { getAccessTokenApi } from "../../../../api/auth";
 import { deletePatient } from "../../../../api/pacientes";
@@ -97,6 +102,18 @@ function Consultants(props) {
     );
   };
 
+  const addContact = (consultant) => {
+    setIsVisibleModal(true);
+    setModalTitle("Crear nueva Instacia de Contacto");
+    setModalContent(
+      <AddContactForm
+        consultant={consultant}
+        setIsVisibleModal={setIsVisibleModal}
+        setReloadConsultants={setReloadConsultants}
+      />
+    );
+  };
+
   return (
     <div>
       <h1> lista de Consultantes:</h1>
@@ -109,6 +126,7 @@ function Consultants(props) {
             consultant={consultant}
             editConsultant={editConsultant}
             setReloadConsultants={setReloadConsultants}
+            addContact={addContact}
           />
         )}
       />
@@ -122,6 +140,7 @@ function Consultants(props) {
             consultant={consultant}
             editConsultant={editConsultant}
             setReloadConsultants={setReloadInPatients}
+            addContact={addContact}
           />
         )}
       />
@@ -130,7 +149,12 @@ function Consultants(props) {
 }
 
 function Consultant(props) {
-  const { consultant, editConsultant, setReloadConsultants } = props;
+  const {
+    consultant,
+    editConsultant,
+    setReloadConsultants,
+    addContact,
+  } = props;
 
   const showDeleteConfirm = () => {
     const accesToken = getAccessTokenApi();
@@ -161,6 +185,9 @@ function Consultant(props) {
   return (
     <List.Item
       actions={[
+        <Button type="primary" onClick={() => addContact(consultant)}>
+          <SolutionOutlined />
+        </Button>,
         <Button type="primary" onClick={() => editConsultant(consultant)}>
           <EditOutlined />
         </Button>,

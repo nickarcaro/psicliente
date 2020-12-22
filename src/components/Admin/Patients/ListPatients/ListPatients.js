@@ -145,8 +145,7 @@ function Patient(props) {
                   ${patient.pronombre ? patient.pronombre : "..."}
                   ${patient.nombre ? patient.nombre : "..."} 
               `}
-        description={patient.RUT}
-        description={patient.genero}
+        description={(patient.RUT, patient.genero)}
       />
     </List.Item>
   );

@@ -54,7 +54,6 @@ export default function EditConsultantForm(props) {
   const updateConsultant = (e) => {
     e.preventDefault();
     //const token = getAccessTokenApi();
-    let consultantUpdate = consultantData;
 
     if (
       !consultantData.nombre ||
@@ -72,9 +71,9 @@ export default function EditConsultantForm(props) {
       });
     } else {
       const accesToken = getAccessTokenApi();
-      let value = consultantData;
+      let consultantUpdate = consultantData;
 
-      updatePatient(accesToken, value, consultant.RUT)
+      updatePatient(accesToken, consultantUpdate, consultant.RUT)
         .then((response) => {
           notification["success"]({
             message: response.message,

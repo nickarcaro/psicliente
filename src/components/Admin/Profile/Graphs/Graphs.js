@@ -2,7 +2,7 @@ import React from "react";
 import { Bar, Doughnut, Pie, Line } from "react-chartjs-2";
 
 export function GraphBar(props) {
-  const { consultants, setReloadConsultants } = props;
+  const { consultants } = props;
   console.log(consultants);
   let masculinoAct = [];
   let masculinoAlagua = [];
@@ -114,7 +114,7 @@ export function GraphBar(props) {
 }
 
 export function GraphConsultantesPorEdadNoContactados(props) {
-  const { consultants, setReloadConsultants } = props;
+  const { consultants } = props;
   console.log(consultants);
   let de3a12 = [];
   let de12a18 = [];
@@ -216,7 +216,7 @@ export function GraphConsultantesPorEdadNoContactados(props) {
 }
 
 export function GraphPie(props) {
-  const { consultants, setReloadConsultants } = props;
+  const { consultants } = props;
   console.log(consultants);
   let infantil = [];
   let juvenil = [];
@@ -276,7 +276,7 @@ export function GraphPie(props) {
 }
 
 export function GraphDonut(props) {
-  const { consultants, setReloadConsultants } = props;
+  const { consultants } = props;
   console.log(consultants);
   let org_Publica = [];
   let ed_Sup = [];
@@ -355,7 +355,7 @@ export function GraphDonut(props) {
 }
 
 export function GraphLineasEstadoPacientes(props) {
-  const { patients, setReloadPatients } = props;
+  const { patients } = props;
   console.log(patients);
   //Paciente activo por mes
   let pacActivo1 = [];
@@ -388,156 +388,156 @@ export function GraphLineasEstadoPacientes(props) {
     if (
       dataObj.Estado_id_Estado === "consultante" ||
       (dataObj.Estado_id_Estado === "paciente" &&
-        dataObj.fecha_ingreso.search("/1/") != -1)
+        dataObj.fecha_ingreso.search("/1/") !== -1)
     ) {
       pacActivo1.push(dataObj.Estado_id_Estado);
       console.log(dataObj);
     } else if (
       dataObj.Estado_id_Estado === "consultante" ||
       (dataObj.Estado_id_Estado === "paciente" &&
-        dataObj.fecha_ingreso.search("/2/") != -1)
+        dataObj.fecha_ingreso.search("/2/") !== -1)
     ) {
       pacActivo2.push(dataObj.Estado_id_Estado);
       console.log(dataObj);
     } else if (
       dataObj.Estado_id_Estado === "consultante" ||
       (dataObj.Estado_id_Estado === "paciente" &&
-        dataObj.fecha_ingreso.search("/3/") != -1)
+        dataObj.fecha_ingreso.search("/3/") !== -1)
     ) {
       pacActivo3.push(dataObj.Estado_id_Estado);
       console.log(dataObj);
     } else if (
       dataObj.Estado_id_Estado === "consultante" ||
       (dataObj.Estado_id_Estado === "paciente" &&
-        dataObj.fecha_ingreso.search("/4/") != -1)
+        dataObj.fecha_ingreso.search("/4/") !== -1)
     ) {
       pacActivo4.push(dataObj.Estado_id_Estado);
       console.log(dataObj);
     } else if (
       dataObj.Estado_id_Estado === "consultante" ||
       (dataObj.Estado_id_Estado === "paciente" &&
-        dataObj.fecha_ingreso.search("/5/") != -1)
+        dataObj.fecha_ingreso.search("/5/") !== -1)
     ) {
       pacActivo5.push(dataObj.Estado_id_Estado);
       console.log(dataObj);
     } else if (
       dataObj.Estado_id_Estado === "consultante" ||
       (dataObj.Estado_id_Estado === "paciente" &&
-        dataObj.fecha_ingreso.search("/6/") != -1)
+        dataObj.fecha_ingreso.search("/6/") !== -1)
     ) {
       pacActivo6.push(dataObj.Estado_id_Estado);
       console.log(dataObj);
     } else if (
       dataObj.Estado_id_Estado === "consultante" ||
       (dataObj.Estado_id_Estado === "paciente" &&
-        dataObj.fecha_ingreso.search("/7/") != -1)
+        dataObj.fecha_ingreso.search("/7/") !== -1)
     ) {
       pacActivo7.push(dataObj.Estado_id_Estado);
       console.log(dataObj);
     } else if (
       dataObj.Estado_id_Estado === "consultante" ||
       (dataObj.Estado_id_Estado === "paciente" &&
-        dataObj.fecha_ingreso.search("/8/") != -1)
+        dataObj.fecha_ingreso.search("/8/") !== -1)
     ) {
       pacActivo8.push(dataObj.Estado_id_Estado);
       console.log(dataObj);
     } else if (
       dataObj.Estado_id_Estado === "consultante" ||
       (dataObj.Estado_id_Estado === "paciente" &&
-        dataObj.fecha_ingreso.search("/9/") != -1)
+        dataObj.fecha_ingreso.search("/9/") !== -1)
     ) {
       pacActivo9.push(dataObj.Estado_id_Estado);
       console.log(dataObj);
     } else if (
       dataObj.Estado_id_Estado === "consultante" ||
       (dataObj.Estado_id_Estado === "paciente" &&
-        dataObj.fecha_ingreso.search("/10/") != -1)
+        dataObj.fecha_ingreso.search("/10/") !== -1)
     ) {
       pacActivo10.push(dataObj.Estado_id_Estado);
       console.log(dataObj);
     } else if (
       dataObj.Estado_id_Estado === "consultante" ||
       (dataObj.Estado_id_Estado === "paciente" &&
-        dataObj.fecha_ingreso.search("/11/") != -1)
+        dataObj.fecha_ingreso.search("/11/") !== -1)
     ) {
       pacActivo11.push(dataObj.Estado_id_Estado);
       console.log(dataObj);
     } else if (
       dataObj.Estado_id_Estado === "consultante" ||
       (dataObj.Estado_id_Estado === "paciente" &&
-        dataObj.fecha_ingreso.search("/12/") != -1)
+        dataObj.fecha_ingreso.search("/12/") !== -1)
     ) {
       pacActivo12.push(dataObj.Estado_id_Estado);
       console.log(dataObj);
     } else if (
       dataObj.Estado_id_Estado === "incontestado" &&
-      dataObj.fecha_ingreso.search("/1/") != -1
+      dataObj.fecha_ingreso.search("/1/") !== -1
     ) {
       pacAlAgua1.push(dataObj.Estado_id_Estado);
       console.log(dataObj);
     } else if (
       dataObj.Estado_id_Estado === "incontestado" &&
-      dataObj.fecha_ingreso.search("/2/") != -1
+      dataObj.fecha_ingreso.search("/2/") !== -1
     ) {
       pacAlAgua2.push(dataObj.Estado_id_Estado);
       console.log(dataObj);
     } else if (
       dataObj.Estado_id_Estado === "incontestado" &&
-      dataObj.fecha_ingreso.search("/3/") != -1
+      dataObj.fecha_ingreso.search("/3/") !== -1
     ) {
       pacAlAgua3.push(dataObj.Estado_id_Estado);
       console.log(dataObj);
     } else if (
       dataObj.Estado_id_Estado === "incontestado" &&
-      dataObj.fecha_ingreso.search("/4/") != -1
+      dataObj.fecha_ingreso.search("/4/") !== -1
     ) {
       pacAlAgua4.push(dataObj.Estado_id_Estado);
       console.log(dataObj);
     } else if (
       dataObj.Estado_id_Estado === "incontestado" &&
-      dataObj.fecha_ingreso.search("/5/") != -1
+      dataObj.fecha_ingreso.search("/5/") !== -1
     ) {
       pacAlAgua5.push(dataObj.Estado_id_Estado);
       console.log(dataObj);
     } else if (
       dataObj.Estado_id_Estado === "incontestado" &&
-      dataObj.fecha_ingreso.search("/6/") != -1
+      dataObj.fecha_ingreso.search("/6/") !== -1
     ) {
       pacAlAgua6.push(dataObj.Estado_id_Estado);
       console.log(dataObj);
     } else if (
       dataObj.Estado_id_Estado === "incontestado" &&
-      dataObj.fecha_ingreso.search("/7/") != -1
+      dataObj.fecha_ingreso.search("/7/") !== -1
     ) {
       pacAlAgua7.push(dataObj.Estado_id_Estado);
       console.log(dataObj);
     } else if (
       dataObj.Estado_id_Estado === "incontestado" &&
-      dataObj.fecha_ingreso.search("/8/") != -1
+      dataObj.fecha_ingreso.search("/8/") !== -1
     ) {
       pacAlAgua8.push(dataObj.Estado_id_Estado);
       console.log(dataObj);
     } else if (
       dataObj.Estado_id_Estado === "incontestado" &&
-      dataObj.fecha_ingreso.search("/9/") != -1
+      dataObj.fecha_ingreso.search("/9/") !== -1
     ) {
       pacAlAgua9.push(dataObj.Estado_id_Estado);
       console.log(dataObj);
     } else if (
       dataObj.Estado_id_Estado === "incontestado" &&
-      dataObj.fecha_ingreso.search("/1/") != -1
+      dataObj.fecha_ingreso.search("/1/") !== -1
     ) {
       pacAlAgua10.push(dataObj.Estado_id_Estado);
       console.log(dataObj);
     } else if (
       dataObj.Estado_id_Estado === "incontestado" &&
-      dataObj.fecha_ingreso.search("/1/") != -1
+      dataObj.fecha_ingreso.search("/1/") !== -1
     ) {
       pacAlAgua11.push(dataObj.Estado_id_Estado);
       console.log(dataObj);
     } else if (
       dataObj.Estado_id_Estado === "incontestado" &&
-      dataObj.fecha_ingreso.search("/1/") != -1
+      dataObj.fecha_ingreso.search("/1/") !== -1
     ) {
       pacAlAgua12.push(dataObj.Estado_id_Estado);
       console.log(dataObj);

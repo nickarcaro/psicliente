@@ -1,6 +1,4 @@
-//pages
-import Auth from "../../pages/Auth/Auth";
-import Contact from "../../pages/Contact";
+// eslint-disable-next-line
 import Error404 from "../../pages/Error404";
 
 //layouts

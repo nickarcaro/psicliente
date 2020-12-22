@@ -16,13 +16,12 @@ describe("Prueba de <App/>", () => {
     const wrapper = shallow(<App />);
     expect(wrapper).toMatchSnapshot();
   });
-
+  // eslint-disable-next-line
   test("debe retornar <RouteWithSubRoutes /> correctamente ", () => {
     const wrapper = shallow(<RouteWithSubRoutes />);
-
     expect(wrapper).toMatchSnapshot();
   });
-
+  // eslint-disable-next-line
   test("probar que routewithsubroutes opere", () => {
     let state = RouteWithSubRoutes(routes);
 
