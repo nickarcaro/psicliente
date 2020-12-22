@@ -128,7 +128,7 @@ export function GraphConsultantesPorEdadNoContactados(props) {
     if (
       dataObj.edad > 3 &&
       dataObj.edad < 12 &&
-      dataObj.estado === "incontestado"
+      dataObj.intentos_contacto === 0
     ) {
       de3a12.push(dataObj.edad);
       console.log(de3a12);
@@ -136,7 +136,7 @@ export function GraphConsultantesPorEdadNoContactados(props) {
     if (
       dataObj.edad > 12 &&
       dataObj.edad < 18 &&
-      dataObj.estado === "incontestado"
+      dataObj.intentos_contacto === 0
     ) {
       de12a18.push(dataObj.edad);
       console.log(de12a18);
@@ -144,7 +144,7 @@ export function GraphConsultantesPorEdadNoContactados(props) {
     if (
       dataObj.edad > 18 &&
       dataObj.edad < 25 &&
-      dataObj.estado === "incontestado"
+      dataObj.intentos_contacto === 0
     ) {
       de18a25.push(dataObj.edad);
       console.log(de18a25);
@@ -152,7 +152,7 @@ export function GraphConsultantesPorEdadNoContactados(props) {
     if (
       dataObj.edad > 25 &&
       dataObj.edad < 35 &&
-      dataObj.estado === "incontestado"
+      dataObj.intentos_contacto === 0
     ) {
       de25a35.push(dataObj.edad);
       console.log(de25a35);
@@ -160,7 +160,7 @@ export function GraphConsultantesPorEdadNoContactados(props) {
     if (
       dataObj.edad > 35 &&
       dataObj.edad < 45 &&
-      dataObj.estado === "incontestado"
+      dataObj.intentos_contacto === 0
     ) {
       de35a45.push(dataObj.edad);
       console.log(de35a45);
@@ -169,11 +169,11 @@ export function GraphConsultantesPorEdadNoContactados(props) {
     if (
       dataObj.edad > 45 &&
       dataObj.edad < 60 &&
-      dataObj.estado === "incontestado"
+      dataObj.intentos_contacto === 0
     ) {
       de45a60.push(dataObj.edad);
     }
-    if (dataObj.edad > 60 && dataObj.estado === "incontestado") {
+    if (dataObj.edad > 60 && dataObj.intentos_contacto === 0) {
       de60enAdelante.push(dataObj.edad);
     }
   }
@@ -388,156 +388,156 @@ export function GraphLineasEstadoPacientes(props) {
     if (
       dataObj.Estado_id_Estado === "consultante" ||
       (dataObj.Estado_id_Estado === "paciente" &&
-        dataObj.fecha_ingreso.search("/1/") !== -1)
+        dataObj.fecha_ingreso.getMonth() === 0)
     ) {
       pacActivo1.push(dataObj.Estado_id_Estado);
       console.log(dataObj);
     } else if (
       dataObj.Estado_id_Estado === "consultante" ||
       (dataObj.Estado_id_Estado === "paciente" &&
-        dataObj.fecha_ingreso.search("/2/") !== -1)
+        dataObj.fecha_ingreso.getMonth() === 1)
     ) {
       pacActivo2.push(dataObj.Estado_id_Estado);
       console.log(dataObj);
     } else if (
       dataObj.Estado_id_Estado === "consultante" ||
       (dataObj.Estado_id_Estado === "paciente" &&
-        dataObj.fecha_ingreso.search("/3/") !== -1)
+        dataObj.fecha_ingreso.getMonth() === 2)
     ) {
       pacActivo3.push(dataObj.Estado_id_Estado);
       console.log(dataObj);
     } else if (
       dataObj.Estado_id_Estado === "consultante" ||
       (dataObj.Estado_id_Estado === "paciente" &&
-        dataObj.fecha_ingreso.search("/4/") !== -1)
+        dataObj.fecha_ingreso.getMonth() === 3)
     ) {
       pacActivo4.push(dataObj.Estado_id_Estado);
       console.log(dataObj);
     } else if (
       dataObj.Estado_id_Estado === "consultante" ||
       (dataObj.Estado_id_Estado === "paciente" &&
-        dataObj.fecha_ingreso.search("/5/") !== -1)
+        dataObj.fecha_ingreso.getMonth() === 4)
     ) {
       pacActivo5.push(dataObj.Estado_id_Estado);
       console.log(dataObj);
     } else if (
       dataObj.Estado_id_Estado === "consultante" ||
       (dataObj.Estado_id_Estado === "paciente" &&
-        dataObj.fecha_ingreso.search("/6/") !== -1)
+        dataObj.fecha_ingreso.getMonth() === 5)
     ) {
       pacActivo6.push(dataObj.Estado_id_Estado);
       console.log(dataObj);
     } else if (
       dataObj.Estado_id_Estado === "consultante" ||
       (dataObj.Estado_id_Estado === "paciente" &&
-        dataObj.fecha_ingreso.search("/7/") !== -1)
+        dataObj.fecha_ingreso.getMonth() === 6)
     ) {
       pacActivo7.push(dataObj.Estado_id_Estado);
       console.log(dataObj);
     } else if (
       dataObj.Estado_id_Estado === "consultante" ||
       (dataObj.Estado_id_Estado === "paciente" &&
-        dataObj.fecha_ingreso.search("/8/") !== -1)
+        dataObj.fecha_ingreso.getMonth() === 7)
     ) {
       pacActivo8.push(dataObj.Estado_id_Estado);
       console.log(dataObj);
     } else if (
       dataObj.Estado_id_Estado === "consultante" ||
       (dataObj.Estado_id_Estado === "paciente" &&
-        dataObj.fecha_ingreso.search("/9/") !== -1)
+        dataObj.fecha_ingreso.getMonth() === 8)
     ) {
       pacActivo9.push(dataObj.Estado_id_Estado);
       console.log(dataObj);
     } else if (
       dataObj.Estado_id_Estado === "consultante" ||
       (dataObj.Estado_id_Estado === "paciente" &&
-        dataObj.fecha_ingreso.search("/10/") !== -1)
+        dataObj.fecha_ingreso.getMonth() === 9)
     ) {
       pacActivo10.push(dataObj.Estado_id_Estado);
       console.log(dataObj);
     } else if (
       dataObj.Estado_id_Estado === "consultante" ||
       (dataObj.Estado_id_Estado === "paciente" &&
-        dataObj.fecha_ingreso.search("/11/") !== -1)
+        dataObj.fecha_ingreso.getMonth() === 10)
     ) {
       pacActivo11.push(dataObj.Estado_id_Estado);
       console.log(dataObj);
     } else if (
       dataObj.Estado_id_Estado === "consultante" ||
       (dataObj.Estado_id_Estado === "paciente" &&
-        dataObj.fecha_ingreso.search("/12/") !== -1)
+        dataObj.fecha_ingreso.getMonth() === 11)
     ) {
       pacActivo12.push(dataObj.Estado_id_Estado);
       console.log(dataObj);
     } else if (
       dataObj.Estado_id_Estado === "incontestado" &&
-      dataObj.fecha_ingreso.search("/1/") !== -1
+      dataObj.fecha_ingreso.getMonth() === 0
     ) {
       pacAlAgua1.push(dataObj.Estado_id_Estado);
       console.log(dataObj);
     } else if (
       dataObj.Estado_id_Estado === "incontestado" &&
-      dataObj.fecha_ingreso.search("/2/") !== -1
+      dataObj.fecha_ingreso.getMonth() === 1
     ) {
       pacAlAgua2.push(dataObj.Estado_id_Estado);
       console.log(dataObj);
     } else if (
       dataObj.Estado_id_Estado === "incontestado" &&
-      dataObj.fecha_ingreso.search("/3/") !== -1
+      dataObj.fecha_ingreso.getMonth() === 2
     ) {
       pacAlAgua3.push(dataObj.Estado_id_Estado);
       console.log(dataObj);
     } else if (
       dataObj.Estado_id_Estado === "incontestado" &&
-      dataObj.fecha_ingreso.search("/4/") !== -1
+      dataObj.fecha_ingreso.getMonth() === 3
     ) {
       pacAlAgua4.push(dataObj.Estado_id_Estado);
       console.log(dataObj);
     } else if (
       dataObj.Estado_id_Estado === "incontestado" &&
-      dataObj.fecha_ingreso.search("/5/") !== -1
+      dataObj.fecha_ingreso.getMonth() === 4
     ) {
       pacAlAgua5.push(dataObj.Estado_id_Estado);
       console.log(dataObj);
     } else if (
       dataObj.Estado_id_Estado === "incontestado" &&
-      dataObj.fecha_ingreso.search("/6/") !== -1
+      dataObj.fecha_ingreso.getMonth() === 5
     ) {
       pacAlAgua6.push(dataObj.Estado_id_Estado);
       console.log(dataObj);
     } else if (
       dataObj.Estado_id_Estado === "incontestado" &&
-      dataObj.fecha_ingreso.search("/7/") !== -1
+      dataObj.fecha_ingreso.getMonth() === 6
     ) {
       pacAlAgua7.push(dataObj.Estado_id_Estado);
       console.log(dataObj);
     } else if (
       dataObj.Estado_id_Estado === "incontestado" &&
-      dataObj.fecha_ingreso.search("/8/") !== -1
+      dataObj.fecha_ingreso.getMonth() === 7
     ) {
       pacAlAgua8.push(dataObj.Estado_id_Estado);
       console.log(dataObj);
     } else if (
       dataObj.Estado_id_Estado === "incontestado" &&
-      dataObj.fecha_ingreso.search("/9/") !== -1
+      dataObj.fecha_ingreso.getMonth() === 8
     ) {
       pacAlAgua9.push(dataObj.Estado_id_Estado);
       console.log(dataObj);
     } else if (
       dataObj.Estado_id_Estado === "incontestado" &&
-      dataObj.fecha_ingreso.search("/1/") !== -1
+      dataObj.fecha_ingreso.getMonth() === 9
     ) {
       pacAlAgua10.push(dataObj.Estado_id_Estado);
       console.log(dataObj);
     } else if (
       dataObj.Estado_id_Estado === "incontestado" &&
-      dataObj.fecha_ingreso.search("/1/") !== -1
+      dataObj.fecha_ingreso.getMonth() === 10
     ) {
       pacAlAgua11.push(dataObj.Estado_id_Estado);
       console.log(dataObj);
     } else if (
       dataObj.Estado_id_Estado === "incontestado" &&
-      dataObj.fecha_ingreso.search("/1/") !== -1
+      dataObj.fecha_ingreso.getMonth() === 11
     ) {
       pacAlAgua12.push(dataObj.Estado_id_Estado);
       console.log(dataObj);
@@ -563,36 +563,36 @@ export function GraphLineasEstadoPacientes(props) {
       {
         label: "Pacientes activo",
         data: [
-          pacActivo1.length,
-          pacActivo2.length,
-          pacActivo3.length,
-          pacActivo4.length,
-          pacActivo5.length,
-          pacActivo6.length,
-          pacActivo7.length,
-          pacActivo8.length,
-          pacActivo9.length,
-          pacActivo10.length,
-          pacActivo11.length,
-          pacActivo12.length,
+          pacActivo1,
+          pacActivo2,
+          pacActivo3,
+          pacActivo4,
+          pacActivo5,
+          pacActivo6,
+          pacActivo7,
+          pacActivo8,
+          pacActivo9,
+          pacActivo10,
+          pacActivo11,
+          pacActivo12,
         ],
         backgroundColor: "#fca311",
       },
       {
         label: "Pacientes al agua",
         data: [
-          pacAlAgua1.length,
-          pacAlAgua2.length,
-          pacAlAgua3.length,
-          pacAlAgua4.length,
-          pacAlAgua5.length,
-          pacAlAgua6.length,
-          pacAlAgua7.length,
-          pacAlAgua8.length,
-          pacAlAgua9.length,
-          pacAlAgua10.length,
-          pacAlAgua11.length,
-          pacAlAgua12.length,
+          pacAlAgua1,
+          pacAlAgua2,
+          pacAlAgua3,
+          pacAlAgua4,
+          pacAlAgua5,
+          pacAlAgua6,
+          pacAlAgua7,
+          pacAlAgua8,
+          pacAlAgua9,
+          pacAlAgua10,
+          pacAlAgua11,
+          pacAlAgua12,
         ],
         backgroundColor: "#14213d",
       },
@@ -608,6 +608,7 @@ export function GraphLineasEstadoPacientes(props) {
               ticks: {
                 beginAtZero: true,
                 stepSize: 5,
+                max: 50,
               },
             },
           ],
