@@ -37,11 +37,11 @@ export default function Profile(props) {
         </Col>
         </Row>
         <Row gutter={[16, 40]}>
-          <Col span={12}>
+          <Col span={8} push={4}>
             <h3>Consultantes ingresados por tipos de organizacion</h3>
             <GraphLineasEstadoPacientes patients={patients} />
           </Col>
-          <Col span={12}>
+          <Col span={8} push={4}>
             <h3>Consultantes ingresados por tipos de organizacion</h3>
             <GraphDonut consultants={consultants} />
           </Col>
@@ -55,7 +55,6 @@ export default function Profile(props) {
             <h3>Numero de consultantes por rango etario</h3>
             <GraphConsultantesPorEdadNoContactados consultants={consultants} />
           </Col>
-
           <Col span={8}>
             <h3>Numero de consultantes por genero</h3>
             <GraphBar consultants={consultants} />
