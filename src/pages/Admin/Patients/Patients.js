@@ -6,10 +6,11 @@ import "./Patients.scss";
 export default function Patients() {
   const [patients, setPatients] = useState([]);
   const [reloadPatients, setReloadPatients] = useState(false);
+
   const token = getAccessTokenApi();
 
   useEffect(() => {
-    getPatients(token, true).then((response) => {
+    getPatients(token).then((response) => {
       setPatients(response.rows);
     });
 

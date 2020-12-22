@@ -1,13 +1,21 @@
-import React, { useState } from "react";
-import { List, Button } from "antd";
+import React, { useState, useEffect } from "react";
+import { List, Button, Modal as ModalAntd, notification } from "antd";
 import Modal from "../../../Modal";
 import EditConsultantForm from "../EditConsultantForm";
 import AddConsultantForm from "../AddConsultantForm";
-import { EditOutlined } from "@ant-design/icons";
+import { EditOutlined, DeleteOutlined } from "@ant-design/icons";
 import "./ListConsultants.scss";
-export default function ListConsultants(props) {
-  const { consultants, setReloadConsultants } = props;
+import { getAccessTokenApi } from "../../../../api/auth";
+import { deletePatient } from "../../../../api/pacientes";
+const { confirm } = ModalAntd;
 
+export default function ListConsultants(props) {
+  const {
+    consultants,
+    setReloadConsultants,
+    inpatients,
+    setReloadInPatients,
+  } = props;
   const [isVisibleModal, setIsVisibleModal] = useState(false);
   const [modalTitle, setModalTitle] = useState("");
   const [modalContent, setModalContent] = useState(null);
@@ -37,6 +45,8 @@ export default function ListConsultants(props) {
         setModalTitle={setModalTitle}
         setModalContent={setModalContent}
         setReloadConsultants={setReloadConsultants}
+        inpatients={inpatients}
+        setReloadInPatients={setReloadInPatients}
       />
 
       <Modal
@@ -57,22 +67,26 @@ function Consultants(props) {
     setModalTitle,
     setModalContent,
     setReloadConsultants,
+    inpatients,
+    setReloadInPatients,
   } = props;
 
   const editConsultant = (consultant) => {
     setIsVisibleModal(true);
     setModalTitle(
-      `Editar  ${consultant.edad ? consultant.edad : "..."}${
-        consultant.sexo ? consultant.sexo : "..."
-      }${consultant.genero ? consultant.genero : "..."}${
-        consultant.intentos_contacto ? consultant.intentos_contacto : "..."
+      `Editar  ${consultant.nombre ? consultant.apellido : "..."}${
+        consultant.nombre_social ? consultant.pronombre : "..."
+      }${consultant.RUT ? consultant.RUT : "..."}${
+        consultant.genero ? consultant.genero : "..."
       }
-      ${consultant.intentos_contacto ? consultant.intentos_contacto : "..."}
-      ${consultant.convenio ? consultant.convenio : "..."}${
-        consultant.tipo_institucion ? consultant.tipo_institucion : "..."
-      }${consultant.prevision_salud ? consultant.prevision_salud : "..."}${
-        consultant.motivo ? consultant.motivo : "..."
-      }${consultant.estado ? consultant.estado : "..."}`
+      ${consultant.fecha_nacimiento ? consultant.fecha_nacimiento : "..."}
+      ${consultant.fecha_ingreso ? consultant.fecha_ingreso : "..."}${
+        consultant.sexo ? consultant.sexo : "..."
+      }${consultant.Estado_id_Estado ? consultant.Estado_id_Estado : "..."}${
+        consultant.PrevisionSalud_id_PrevisionSalud
+          ? consultant.PrevisionSalud_id_PrevisionSalud
+          : "..."
+      }`
     );
     setModalContent(
       <EditConsultantForm
@@ -84,23 +98,65 @@ function Consultants(props) {
   };
 
   return (
-    <List
-      className="users-active"
-      itemLayout="horizontal"
-      dataSource={consultants}
-      renderItem={(consultant) => (
-        <Consultant
-          consultant={consultant}
-          editConsultant={editConsultant}
-          setReloadConsultants={setReloadConsultants}
-        />
-      )}
-    />
+    <div>
+      <h1> lista de Consultantes:</h1>
+      <List
+        className="users-active"
+        itemLayout="horizontal"
+        dataSource={consultants}
+        renderItem={(consultant) => (
+          <Consultant
+            consultant={consultant}
+            editConsultant={editConsultant}
+            setReloadConsultants={setReloadConsultants}
+          />
+        )}
+      />
+      <h1>lista de "Al Agua"</h1>
+      <List
+        className="users-active"
+        itemLayout="horizontal"
+        dataSource={inpatients}
+        renderItem={(consultant) => (
+          <Consultant
+            consultant={consultant}
+            editConsultant={editConsultant}
+            setReloadConsultants={setReloadInPatients}
+          />
+        )}
+      />
+    </div>
   );
 }
 
 function Consultant(props) {
-  const { consultant, editConsultant } = props;
+  const { consultant, editConsultant, setReloadConsultants } = props;
+
+  const showDeleteConfirm = () => {
+    const accesToken = getAccessTokenApi();
+
+    confirm({
+      title: "Eliminando usuario",
+      content: `¿Estas seguro que quieres eliminar a ${consultant.RUT}?`,
+      okText: "Eliminar",
+      okType: "danger",
+      cancelText: "Cancelar",
+      onOk() {
+        deletePatient(accesToken, consultant.RUT)
+          .then((response) => {
+            notification["success"]({
+              message: response.message,
+            });
+            setReloadConsultants(true);
+          })
+          .catch((err) => {
+            notification["error"]({
+              message: err.msg,
+            });
+          });
+      },
+    });
+  };
 
   return (
     <List.Item
@@ -108,14 +164,15 @@ function Consultant(props) {
         <Button type="primary" onClick={() => editConsultant(consultant)}>
           <EditOutlined />
         </Button>,
+        <Button type="danger" onClick={showDeleteConfirm}>
+          <DeleteOutlined />
+        </Button>,
       ]}
     >
       <List.Item.Meta
         title={`
-                Rut: ${
-                  consultant.Paciente_RUT ? consultant.Paciente_RUT : "..."
-                },
-                Edad: ${consultant.edad ? consultant.edad : "..."}
+                Rut: ${consultant.RUT ? consultant.RUT : "..."},
+                Edad: ${consultant.nombre ? consultant.nombre : "..."}
             `}
         description={`Genero: ${consultant.genero}`}
       />

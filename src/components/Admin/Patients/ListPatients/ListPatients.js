@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { List, Button, Modal as ModalAntd, notification } from "antd";
 import Modal from "../../../Modal";
 import EditPatient from "../EditPatient";
-import AddPatient from "../AddPatient";
 import { deletePatient } from "../../../../api/pacientes";
 import { getAccessTokenApi } from "../../../../api/auth";
 import { EditOutlined, DeleteOutlined } from "@ant-design/icons";
@@ -16,24 +15,12 @@ export default function ListPatients(props) {
   const [modalTitle, setModalTitle] = useState("");
   const [modalContent, setModalContent] = useState(null);
 
-  const addPatientModal = () => {
-    setIsVisibleModal(true);
-    setModalTitle("crear nuevo paciente");
-    setModalContent(
-      <AddPatient
-        setIsVisibleModal={setIsVisibleModal}
-        setReloadPatients={setReloadPatients}
-      />
-    );
-  };
-
   return (
     <div className="list-users">
       <div className="list-users__header">
-        <div className="list-users__header-switch"></div>
-        <Button type="primary" onClick={addPatientModal}>
-          Nuevo Paciente
-        </Button>
+        <div className="list-users__header-switch">
+          <h1>Lista De pacientes</h1>
+        </div>
       </div>
 
       <Patients
@@ -95,27 +82,29 @@ function Patients(props) {
   };
 
   return (
-    <List
-      className="users-active"
-      itemLayout="horizontal"
-      dataSource={patients}
-      renderItem={(patient) => (
-        <Patient
-          patient={patient}
-          editPatient={editPatient}
-          setReloadPatients={setReloadPatients}
-        />
-      )}
-    />
+    <div>
+      <h1> lista de Pacientes:</h1>
+      <List
+        className="users-active"
+        itemLayout="horizontal"
+        dataSource={patients}
+        renderItem={(patient) => (
+          <Patient
+            patient={patient}
+            editPatient={editPatient}
+            setReloadPatients={setReloadPatients}
+          />
+        )}
+      />
+    </div>
   );
 }
 
 function Patient(props) {
   const { patient, editPatient, setReloadPatients } = props;
-
   const showDeleteConfirm = () => {
     const accesToken = getAccessTokenApi();
-
+    console.log("paciente rut:", patient.RUT);
     confirm({
       title: "Eliminando Paciente",
       content: `¿Estas seguro que quieres eliminar a ${patient.nombre}?`,
@@ -123,16 +112,16 @@ function Patient(props) {
       okType: "danger",
       cancelText: "Cancelar",
       onOk() {
-        deletePatient(accesToken, patient.rut)
+        deletePatient(accesToken, patient.RUT)
           .then((response) => {
             notification["success"]({
-              message: response,
+              message: response.message,
             });
             setReloadPatients(true);
           })
           .catch((err) => {
             notification["error"]({
-              message: err,
+              message: err.msg,
             });
           });
       },
@@ -153,10 +142,11 @@ function Patient(props) {
     >
       <List.Item.Meta
         title={`
-                  ${patient.nombre ? patient.nombre : "..."} 
                   ${patient.pronombre ? patient.pronombre : "..."}
+                  ${patient.nombre ? patient.nombre : "..."} 
               `}
         description={patient.RUT}
+        description={patient.genero}
       />
     </List.Item>
   );

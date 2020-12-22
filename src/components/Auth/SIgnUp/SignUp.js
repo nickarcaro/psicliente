@@ -1,7 +1,12 @@
-import React, { useState } from "react";
-import { Form, Input, Button, notification } from "antd";
-import { MailOutlined, LockOutlined } from "@ant-design/icons";
-import { signUpApi } from "../../../api/user";
+import React, { useState, useEffect } from "react";
+import { Form, Input, Button, notification, Select, Tooltip } from "antd";
+import {
+  MailOutlined,
+  LockOutlined,
+  UserOutlined,
+  QuestionCircleOutlined,
+} from "@ant-design/icons";
+import { signUpApi, getUsersRoles } from "../../../api/user";
 import {
   emailValidation,
   minLengthValidation,
@@ -14,7 +19,16 @@ export default function SignUp() {
     nombre: false,
     nombre_social: false,
     repeatPassword: false,
+    TipoUsuario_id_TipoUsuario: false,
   });
+  const [roles, setRoles] = useState([]);
+
+  useEffect(() => {
+    getUsersRoles().then((response) => {
+      setRoles(response.rows);
+    });
+  }, []);
+
   const inputValidation = (values) => {
     const { email, password } = values;
 
@@ -26,8 +40,22 @@ export default function SignUp() {
     }
   };
 
+  const { Option } = Select;
+  const rol = [];
+  for (let role of roles) {
+    rol.push(<Option key={role.id_TipoUsuario}>{role.nombre}</Option>);
+  }
+
   const login = async (values) => {
-    const { nombre, nombre_social, email, password, repeatPassword } = values;
+    const {
+      nombre,
+      nombre_social,
+      email,
+      password,
+      repeatPassword,
+      TipoUsuario_id_TipoUsuario,
+    } = values;
+
     if (
       !email ||
       !password ||
@@ -50,7 +78,7 @@ export default function SignUp() {
           nombre_social,
           email,
           password,
-          TipoUsuario_id_TipoUsuario: 1,
+          TipoUsuario_id_TipoUsuario,
         };
 
         const result = await signUpApi(user);
@@ -61,7 +89,7 @@ export default function SignUp() {
           });
         } else {
           notification["success"]({
-            message: "Registro exitoso",
+            message: result.message,
           });
           resetForm();
         }
@@ -92,7 +120,7 @@ export default function SignUp() {
         rules={[{ required: true, message: "Favor ingresar nombre!" }]}
       >
         <Input
-          prefix={<MailOutlined className="site-form-item-icon" />}
+          prefix={<UserOutlined className="site-form-item-icon" />}
           placeholder="Nombre"
           type="text"
         />
@@ -103,9 +131,17 @@ export default function SignUp() {
         rules={[{ required: true, message: "Favor ingresar nombre social!" }]}
       >
         <Input
-          prefix={<MailOutlined className="site-form-item-icon" />}
+          prefix={<UserOutlined className="site-form-item-icon" />}
           placeholder="Nombre Social"
           type="text"
+          label={
+            <span>
+              Nickname&nbsp;
+              <Tooltip title="como quieres que te llamemos?">
+                <QuestionCircleOutlined />
+              </Tooltip>
+            </span>
+          }
         />
       </Form.Item>
 
@@ -126,7 +162,7 @@ export default function SignUp() {
         name="password"
         rules={[{ required: true, message: "Favor ingresar contraseña!" }]}
       >
-        <Input
+        <Input.Password
           prefix={<LockOutlined className="site-form-item-icon" />}
           type="password"
           onChange={inputValidation}
@@ -137,17 +173,22 @@ export default function SignUp() {
         name="repeatPassword"
         rules={[{ required: true, message: "Favor repetir contraseña!" }]}
       >
-        <Input
+        <Input.Password
           prefix={<LockOutlined className="site-form-item-icon" />}
           type="password"
           onChange={inputValidation}
           placeholder="Contraseña"
         />
       </Form.Item>
+      <Form.Item name="TipoUsuario_id_TipoUsuario">
+        <Select placeholder="Seleccionar Rol" type="number">
+          {rol}
+        </Select>
+      </Form.Item>
 
       <Form.Item>
         <Button type="primary" htmlType="submit" className="login-form-button">
-          Iniciar Sesión
+          Registrate
         </Button>
       </Form.Item>
     </Form>

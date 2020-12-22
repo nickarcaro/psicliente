@@ -3,7 +3,7 @@ import { basePath } from "./config";
 // obtener todos los Pacientes
 
 export function getPatients(token) {
-  const url = `${basePath}/paciente`;
+  const url = `${basePath}/paciente/paciente`;
 
   const params = {
     method: "GET",
@@ -98,5 +98,154 @@ export function deletePatient(token, rut) {
     })
     .catch((err) => {
       return err;
+    });
+}
+
+//obtener listado de estados
+
+export function getStates(token) {
+  const url = `${basePath}/estado`;
+
+  const params = {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: token,
+    },
+  };
+
+  return fetch(url, params)
+    .then((response) => {
+      return response.json();
+    })
+    .then((result) => {
+      return result;
+    })
+    .catch((err) => {
+      return err.message;
+    });
+}
+
+//obtener listado de previsiones de salud
+
+export function getPrevitions(token) {
+  const url = `${basePath}/prevision-salud`;
+
+  const params = {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: token,
+    },
+  };
+
+  return fetch(url, params)
+    .then((response) => {
+      return response.json();
+    })
+    .then((result) => {
+      return result;
+    })
+    .catch((err) => {
+      return err.message;
+    });
+}
+
+// obtener todos los Pacientes con estado consultante
+
+export function getPatientConsultant(token) {
+  const url = `${basePath}/paciente/consultante`;
+
+  const params = {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: token,
+    },
+  };
+
+  return fetch(url, params)
+    .then((response) => {
+      return response.json();
+    })
+    .then((result) => {
+      return result;
+    })
+    .catch((err) => {
+      return err.message;
+    });
+}
+
+// actualizar paciente
+
+export function updatePatient(token, patient, rut) {
+  const url = `${basePath}/paciente/${rut}`;
+
+  const params = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: token,
+    },
+    body: JSON.stringify(patient),
+  };
+
+  return fetch(url, params)
+    .then((response) => {
+      return response.json();
+    })
+    .then((result) => {
+      return result;
+    })
+    .catch((err) => {
+      return err.message;
+    });
+}
+
+// obtener todos los Pacientes con estado consultante
+
+export function getIncontestPatients(token) {
+  const url = `${basePath}/paciente/incontestado`;
+
+  const params = {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: token,
+    },
+  };
+
+  return fetch(url, params)
+    .then((response) => {
+      return response.json();
+    })
+    .then((result) => {
+      return result;
+    })
+    .catch((err) => {
+      return err.message;
+    });
+}
+
+export function getPatientsForGraph(token) {
+  const url = `${basePath}/paciente`;
+
+  const params = {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: token,
+    },
+  };
+
+  return fetch(url, params)
+    .then((response) => {
+      return response.json();
+    })
+    .then((result) => {
+      return result;
+    })
+    .catch((err) => {
+      return err.message;
     });
 }
