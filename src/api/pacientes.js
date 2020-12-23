@@ -252,11 +252,8 @@ export function addContacto(token, contacto) {
       return err.message;
     });
 }
-
-// obtener rut de  paciente con estado de consultante
-
-export function getRUTPatients(token) {
-  const url = `${basePath}/paciente/consultante/rut`;
+export function getAllPatients(token) {
+  const url = `${basePath}/paciente`;
 
   const params = {
     method: "GET",
