@@ -5,9 +5,10 @@ import {
   SolutionOutlined,
   TeamOutlined,
   UserOutlined,
-  IdcardOutlined,
+  AreaChartOutlined,
   PoweroffOutlined,
   ContactsOutlined,
+  AuditOutlined,
 } from "@ant-design/icons";
 import useAuth from "../hooks/useAuth";
 import "./LayoutAdmin.scss";
@@ -59,8 +60,8 @@ function LayoutAdmin(props) {
             <img className="logo" src={UdpLogo} alt="clinica psicologica udp" />
           </Link>
           <Menu theme="dark" mode="inline" defaultSelectedKeys={["/home"]}>
-            <Menu.Item key="/home/perfil" icon={<IdcardOutlined />}>
-              <Link to="/home/perfil"> Mi Perfil </Link>
+            <Menu.Item key="/home/perfil" icon={<AreaChartOutlined />}>
+              <Link to="/home/perfil"> Estadísticas </Link>
             </Menu.Item>
             <Menu.Item key="/home/consultantes" icon={<SolutionOutlined />}>
               <Link to="/home/consultantes"> Consultantes </Link>
@@ -73,6 +74,9 @@ function LayoutAdmin(props) {
             </Menu.Item>
             <Menu.Item key="/home/convenios" icon={<ContactsOutlined />}>
               <Link to="/home/convenios"> Convenios </Link>
+            </Menu.Item>
+            <Menu.Item key="/home/derivaciones" icon={<AuditOutlined />}>
+              <Link to="/home/derivaciones"> Derivaciones </Link>
             </Menu.Item>
             <Menu.Item key="/" icon={<PoweroffOutlined />} onClick={logoutUser}>
               Cerrar Sesión
