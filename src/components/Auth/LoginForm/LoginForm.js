@@ -1,9 +1,9 @@
 import React from "react";
-import { Form, Input, Button, notification } from "antd";
+import { Form, Input, Button, notification, Row, Col } from "antd";
 import { MailOutlined, LockOutlined } from "@ant-design/icons";
 import { signInApi } from "../../../api/user";
 import { TOKEN } from "../../../utils/constants";
-
+import { red } from "@ant-design/colors";
 import "./LoginForm.scss";
 export default function LoginForm() {
   const login = async (values) => {
@@ -29,36 +29,44 @@ export default function LoginForm() {
   };
 
   return (
-    <Form name="normal_login" className="login-form" onFinish={login}>
-      <h1> Iniciar Sesión</h1>
-      <Form.Item
-        name="email"
-        rules={[
-          { required: true, message: "Favor ingresar correo electrónico!" },
-        ]}
-      >
-        <Input
-          prefix={<MailOutlined className="site-form-item-icon" />}
-          placeholder="Correo electrónico"
-          type="email"
-        />
-      </Form.Item>
-      <Form.Item
-        name="password"
-        rules={[{ required: true, message: "Favor ingresar contraseña!" }]}
-      >
-        <Input.Password
-          prefix={<LockOutlined className="site-form-item-icon" />}
-          type="password"
-          placeholder="Contraseña"
-        />
-      </Form.Item>
+    <Row>
+      <Col span={12} offset={9}>
+        <Form name="normal_login" className="login-form" onFinish={login}>
+          <h1> Ingreso de Personal</h1>
+          <Form.Item
+            name="email"
+            rules={[
+              { required: true, message: "Favor ingresar correo electrónico!" },
+            ]}
+          >
+            <Input
+              prefix={<MailOutlined className="site-form-item-icon" />}
+              placeholder="Correo electrónico"
+              type="email"
+            />
+          </Form.Item>
+          <Form.Item
+            name="password"
+            rules={[{ required: true, message: "Favor ingresar contraseña!" }]}
+          >
+            <Input.Password
+              prefix={<LockOutlined className="site-form-item-icon" />}
+              type="password"
+              placeholder="Contraseña"
+            />
+          </Form.Item>
 
-      <Form.Item>
-        <Button type="primary" htmlType="submit" className="login-form-button">
-          Iniciar Sesión
-        </Button>
-      </Form.Item>
-    </Form>
+          <Form.Item>
+            <Button
+              type="primary"
+              htmlType="submit"
+              className="login-form-button"
+            >
+              Iniciar Sesión
+            </Button>
+          </Form.Item>
+        </Form>
+      </Col>
+    </Row>
   );
 }

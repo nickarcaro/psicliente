@@ -96,7 +96,7 @@ function Derivation(props) {
     <List.Item actions={[]}>
       <List.Item.Meta
         title={`
-                derivacion:${derivacion.id_Derivacion}
+                 rut de la derivacion:${derivacion.Paciente_RUT}
                 
             `}
       />

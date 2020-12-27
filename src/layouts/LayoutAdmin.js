@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Layout, Menu } from "antd";
 import { Route, Link, Redirect, withRouter } from "react-router-dom";
 import {
@@ -10,14 +10,15 @@ import {
   ContactsOutlined,
   AuditOutlined,
 } from "@ant-design/icons";
+import { red } from "@ant-design/colors";
 import useAuth from "../hooks/useAuth";
-import "./LayoutAdmin.scss";
 import LoadRoutes from "./LoadRoutes";
 import Auth from "../pages/Auth";
 import { logout } from "../api/auth";
 import UdpLogo from "../assets/jpeg/logo.jpeg";
+
+import "./LayoutAdmin.scss";
 function LayoutAdmin(props) {
-  const [collapsed, setCollapsed] = useState(false);
   const { Header, Content, Footer, Sider } = Layout;
   const { routes } = props;
   const { user, isLoading } = useAuth();
@@ -37,29 +38,26 @@ function LayoutAdmin(props) {
   }
 
   if (user && !isLoading) {
-    const onCollapse = (collapsed) => {
-      setCollapsed(collapsed);
-    };
     return (
-      <Layout
-        className="layout-admin"
-        style={{ marginLeft: collapsed ? "80px" : "200px" }}
-      >
+      <Layout>
         <Sider
           style={{
             overflow: "auto",
             height: "100vh",
             position: "fixed",
             left: 0,
+            backgroundColor: `${red[6]}`,
           }}
-          collapsible
-          collapsed={collapsed}
-          onCollapse={onCollapse}
         >
           <Link to="/">
-            <img className="logo" src={UdpLogo} alt="clinica psicologica udp" />
+            <img className="logo" src={UdpLogo} />
           </Link>
-          <Menu theme="dark" mode="inline" defaultSelectedKeys={["/home"]}>
+
+          <Menu
+            theme="dark"
+            mode="inline"
+            style={{ backgroundColor: `${red[6]}` }}
+          >
             <Menu.Item key="/home/perfil" icon={<AreaChartOutlined />}>
               <Link to="/home/perfil"> Estadísticas </Link>
             </Menu.Item>
@@ -83,14 +81,17 @@ function LayoutAdmin(props) {
             </Menu.Item>
           </Menu>
         </Sider>
-        <Layout className="site-layout">
-          <Header className="layout-admin__header" />
-          <Content>
-            <div className="layout-admin__content">
+        <Layout className="site-layout" style={{ marginLeft: 200 }}>
+          <Header className="site-layout-background" style={{ padding: 0 }} />
+          <Content style={{ margin: "24px 16px 0", overflow: "initial" }}>
+            <div
+              className="site-layout-background"
+              style={{ padding: 24, textAlign: "center" }}
+            >
               <LoadRoutes routes={routes} />
             </div>
           </Content>
-          <Footer className="layout-admin__footer">
+          <Footer style={{ textAlign: "center" }}>
             clinica Psicológica UDP ©2020 Created by TICS II
           </Footer>
         </Layout>
