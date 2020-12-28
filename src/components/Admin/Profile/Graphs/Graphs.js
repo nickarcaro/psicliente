@@ -401,157 +401,160 @@ export function GraphLineasEstadoPacientes(props) {
   for (let dataObj of patients) {
     let dateIs= dataObj.fecha_ingreso.toString();
     console.log(dateIs.toString() + "1234");
-    if ((dataObj.Estado_id_Estado === 1 ||dataObj.Estado_id_Estado === 2) &&dateIs.indexOf("-1-") !== -1) {
+    if (
+      dataObj.Estado_id_Estado === 1 ||
+      (dataObj.Estado_id_Estado === 2
+      && dateIs.indexOf("-01-") !== -1)) {
       pacActivo1.push(dataObj.Estado_id_Estado);
       console.log(dataObj.Estado_id_Estado);
       console.log(dateIs);
     } else if (
       dataObj.Estado_id_Estado === 1 ||
       (dataObj.Estado_id_Estado === 2 &&
-      dateIs.indexOf("-2-") !== -1
-    )) {
+      dateIs.indexOf("-02-") !== -1)
+    ) {
       pacActivo2.push(dataObj.Estado_id_Estado);
       console.log(dataObj.Estado_id_Estado);
       console.log(dateIs);
     } else if (
       dataObj.Estado_id_Estado === 1 ||
       (dataObj.Estado_id_Estado === 2 &&
-      dateIs.indexOf("-3-") !== -1
-    )) {
+      dateIs.indexOf("-03-") !== -1)
+    ) {
       pacActivo3.push(dataObj.Estado_id_Estado);
       console.log(dataObj.Estado_id_Estado);
       console.log(dateIs);
     } else if (
       dataObj.Estado_id_Estado === 1 ||
       (dataObj.Estado_id_Estado === 2 &&
-      dateIs.indexOf("-4-") !== -1
-    )) {
+      dateIs.indexOf("-04-") !== -1)
+    ) {
       pacActivo4.push(dataObj.Estado_id_Estado);
       console.log(dataObj.Estado_id_Estado);
       console.log(dateIs);
     } else if (
       dataObj.Estado_id_Estado === 1 ||
       (dataObj.Estado_id_Estado === 2 &&
-      dateIs.indexOf("-5-") !== -1
-    )) {
+      dateIs.indexOf("-05-") !== -1)
+    ) {
       pacActivo5.push(dataObj.Estado_id_Estado);
       console.log(dataObj.Estado_id_Estado);
       console.log(dateIs);
     } else if (
       dataObj.Estado_id_Estado === 1 ||
       (dataObj.Estado_id_Estado === 2 &&
-      dateIs.indexOf("-6-") !== -1
-    )) {
+      dateIs.indexOf("-06-") !== -1)
+    ) {
       pacActivo6.push(dataObj.Estado_id_Estado);
       console.log(dataObj.Estado_id_Estado);
       console.log(dateIs);
     } else if (
       dataObj.Estado_id_Estado === 1 ||
       (dataObj.Estado_id_Estado === 2 &&
-      dateIs.indexOf("-7-") !== -1
-    )) {
+      dateIs.indexOf("-07-") !== -1)
+    ) {
       pacActivo7.push(dataObj.Estado_id_Estado);
       console.log(dataObj.Estado_id_Estado);
       console.log(dateIs);
     } else if (
       dataObj.Estado_id_Estado === 1 ||
       (dataObj.Estado_id_Estado === 2 &&
-      dateIs.indexOf("-8-") !== -1
-    )) {
+      dateIs.indexOf("-08-") !== -1)
+    ) {
       pacActivo8.push(dataObj.Estado_id_Estado);
       console.log(dataObj.Estado_id_Estado);
       console.log(dateIs);
     } else if (
       dataObj.Estado_id_Estado === 1 ||
       (dataObj.Estado_id_Estado === 2 &&
-      dateIs.indexOf("-9-") !== -1
-    )) {
+      dateIs.indexOf("-09-") !== -1)
+    ) {
       pacActivo9.push(dataObj.Estado_id_Estado);
       console.log(dataObj.Estado_id_Estado);
       console.log(dateIs);
     } else if (
       dataObj.Estado_id_Estado === 1 ||
       (dataObj.Estado_id_Estado === 2 &&
-      dateIs.indexOf("-10-") !== -1
-    )) {
+      dateIs.indexOf("-10-") !== -1)
+    ) {
       pacActivo10.push(dataObj.Estado_id_Estado);
       console.log(dataObj.Estado_id_Estado);
       console.log(dateIs);
     } else if (
       dataObj.Estado_id_Estado === 1 ||
       (dataObj.Estado_id_Estado === 2 &&
-      dateIs.indexOf("-11-") !== -1
-    )) {
+      dateIs.indexOf("-11-") !== -1)
+    ) {
       pacActivo11.push(dataObj.Estado_id_Estado);
       console.log(dataObj.Estado_id_Estado);
       console.log(dateIs);
     } else if (
       dataObj.Estado_id_Estado === 1 ||
       (dataObj.Estado_id_Estado === 2 &&
-      dateIs.indexOf("-12-") !== -1
-    )) {
+      dateIs.indexOf("-12-") !== -1)
+    ) {
       pacActivo12.push(dataObj.Estado_id_Estado);
       console.log(dataObj.Estado_id_Estado);
       console.log(dateIs);
     } else if (
       dataObj.Estado_id_Estado === 3 &&
-      dateIs.indexOf("-1-") !== -1
+      dateIs.indexOf("-01-") !== -1
     ) {
       pacAlAgua1.push(dataObj.Estado_id_Estado);
       console.log(dataObj.Estado_id_Estado);
       console.log(dateIs);
     } else if (
       dataObj.Estado_id_Estado === 3 &&
-      dateIs.indexOf("-2-") !== -1
+      dateIs.indexOf("-02-") !== -1
     ) {
       pacAlAgua2.push(dataObj.Estado_id_Estado);
       console.log(dataObj.Estado_id_Estado);
       console.log(dateIs);
     } else if (
       dataObj.Estado_id_Estado === 3 &&
-      dateIs.indexOf("-3-") !== -1
+      dateIs.indexOf("-03-") !== -1
     ) {
       pacAlAgua3.push(dataObj.Estado_id_Estado);
       console.log(dataObj.Estado_id_Estado);
       console.log(dateIs);
     } else if (
       dataObj.Estado_id_Estado === 3 &&
-      dateIs.indexOf("-4-") !== -1
+      dateIs.indexOf("-04-") !== -1
     ) {
       pacAlAgua4.push(dataObj.Estado_id_Estado);
       console.log(dataObj.Estado_id_Estado);
       console.log(dateIs);
     } else if (
       dataObj.Estado_id_Estado === 3 &&
-      dateIs.indexOf("-5-") !== -1
+      dateIs.indexOf("-05-") !== -1
     ){
       pacAlAgua5.push(dataObj.Estado_id_Estado);
       console.log(dataObj.Estado_id_Estado);
       console.log(dateIs);
     } else if (
       dataObj.Estado_id_Estado === 3 &&
-      dateIs.indexOf("-6-") !== -1
+      dateIs.indexOf("-06-") !== -1
     ) {
       pacAlAgua6.push(dataObj.Estado_id_Estado);
       console.log(dataObj.Estado_id_Estado);
       console.log(dateIs);
     } else if (
       dataObj.Estado_id_Estado === 3 &&
-      dateIs.indexOf("-7-") !== -1
+      dateIs.indexOf("-07-") !== -1
     ) {
       pacAlAgua7.push(dataObj.Estado_id_Estado);
       console.log(dataObj.Estado_id_Estado);
       console.log(dateIs);
     } else if (
       dataObj.Estado_id_Estado === 3 &&
-      dateIs.indexOf("-8-") !== -1
+      dateIs.indexOf("-08-") !== -1
     ) {
       pacAlAgua8.push(dataObj.Estado_id_Estado);
       console.log(dataObj.Estado_id_Estado);
       console.log(dateIs);
     } else if (
       dataObj.Estado_id_Estado === 3 &&
-      dateIs.indexOf("-9-") !== -1
+      dateIs.indexOf("-09-") !== -1
     ) {
       pacAlAgua9.push(dataObj.Estado_id_Estado);
       console.log(dataObj.Estado_id_Estado);
