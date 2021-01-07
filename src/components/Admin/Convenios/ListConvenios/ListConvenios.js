@@ -3,7 +3,6 @@ import { List, Button, Modal as ModalAntd, notification } from "antd";
 import Modal from "../../../Modal";
 import AddConvenio from "../AddConvenio";
 import AddCoordinador from "../AddCoordinador";
-import moment from "moment";
 import {
   EditOutlined,
   DeleteOutlined,
@@ -137,9 +136,7 @@ function Convenio(props) {
                 Nombre: ${convenio.nombre ? convenio.nombre : "..."},
                 
             `}
-        description={`Fecha de inicio: ${moment(convenio.fecha_inicio).format(
-          "L"
-        )}`}
+        description={`kasjsdpsa`}
       />
     </List.Item>
   );
@@ -155,7 +152,7 @@ function Coordinador(props) {
                 Nombre: ${cordinador.nombre ? cordinador.nombre : "..."},
                 
             `}
-        description={`Email: ${cordinador.email}`}
+        description={`kasjsdpsa`}
       />
     </List.Item>
   );

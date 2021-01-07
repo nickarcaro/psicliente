@@ -38,7 +38,7 @@ export default function Profile(props) {
         </Row>
         <Row gutter={[16, 40]}>
           <Col span={8} push={4}>
-            <h3>Consultantes ingresados por tipos de organizacion</h3>
+            <h3>Número de consultantes no contactados</h3>
             <GraphLineasEstadoPacientes patients={patients} />
           </Col>
           <Col span={8} push={4}>
@@ -48,7 +48,7 @@ export default function Profile(props) {
         </Row>
         <Row gutter={[16, 40]} wrap ={true}>
           <Col span={8}>
-            <h3>Número de consultantes no contactados</h3>
+            <h3>Consultantes ingresados por tipos de organizacion</h3>
             <GraphPie consultants={consultants} />
           </Col>
           <Col span={8}>

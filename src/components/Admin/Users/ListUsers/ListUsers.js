@@ -134,10 +134,10 @@ function User(props) {
     >
       <List.Item.Meta
         title={`
-                Nombre: ${user.nombre ? user.nombre : "..."} 
-               Nombre Social ${user.nombre_social ? user.nombre_social : "..."}
+                ${user.nombre ? user.nombre : "..."} 
+                ${user.nombre_social ? user.nombre_social : "..."}
               `}
-        description={`Correo: ${user.email}`}
+        description={user.email}
       />
     </List.Item>
   );

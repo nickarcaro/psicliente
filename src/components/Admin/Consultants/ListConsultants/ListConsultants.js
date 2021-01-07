@@ -4,12 +4,11 @@ import Modal from "../../../Modal";
 import EditConsultantForm from "../EditConsultantForm";
 import AddConsultantForm from "../AddConsultantForm";
 import AddContactForm from "../AddContactForm";
-import ViewConsultant from "../ViewConsultant";
+
 import {
   EditOutlined,
   DeleteOutlined,
   SolutionOutlined,
-  UserOutlined,
 } from "@ant-design/icons";
 import "./ListConsultants.scss";
 import { getAccessTokenApi } from "../../../../api/auth";
@@ -39,10 +38,10 @@ export default function ListConsultants(props) {
   };
 
   return (
-    <div className="list-consultants">
-      <div className="list-consultants__header">
+    <div className="list-users">
+      <div className="list-users__header">
         <Button type="primary" onClick={addConsultantModal}>
-          Añadir Consultante
+          Nuevo Consultante
         </Button>
       </div>
 
@@ -103,17 +102,6 @@ function Consultants(props) {
       />
     );
   };
-  const seeConsultant = (consultant) => {
-    setIsVisibleModal(true);
-    setModalTitle("Información del consultante");
-    setModalContent(
-      <ViewConsultant
-        consultant={consultant}
-        setIsVisibleModal={setIsVisibleModal}
-        setReloadConsultants={setReloadConsultants}
-      />
-    );
-  };
 
   const addContact = (consultant) => {
     setIsVisibleModal(true);
@@ -131,7 +119,7 @@ function Consultants(props) {
     <div>
       <h1> lista de Consultantes:</h1>
       <List
-        className="consultants-active"
+        className="users-active"
         itemLayout="horizontal"
         dataSource={consultants}
         renderItem={(consultant) => (
@@ -140,13 +128,12 @@ function Consultants(props) {
             editConsultant={editConsultant}
             setReloadConsultants={setReloadConsultants}
             addContact={addContact}
-            seeConsultant={seeConsultant}
           />
         )}
       />
       <h1>lista de "Al Agua"</h1>
       <List
-        className="consultants-active"
+        className="users-active"
         itemLayout="horizontal"
         dataSource={inpatients}
         renderItem={(consultant) => (
@@ -155,7 +142,6 @@ function Consultants(props) {
             editConsultant={editConsultant}
             setReloadConsultants={setReloadInPatients}
             addContact={addContact}
-            seeConsultant={seeConsultant}
           />
         )}
       />
@@ -169,15 +155,14 @@ function Consultant(props) {
     editConsultant,
     setReloadConsultants,
     addContact,
-    seeConsultant,
   } = props;
 
   const showDeleteConfirm = () => {
     const accesToken = getAccessTokenApi();
 
     confirm({
-      title: "Eliminando Consultante",
-      content: `¿Estas seguro que quieres eliminar a ${consultant.nombre}?`,
+      title: "Eliminando usuario",
+      content: `¿Estas seguro que quieres eliminar a ${consultant.RUT}?`,
       okText: "Eliminar",
       okType: "danger",
       cancelText: "Cancelar",
@@ -204,13 +189,9 @@ function Consultant(props) {
         <Button type="primary" onClick={() => addContact(consultant)}>
           <SolutionOutlined />
         </Button>,
-        <Button type="primary" onClick={() => seeConsultant(consultant)}>
-          <UserOutlined />
-        </Button>,
         <Button type="primary" onClick={() => editConsultant(consultant)}>
           <EditOutlined />
         </Button>,
-
         <Button type="danger" onClick={showDeleteConfirm}>
           <DeleteOutlined />
         </Button>,

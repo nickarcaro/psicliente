@@ -1,17 +1,33 @@
-@import "../../../index.scss";
+@import "../../../scss/index.scss";
+
 .login-form {
-  width: 400px;
+  max-width: 300px;
 
-  margin: 50px 100px 0px 0px;
-  border-radius: 5px;
+  h1 {
+    font-size: 17px !important;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  input {
+    background-color: #f9f9f9 !important;
+  }
 }
-
-.ant-col-rtl {
+.login-form-forgot {
+  float: right;
+}
+.ant-col-rtl .login-form-forgot {
   float: left;
 }
 .login-form-button {
   width: 100%;
 }
 .ant-btn-primary {
-  background-color: #cf1322;
+  background-color: #df0303;
+  border-color: #df0303;
+}
+
+.ant-checkbox-checked .ant-checkbox-inner {
+  background-color: #df034c;
+  border-color: #df034c;
 }

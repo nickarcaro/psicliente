@@ -1,4 +1,4 @@
-.list-consultants {
+.list-users {
   &__header {
     display: flex;
     align-items: center;
@@ -15,7 +15,7 @@
     }
   }
 
-  .consultants-active {
+  .users-active {
     background-color: #fff;
     padding: 10px 20px;
 

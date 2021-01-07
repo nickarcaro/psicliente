@@ -1,18 +1,38 @@
+.ant-layout-sider {
+  background-color: #7c0029;
+}
 .logo {
-  height: 32px;
-  background: rgba(255, 255, 255, 0.2);
-  margin: 16px;
-}
-.site-layout .site-layout-background {
-  background: #fff;
-}
-[data-theme="dark"] .site-layout .site-layout-background {
-  background: #141414;
+  width: 200px;
+  padding: 0 10px;
+  position: relative;
+  display: block;
+  height: auto;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
-.basicfooter {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  height: 60px; /* Height of the footer */
+.layout-admin {
+  transition: margin-left 0.2s;
+  padding: 0px 24px 24px;
+  &__header {
+    top: 0;
+    left: 0;
+    width: 100%;
+    right: 0;
+    padding: 0;
+    height: 65px;
+  }
+
+  &__content {
+    min-height: calc(100vh - 65px);
+    padding: 24;
+    text-align: "center";
+    background: #fff;
+    margin: 16px;
+  }
+
+  &__footer {
+    padding: 20px;
+    text-align: center;
+  }
 }
