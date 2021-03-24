@@ -339,6 +339,9 @@ export function GraphDonut(props) {
   return (
     <Doughnut
     options={{
+      legend:{
+        display:false
+      },
       scales: {
         yAxes: [
           {gridLines: {

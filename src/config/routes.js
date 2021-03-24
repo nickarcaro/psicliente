@@ -10,6 +10,7 @@ import Patients from "../pages/Admin/Patients";
 import Consultants from "../pages/Admin/Consultants";
 import Home from "../pages/Admin/Home";
 import Convenios from "../pages/Admin/Convenios";
+import Derivations from "../pages/Admin/Derivations";
 //layouts
 import LayoutBasic from "../layouts/LayoutBasic";
 import LayoutAdmin from "../layouts/LayoutAdmin";
@@ -48,6 +49,11 @@ const routes = [
       {
         path: "/home/convenios",
         component: Convenios,
+        exact: true,
+      },
+      {
+        path: "/home/derivaciones",
+        component: Derivations,
         exact: true,
       },
     ],

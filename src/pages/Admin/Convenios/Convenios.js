@@ -31,7 +31,6 @@ export default function Convenios() {
     setReloadCoordinador(false);
     setReloadInstituciones(false);
   }, [token, reloadConvenios, reloadCoordinador, reloadInstituciones]);
-  console.log(coordinador, "desde pagin");
 
   return (
     <div>

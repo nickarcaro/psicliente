@@ -5,6 +5,7 @@ import {
   getIncontestPatients,
 } from "../../../api/pacientes";
 import ListConsultants from "../../../components/Admin/Consultants/ListConsultants";
+
 export default function Consultants() {
   const [consultants, setConsultants] = useState([]);
   const [reloadConsultants, setReloadConsultants] = useState(false);

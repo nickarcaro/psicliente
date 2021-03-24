@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { List, Button, Modal as ModalAntd, notification } from "antd";
 import Modal from "../../../Modal";
 import EditPatient from "../EditPatient";
-import { deletePatient } from "../../../../api/pacientes";
+import { deletePatient, getPatients } from "../../../../api/pacientes";
 import { getAccessTokenApi } from "../../../../api/auth";
 import { EditOutlined, DeleteOutlined } from "@ant-design/icons";
 
@@ -11,9 +11,32 @@ const { confirm } = ModalAntd;
 
 export default function ListPatients(props) {
   const { patients, setReloadPatients } = props;
-  const [isVisibleModal, setIsVisibleModal] = useState(false);
+  const [isVisibleModal, setIsVisibleModal] = useState(true);
   const [modalTitle, setModalTitle] = useState("");
   const [modalContent, setModalContent] = useState(null);
+  //Nuevos useState para la barra buscadora
+  const [searchTerm, setSearchTerm] = useState("");
+  const [searchResults, setsearchResults] = useState([]);
+  const inputEl = useRef("");
+  //Buscador de termino para la barra
+  const getSearchTerm = () =>{
+    props.searchKeyword(inputEl.current.value)
+  };
+//Funcion para manejar los terminos que aparezcan para el autocompletado de los pacientes
+  const searchHandler = (searchTerm) =>{
+    setSearchTerm(searchTerm);
+    if (searchTerm !== "") {
+      const newPatients = patients.filter((contact)=> {
+        return Object.values(contact
+          .join(" "))
+          .toLowerCase()
+          .includes(searchTerm.toLowerCase());
+      });
+      setsearchResults(newPatients);
+    }else{
+      setsearchResults(patients);
+    }
+  };
 
   return (
     <div className="list-users">
@@ -29,6 +52,8 @@ export default function ListPatients(props) {
         setModalTitle={setModalTitle}
         setModalContent={setModalContent}
         setReloadPatients={setReloadPatients}
+        term = {searchTerm}
+        searchKeyword = {searchHandler}
       />
 
       <Modal
@@ -83,6 +108,16 @@ function Patients(props) {
 
   return (
     <div>
+      <div className ="">
+      <input
+            ref={inputEl}
+            type="text"
+            placeholder="Search Contacts"
+            className="prompt"
+            value={props.term}
+            onChange={getSearchTerm}
+          />
+      </div>
       <h1> lista de Pacientes:</h1>
       <List
         className="users-active"
@@ -142,10 +177,10 @@ function Patient(props) {
     >
       <List.Item.Meta
         title={`
-                  ${patient.pronombre ? patient.pronombre : "..."}
-                  ${patient.nombre ? patient.nombre : "..."} 
+                  Pronombre: ${patient.pronombre ? patient.pronombre : "..."}
+                  Nombre:   ${patient.nombre ? patient.nombre : "..."} 
               `}
-        description={(patient.RUT, patient.genero)}
+        description={`Rut: ${patient.RUT}, Genero: ${patient.genero}`}
       />
     </List.Item>
   );
