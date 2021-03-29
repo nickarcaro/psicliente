@@ -6,7 +6,7 @@ import { deletePatient } from "../../../../api/pacientes";
 import { getAccessTokenApi } from "../../../../api/auth";
 import { EditOutlined, DeleteOutlined } from "@ant-design/icons";
 
-import "./ListPatients.scss";
+import "./ListPatients.less";
 const { confirm } = ModalAntd;
 
 export default function ListPatients(props) {

@@ -1,4 +1,92 @@
 import React, { useState } from "react";
+import { Layout, Menu, Breadcrumb, Space } from "antd";
+import { Route, Redirect, withRouter, Link } from "react-router-dom";
+import {
+  SolutionOutlined,
+  TeamOutlined,
+  UserOutlined,
+  IdcardOutlined,
+  PoweroffOutlined,
+  ContactsOutlined,
+  HomeOutlined,
+} from "@ant-design/icons";
+import useAuth from "../hooks/useAuth";
+import "./LayoutAdmin.less";
+import LoadRoutes from "./LoadRoutes";
+import Auth from "../pages/Auth";
+import { logout } from "../api/auth";
+import UdpLogo from "../assets/jpeg/logo.jpeg";
+const LayoutAdmin = ({ routes, location }) => {
+  const { Header, Content, Footer, Sider } = Layout;
+  const { SubMenu } = Menu;
+  const { user, isLoading } = useAuth();
+  const logoutUser = () => {
+    logout();
+    window.location.reload();
+  };
+
+  if (!user && !isLoading) {
+    return (
+      <>
+        <Route path="/login" component={Auth} />
+        <Redirect to="/login" />
+      </>
+    );
+  }
+
+  if (user && !isLoading) {
+    return (
+      <Layout style={{ minHeight: "100vh" }}>
+        <Sider collapsible>
+          <div className="logoPanel" />
+          <Menu
+            theme="dark"
+            defaultSelectedKeys={[location.pathname]}
+            mode="inline"
+          >
+            <Menu.Item key="/portal" icon={<HomeOutlined />}>
+              <Link to="/portal"></Link>Home
+            </Menu.Item>
+            <Menu.Item key="/portal/perfil" icon={<UserOutlined />}>
+              <Link to="/portal/perfil"></Link>Mi Perfil
+            </Menu.Item>
+            <Menu.Item
+              key="/portal/usuarios"
+              icon={<TeamOutlined />}
+              title="Usuarios"
+            >
+              <Link to="/portal/usuarios"></Link>Usuarios
+            </Menu.Item>
+
+            <Menu.Item key="4" icon={<PoweroffOutlined />} onClick={logoutUser}>
+              salir
+            </Menu.Item>
+          </Menu>
+        </Sider>
+        <Layout className="site-layout">
+          <Header className="site-layout-background" style={{ padding: 0 }} />
+          <Content style={{ margin: "24px 16px 0", overflow: "initial" }}>
+            <div
+              className="site-layout-background"
+              style={{ padding: 24, minHeight: 360 }}
+            >
+              <LoadRoutes routes={routes} />
+            </div>
+          </Content>
+          <Footer style={{ textAlign: "center" }}>
+            Ant Design ©2018 Created by Ant UED
+          </Footer>
+        </Layout>
+      </Layout>
+    );
+  }
+  return null;
+};
+
+export default LayoutAdmin;
+
+/*
+import React, { useState } from "react";
 import { Layout, Menu } from "antd";
 import { Route, Link, Redirect, withRouter } from "react-router-dom";
 import {
@@ -10,7 +98,7 @@ import {
   ContactsOutlined,
 } from "@ant-design/icons";
 import useAuth from "../hooks/useAuth";
-import "./LayoutAdmin.scss";
+import "./LayoutAdmin.less";
 import LoadRoutes from "./LoadRoutes";
 import Auth from "../pages/Auth";
 import { logout } from "../api/auth";
@@ -97,3 +185,4 @@ function LayoutAdmin(props) {
 }
 
 export default withRouter(LayoutAdmin);
+*/

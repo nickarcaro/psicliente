@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { getAccessTokenApi } from "../../../api/auth";
 import { getUsers } from "../../../api/user";
 import ListUsers from "../../../components/Admin/Users/ListUsers";
-
+import "./Users.less";
 export default function Users() {
   const [users, setUsers] = useState([]);
   const [reloadUsers, setReloadUsers] = useState(false);

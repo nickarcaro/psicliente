@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { getAccessTokenApi } from "../../../api/auth";
 import { getConsultants } from "../../../api/consultantes";
-import { getAllPatients} from "../../../api/pacientes";
+import { getAllPatients } from "../../../api/pacientes";
 import MyProfile from "../../../components/Admin/Profile";
-
+import "./Profile.less";
 export default function Profile() {
   const [consultants, setConsultants] = useState([]);
   const [reloadConsultants, setReloadConsultants] = useState(false);

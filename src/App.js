@@ -1,7 +1,8 @@
 import React from "react";
-import { HashRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import routes from "./config/routes";
 import AuthProvider from "./providers/AuthProvider";
+import "./App.less";
 function App() {
   return (
     <AuthProvider>
@@ -16,7 +17,7 @@ function App() {
   );
 }
 
-export function RouteWithSubRoutes(route) {
+export const RouteWithSubRoutes = (route) => {
   return (
     <Route
       path={route.path}
@@ -24,6 +25,6 @@ export function RouteWithSubRoutes(route) {
       render={(props) => <route.component routes={route.routes} {...props} />}
     />
   );
-}
+};
 
 export default App;

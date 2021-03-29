@@ -10,7 +10,7 @@ import {
   DeleteOutlined,
   SolutionOutlined,
 } from "@ant-design/icons";
-import "./ListConsultants.scss";
+import "./ListConsultants.less";
 import { getAccessTokenApi } from "../../../../api/auth";
 import { deletePatient } from "../../../../api/pacientes";
 const { confirm } = ModalAntd;

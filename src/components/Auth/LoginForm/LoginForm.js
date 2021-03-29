@@ -4,7 +4,7 @@ import { MailOutlined, LockOutlined } from "@ant-design/icons";
 import { signInApi } from "../../../api/user";
 import { TOKEN } from "../../../utils/constants";
 
-import "./LoginForm.scss";
+import "./LoginForm.less";
 export default function LoginForm() {
   const login = async (values) => {
     console.log(values);
