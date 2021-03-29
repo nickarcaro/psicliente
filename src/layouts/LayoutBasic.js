@@ -40,7 +40,7 @@ function LayoutBasic(props) {
         className="site-layout"
         style={{ padding: "0 50px", marginTop: 64 }}
       >
-        <Title level={3} style={{ textAlign: "center", margin: 23 }}>
+        <Title level={3} style={{ textAlign: "center", margin: 23, position: "absolute", left: 715 }}>
           Plataforma de Gestión de Consultantes
         </Title>
         <div

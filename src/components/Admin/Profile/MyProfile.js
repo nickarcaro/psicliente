@@ -19,9 +19,8 @@ export default function Profile(props) {
 
   return (
     <div className="profile">
-      <h2>mi perfil</h2>
       <section id="graphs" classname="Graphs container">
-        <h3> Indicadores de la clinica psicologica udp</h3>
+        <p style={{ fontSize: 45}}> Indicadores de la clinica psicologica udp</p>
         <Row gutter={[16, 40]}>
         <Col span={8}>
         <h3>Total de consultantes 2020</h3>

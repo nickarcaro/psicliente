@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { List, Button, Modal as ModalAntd, notification } from "antd";
 import Modal from "../../../Modal";
 import EditPatient from "../EditPatient";
@@ -17,6 +17,7 @@ export default function ListPatients(props) {
   //Nuevos useState para la barra buscadora
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setsearchResults] = useState([]);
+  //input element
   const inputEl = useRef("");
   //Buscador de termino para la barra
   const getSearchTerm = () =>{
@@ -43,6 +44,14 @@ export default function ListPatients(props) {
       <div className="list-users__header">
         <div className="list-users__header-switch">
           <h1>Lista De pacientes</h1>
+          <input
+            ref={inputEl}
+            type="text"
+            placeholder="Search Contacts"
+            className="prompt"
+            value={props.term}
+            onChange={getSearchTerm}
+          />
         </div>
       </div>
 
@@ -108,16 +117,6 @@ function Patients(props) {
 
   return (
     <div>
-      <div className ="">
-      <input
-            ref={inputEl}
-            type="text"
-            placeholder="Search Contacts"
-            className="prompt"
-            value={props.term}
-            onChange={getSearchTerm}
-          />
-      </div>
       <h1> lista de Pacientes:</h1>
       <List
         className="users-active"
