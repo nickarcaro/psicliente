@@ -1,5 +1,5 @@
 import React from "react";
-import "./Auth.scss";
+import "./Auth.less";
 
 import LoginForm from "../../components/Auth/LoginForm";
 import { getAccessTokenApi } from "../../api/auth";

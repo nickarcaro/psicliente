@@ -4,8 +4,7 @@ import { Layout, Menu, Typography } from "antd";
 import { HomeOutlined, ContactsOutlined } from "@ant-design/icons";
 import LoadRoutes from "./LoadRoutes";
 import UdpLogo from "../assets/jpeg/logo.jpeg";
-import { red } from "@ant-design/colors";
-import "./LayoutBasic.scss";
+import "./LayoutBasic.less";
 
 function LayoutBasic(props) {
   const { routes } = props;
@@ -14,20 +13,13 @@ function LayoutBasic(props) {
 
   return (
     <Layout>
-      <Header
-        style={{
-          position: "fixed",
-          zIndex: 1,
-          width: "100%",
-          backgroundColor: `${red[6]}`,
-        }}
-      >
-        <img className="logo" src={UdpLogo} alt="clinica psicologica udp" />
-        <Menu
-          theme="dark"
-          mode="horizontal"
-          style={{ backgroundColor: `${red[6]}` }}
-        >
+      <Header style={{ position: "fixed", zIndex: 1, width: "100%" }}>
+        <img
+          className="logoPrincipal"
+          src={UdpLogo}
+          alt="clinica psicologica udp"
+        />
+        <Menu theme="dark" mode="horizontal">
           <Menu.Item key="/home" icon={<HomeOutlined />}>
             <Link to={"/home"}> Home</Link>
           </Menu.Item>
@@ -38,11 +30,9 @@ function LayoutBasic(props) {
       </Header>
       <Content
         className="site-layout"
-        style={{ padding: "0 50px", marginTop: 64 }}
+        style={{ padding: "50px 50px 100px ", marginTop: 60 }}
       >
-        <Title level={3} style={{ textAlign: "center", margin: 23, position: "absolute", left: 715 }}>
-          Plataforma de Gestión de Consultantes
-        </Title>
+        <Title>Plataforma de Gestión de Consultantes</Title>
         <div
           className="site-layout-background"
           style={{ padding: 24, minHeight: 380 }}

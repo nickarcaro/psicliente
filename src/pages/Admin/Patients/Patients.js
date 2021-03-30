@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { getAccessTokenApi } from "../../../api/auth";
 import { getPatients } from "../../../api/pacientes";
 import ListPatients from "../../../components/Admin/Patients/ListPatients";
-import "./Patients.scss";
+import "./Patients.less";
 export default function Patients() {
   const [patients, setPatients] = useState([]);
   const [reloadPatients, setReloadPatients] = useState(false);

@@ -6,7 +6,7 @@ import { deletePatient, getPatients } from "../../../../api/pacientes";
 import { getAccessTokenApi } from "../../../../api/auth";
 import { EditOutlined, DeleteOutlined } from "@ant-design/icons";
 
-import "./ListPatients.scss";
+import "./ListPatients.less";
 const { confirm } = ModalAntd;
 
 export default function ListPatients(props) {
@@ -20,21 +20,20 @@ export default function ListPatients(props) {
   //input element
   const inputEl = useRef("");
   //Buscador de termino para la barra
-  const getSearchTerm = () =>{
-    props.searchKeyword(inputEl.current.value)
+  const getSearchTerm = () => {
+    props.searchKeyword(inputEl.current.value);
   };
-//Funcion para manejar los terminos que aparezcan para el autocompletado de los pacientes
-  const searchHandler = (searchTerm) =>{
+  //Funcion para manejar los terminos que aparezcan para el autocompletado de los pacientes
+  const searchHandler = (searchTerm) => {
     setSearchTerm(searchTerm);
     if (searchTerm !== "") {
-      const newPatients = patients.filter((contact)=> {
-        return Object.values(contact
-          .join(" "))
+      const newPatients = patients.filter((contact) => {
+        return Object.values(contact.join(" "))
           .toLowerCase()
           .includes(searchTerm.toLowerCase());
       });
       setsearchResults(newPatients);
-    }else{
+    } else {
       setsearchResults(patients);
     }
   };
@@ -61,8 +60,8 @@ export default function ListPatients(props) {
         setModalTitle={setModalTitle}
         setModalContent={setModalContent}
         setReloadPatients={setReloadPatients}
-        term = {searchTerm}
-        searchKeyword = {searchHandler}
+        term={searchTerm}
+        searchKeyword={searchHandler}
       />
 
       <Modal

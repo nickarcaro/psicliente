@@ -1,6 +1,6 @@
 import React from "react";
 import { Form, Input, Button, Row, Col, List } from "antd";
-import "./Contact.scss";
+import "./Contact.less";
 
 export default function Contact() {
   const layout = {

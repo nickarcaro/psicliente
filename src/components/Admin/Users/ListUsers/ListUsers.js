@@ -6,7 +6,7 @@ import EditUserForm from "../EditUserForm";
 import AddUserForm from "../AddUserForm";
 import { deleteUser } from "../../../../api/user";
 import { getAccessTokenApi } from "../../../../api/auth";
-import "./ListUsers.scss";
+import "./ListUsers.less";
 
 const { confirm } = ModalAntd;
 export default function ListUsers(props) {

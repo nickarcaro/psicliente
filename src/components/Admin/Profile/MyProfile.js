@@ -7,12 +7,12 @@ import {
   GraphLineasEstadoPacientes,
   GraphPie,
 } from "./Graphs/Graphs";
-import{
+import {
   TotalPatientsFigures,
   RetentionFigures,
   ConsultantVariations,
 } from "./Graphs/Indicators";
-import "./MyProfile.scss";
+import "./MyProfile.less";
 
 export default function Profile(props) {
   const { consultants, patients } = props;
@@ -20,20 +20,23 @@ export default function Profile(props) {
   return (
     <div className="profile">
       <section id="graphs" classname="Graphs container">
-        <p style={{ fontSize: 45}}> Indicadores de la clinica psicologica udp</p>
+        <p style={{ fontSize: 45 }}>
+          {" "}
+          Indicadores de la clinica psicologica udp
+        </p>
         <Row gutter={[16, 40]}>
-        <Col span={8}>
-        <h3>Total de consultantes 2020</h3>
-          <TotalPatientsFigures patients={patients} />
-        </Col>
-        <Col span={8}>
-          <h3>Tasa de retencion del 2020</h3>
-          <RetentionFigures patients={patients} />
-        </Col>
-        <Col span={8}>
-        <h3>Varacion de consultantes 2020-2019</h3>
-          <ConsultantVariations patients={patients} />
-        </Col>
+          <Col span={8}>
+            <h3>Total de consultantes 2020</h3>
+            <TotalPatientsFigures patients={patients} />
+          </Col>
+          <Col span={8}>
+            <h3>Tasa de retencion del 2020</h3>
+            <RetentionFigures patients={patients} />
+          </Col>
+          <Col span={8}>
+            <h3>Varacion de consultantes 2020-2019</h3>
+            <ConsultantVariations patients={patients} />
+          </Col>
         </Row>
         <Row gutter={[16, 40]}>
           <Col span={8} push={4}>
@@ -45,7 +48,7 @@ export default function Profile(props) {
             <GraphDonut consultants={consultants} />
           </Col>
         </Row>
-        <Row gutter={[16, 40]} wrap ={true}>
+        <Row gutter={[16, 40]} wrap={true}>
           <Col span={8}>
             <h3>Consultantes ingresados por tipos de organizacion</h3>
             <GraphPie consultants={consultants} />
